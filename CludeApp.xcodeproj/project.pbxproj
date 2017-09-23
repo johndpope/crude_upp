@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7932B86D1F76D7850020209F /* ConfirmAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7932B86C1F76D7850020209F /* ConfirmAlertView.xib */; };
 		7932B86F1F76D7A20020209F /* ConfirmAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932B86E1F76D7A20020209F /* ConfirmAlertView.swift */; };
+		79E3A8001F76F4580080907C /* CorrectSolutionAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E3A7FF1F76F4580080907C /* CorrectSolutionAlertView.xib */; };
 		ABA0A6D32D422251873CE586 /* Pods_CludeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1C2C9E041DA5FCACA49EE4 /* Pods_CludeApp.framework */; };
 		C804725A1F650E3E00C203DB /* CLMapListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80472591F650E3E00C203DB /* CLMapListVC.swift */; };
 		C804725C1F6510F300C203DB /* CLMapListTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C804725B1F6510F300C203DB /* CLMapListTblCell.swift */; };
@@ -137,6 +138,7 @@
 /* Begin PBXFileReference section */
 		7932B86C1F76D7850020209F /* ConfirmAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmAlertView.xib; path = MVC/View/CustomAlert/ConfirmAlertView.xib; sourceTree = "<group>"; };
 		7932B86E1F76D7A20020209F /* ConfirmAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmAlertView.swift; path = MVC/View/CustomAlert/ConfirmAlertView.swift; sourceTree = "<group>"; };
+		79E3A7FF1F76F4580080907C /* CorrectSolutionAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CorrectSolutionAlertView.xib; path = MVC/View/CustomAlert/CorrectSolutionAlertView.xib; sourceTree = "<group>"; };
 		BA1C2C9E041DA5FCACA49EE4 /* Pods_CludeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CludeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76D6F9E544F44B2676AA3C8 /* Pods-CludeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CludeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CludeApp/Pods-CludeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C80472591F650E3E00C203DB /* CLMapListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLMapListVC.swift; path = MVC/Controller/DashBoard/CLMapListVC.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				C8E49C321F67B69D002ED0C2 /* CLSubmitSolutionView.swift */,
 				7932B86C1F76D7850020209F /* ConfirmAlertView.xib */,
 				7932B86E1F76D7A20020209F /* ConfirmAlertView.swift */,
+				79E3A7FF1F76F4580080907C /* CorrectSolutionAlertView.xib */,
 			);
 			name = CustomAlert;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				C8644F641F5BB95B00777F62 /* Main.storyboard in Resources */,
 				C85C03441F7241EF00F6DA0E /* full_box_green.png in Resources */,
 				C8644FBC1F5BC05600777F62 /* facebook.png in Resources */,
+				79E3A8001F76F4580080907C /* CorrectSolutionAlertView.xib in Resources */,
 				C82A4FD51F5E8DD900FD1E25 /* CLAddVoucherView.xib in Resources */,
 				C8644FC81F5BC05600777F62 /* marker_black.png in Resources */,
 				C8644FA71F5BC05600777F62 /* account.png in Resources */,
