@@ -25,6 +25,15 @@ class CLMainVC: UIViewController {
         
             if event == 0 {
                 
+                let data = ConfirmAlertView.AlertData(title: "Auto DevOps can be activated for this project.",
+                                                      message: "Auto DevOps can be activated for this project. It will automatically build, test, and deploy your application based on a predefined CI/CD configuration.",
+                                                      btnTitle: "Sure, delete")
+                
+                ConfirmAlertView.show(in: self.view, alertData: data, actionBlock: { (action) in
+                    
+                })
+                
+                return
                 let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLNewEventVC.self)) as! CLNewEventVC
                 DispatchQueue.main.async {
                      self.navigationController?.pushViewController(aViewController, animated: true)

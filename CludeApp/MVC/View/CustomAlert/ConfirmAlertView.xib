@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConfirmAlertView" customModule="CludeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgh-OJ-7in">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb6-H2-eVf">
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="ZcN-hy-Wnr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIS-tH-lV9">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h40-Bc-YBg">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="tFM-dE-acD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="9GG-A3-cak"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ZIS-tH-lV9" firstAttribute="top" secondItem="Nb6-H2-eVf" secondAttribute="bottom" constant="15" id="4qn-y2-Kar"/>
+                        <constraint firstAttribute="trailing" secondItem="h40-Bc-YBg" secondAttribute="trailing" constant="12" id="6jb-X7-CM0"/>
+                        <constraint firstAttribute="bottom" secondItem="h40-Bc-YBg" secondAttribute="bottom" constant="15" id="8X5-vi-NgW"/>
+                        <constraint firstItem="Nb6-H2-eVf" firstAttribute="leading" secondItem="xgh-OJ-7in" secondAttribute="leading" constant="16" id="AV4-br-0C0"/>
+                        <constraint firstAttribute="trailing" secondItem="ZIS-tH-lV9" secondAttribute="trailing" constant="12" id="CWE-UV-gqc"/>
+                        <constraint firstItem="ZIS-tH-lV9" firstAttribute="leading" secondItem="xgh-OJ-7in" secondAttribute="leading" constant="16" id="VlJ-Cy-6dd"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Nb6-H2-eVf" secondAttribute="trailing" constant="12" id="ags-0y-pMJ"/>
+                        <constraint firstItem="Nb6-H2-eVf" firstAttribute="top" secondItem="xgh-OJ-7in" secondAttribute="top" constant="24" id="nI0-x9-BBb"/>
+                        <constraint firstAttribute="bottom" secondItem="ZIS-tH-lV9" secondAttribute="bottom" constant="47" id="yrm-vf-yKn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xgh-OJ-7in" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2SC-Rj-dLU"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xgh-OJ-7in" secondAttribute="trailing" constant="25" id="BbP-8K-KDO"/>
+                <constraint firstItem="xgh-OJ-7in" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="gDE-oH-eEO"/>
+                <constraint firstItem="xgh-OJ-7in" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gUc-ke-epz"/>
+            </constraints>
+            <connections>
+                <outlet property="actionButton" destination="h40-Bc-YBg" id="ww5-zB-nU1"/>
+                <outlet property="lblMessage" destination="ZIS-tH-lV9" id="zm4-0O-wfr"/>
+                <outlet property="lblTitle" destination="Nb6-H2-eVf" id="dch-aQ-uOd"/>
+            </connections>
+        </view>
+    </objects>
+</document>
