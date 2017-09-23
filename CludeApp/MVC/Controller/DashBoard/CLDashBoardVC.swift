@@ -195,21 +195,21 @@ class CLDashBoardVC: UIViewController {
                             })
                             
                         }else{
-                            
-                              self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
+                            showAlertForIncorrectCombination()
+                           //   self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
                         }
                     }else{
-                        
-                        self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
+                        showAlertForIncorrectCombination()
+                       // self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
                     }
                     
                 }else{
-                    
-                    self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
+                    showAlertForIncorrectCombination()
+                    //self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
                 }
             }else{
-                
-               self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
+                showAlertForIncorrectCombination()
+                //self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
             }
             
         }
@@ -223,6 +223,18 @@ class CLDashBoardVC: UIViewController {
     
     
     
+    func showAlertForIncorrectCombination() {
+        
+        let alertData = ConfirmAlertView.AlertData(title: "Incorrect",
+                                                   message: "Sorry Detective - that's the wrong combination, please try again",
+                                                   btnTitle: "CLOSE")
+        ConfirmAlertView.show(in: self.view, alertData: alertData) { (action) in
+            if action == .ok {
+                
+            }
+        }
+
+    }
     func showStartGamePopup(isShowPopup:Bool){
         
         
