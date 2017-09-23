@@ -1,0 +1,42 @@
+PODS:
+  - Alamofire (4.5.0)
+  - FLEX (2.4.0)
+  - GoogleMaps (2.4.0):
+    - GoogleMaps/Maps (= 2.4.0)
+  - GoogleMaps/Base (2.4.0)
+  - GoogleMaps/Maps (2.4.0):
+    - GoogleMaps/Base
+  - IQKeyboardManagerSwift (4.0.12)
+  - MagicalRecord/Shorthand (2.2)
+  - ObjectMapper (2.2.8)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
+  - SVProgressHUD (2.1.2)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - FLEX (~> 2.0)
+  - GoogleMaps
+  - IQKeyboardManagerSwift (~> 4.0)
+  - MagicalRecord/Shorthand
+  - ObjectMapper (~> 2.2)
+  - SDWebImage (~> 4.1)
+  - SVProgressHUD (~> 2.1)
+  - SwiftyJSON (~> 3.1)
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
+  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  IQKeyboardManagerSwift: 3c66bea62a7d955b67b0eef0e31522b46261336b
+  MagicalRecord: 2dc87179ae7c1f2a274442624ec65a07d4357a6f
+  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: 1db6d8182b2c084feafb8ee4c7b831a1ce131afd
+
+COCOAPODS: 1.2.0

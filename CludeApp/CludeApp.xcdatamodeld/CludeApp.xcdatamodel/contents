@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Event_db_cludeUpp" representedClassName="Event_db_cludeUpp" syncable="YES">
+        <attribute name="caseNotes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="delayTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endedAt" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="outcome" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reviews" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="safeZones" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="startedAt" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeConsume" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updateAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="v" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="evidences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Evidences_db" syncable="YES"/>
+        <relationship name="leaderboard" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Leaderboard_db" syncable="YES"/>
+        <relationship name="startLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StartLocation_db" syncable="YES"/>
+        <relationship name="suspects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Suspects_db" syncable="YES"/>
+        <relationship name="timeStoppers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeStoppers_db" syncable="YES"/>
+        <relationship name="witnesses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Witnesses_db_cludeUpp" syncable="YES"/>
+    </entity>
+    <entity name="EvidenceImage_db" representedClassName="EvidenceImage_db" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Evidences_db" representedClassName="Evidences_db" syncable="YES">
+        <attribute name="designation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCross" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="evidenceImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EvidenceImage_db" syncable="YES"/>
+    </entity>
+    <entity name="Leaderboard_db" representedClassName="Leaderboard_db" syncable="YES" codeGenerationType="class">
+        <attribute name="endedAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endedAtMili" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minutesDelay" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="socre" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startedAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startedAtMili" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="StartLocation_db" representedClassName="StartLocation_db" syncable="YES" codeGenerationType="class"/>
+    <entity name="SuspectImage_db" representedClassName="SuspectImage_db" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Suspects_db" representedClassName="Suspects_db" syncable="YES">
+        <attribute name="designation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCross" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="suspectImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SuspectImage_db" syncable="YES"/>
+    </entity>
+    <entity name="TimeStopperLocation_db" representedClassName="TimeStopperLocation_db" syncable="YES" codeGenerationType="class">
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="TimeStoppers_db" representedClassName="TimeStoppers_db" syncable="YES" codeGenerationType="class"/>
+    <entity name="Witnesses_db_cludeUpp" representedClassName="Witnesses_db_cludeUpp" syncable="YES">
+        <attribute name="coolDown" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hint" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="introgatted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="locationLine" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="showHint" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="statement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visible" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="witnessImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WitnessImage_db" syncable="YES"/>
+        <relationship name="witnessLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WitnessLocation_db" syncable="YES"/>
+        <relationship name="witnessQuestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WitnessQue_db" syncable="YES"/>
+    </entity>
+    <entity name="WitnessImage_db" representedClassName="WitnessImage_db" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="WitnessLocation_db" representedClassName="WitnessLocation_db" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="WitnessOption_db" representedClassName="WitnessOption_db" syncable="YES">
+        <attribute name="isCorrect" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="WitnessQue_db" representedClassName="WitnessQue_db" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WitnessOption_db" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Event_db_cludeUpp" positionX="-27" positionY="18" width="128" height="390"/>
+        <element name="EvidenceImage_db" positionX="72" positionY="189" width="128" height="60"/>
+        <element name="Evidences_db" positionX="18" positionY="135" width="128" height="120"/>
+        <element name="Leaderboard_db" positionX="36" positionY="171" width="128" height="180"/>
+        <element name="StartLocation_db" positionX="27" positionY="153" width="128" height="45"/>
+        <element name="SuspectImage_db" positionX="54" positionY="189" width="128" height="60"/>
+        <element name="Suspects_db" positionX="9" positionY="117" width="128" height="120"/>
+        <element name="TimeStopperLocation_db" positionX="27" positionY="153" width="128" height="75"/>
+        <element name="TimeStoppers_db" positionX="0" positionY="99" width="128" height="45"/>
+        <element name="Witnesses_db_cludeUpp" positionX="18" positionY="72" width="128" height="240"/>
+        <element name="WitnessImage_db" positionX="27" positionY="162" width="128" height="60"/>
+        <element name="WitnessLocation_db" positionX="54" positionY="180" width="128" height="75"/>
+        <element name="WitnessOption_db" positionX="45" positionY="180" width="128" height="75"/>
+        <element name="WitnessQue_db" positionX="36" positionY="171" width="128" height="75"/>
+    </elements>
+</model>

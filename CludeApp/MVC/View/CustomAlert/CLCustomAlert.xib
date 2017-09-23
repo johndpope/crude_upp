@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CLCustomAlert" customModule="CludeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrA-tX-3fr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejG-mj-A9w">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <connections>
+                        <action selector="dismiss:" destination="iN0-l3-epB" eventType="touchUpInside" id="pwZ-qq-3ey"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51B-Pb-3CF">
+                    <rect key="frame" x="24" y="252.5" width="327" height="163.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Detective" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHW-hv-kmc">
+                            <rect key="frame" x="24" y="8" width="287" height="30.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here's handy video to get started Here's handy video to get started" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z85-lG-Gla">
+                            <rect key="frame" x="24" y="54.5" width="283" height="42"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVV-1r-4Td">
+                            <rect key="frame" x="139" y="112.5" width="180" height="43"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="180" id="0CX-g9-lNW"/>
+                                <constraint firstAttribute="height" constant="43" id="Kod-wL-Ppe"/>
+                            </constraints>
+                            <state key="normal" title="View">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btntapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Tq6-vg-uCI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.0" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="FHW-hv-kmc" secondAttribute="trailing" constant="16" id="0Fm-8k-edE"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="nVV-1r-4Td" secondAttribute="bottom" id="2Vw-7R-H7X"/>
+                        <constraint firstAttribute="trailing" secondItem="Z85-lG-Gla" secondAttribute="trailing" constant="20" id="3Xh-Mm-I2i"/>
+                        <constraint firstItem="nVV-1r-4Td" firstAttribute="trailing" secondItem="51B-Pb-3CF" secondAttribute="trailingMargin" id="E27-y0-Trn"/>
+                        <constraint firstItem="Z85-lG-Gla" firstAttribute="top" secondItem="FHW-hv-kmc" secondAttribute="bottom" constant="16" id="e81-Wv-haV"/>
+                        <constraint firstItem="FHW-hv-kmc" firstAttribute="leading" secondItem="51B-Pb-3CF" secondAttribute="leadingMargin" constant="16" id="h8E-R1-ghr"/>
+                        <constraint firstItem="nVV-1r-4Td" firstAttribute="top" secondItem="Z85-lG-Gla" secondAttribute="bottom" constant="16" id="t1g-vq-aJS"/>
+                        <constraint firstItem="FHW-hv-kmc" firstAttribute="top" secondItem="51B-Pb-3CF" secondAttribute="topMargin" id="vuT-cs-KCO"/>
+                        <constraint firstItem="FHW-hv-kmc" firstAttribute="leading" secondItem="Z85-lG-Gla" secondAttribute="leading" id="yDQ-Ys-Y27"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="vrA-tX-3fr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="12T-RQ-4ZL"/>
+                <constraint firstItem="ejG-mj-A9w" firstAttribute="top" secondItem="vrA-tX-3fr" secondAttribute="top" id="1XJ-QE-Zt6"/>
+                <constraint firstItem="51B-Pb-3CF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="4z5-S0-O6k"/>
+                <constraint firstItem="ejG-mj-A9w" firstAttribute="bottom" secondItem="vrA-tX-3fr" secondAttribute="bottom" id="GeH-GP-qk1"/>
+                <constraint firstItem="51B-Pb-3CF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JAf-fC-NOh"/>
+                <constraint firstAttribute="bottom" secondItem="vrA-tX-3fr" secondAttribute="bottom" id="LlC-y3-XPv"/>
+                <constraint firstItem="vrA-tX-3fr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SRl-cH-tlv"/>
+                <constraint firstAttribute="trailing" secondItem="51B-Pb-3CF" secondAttribute="trailing" constant="24" id="WYb-D5-8Nc"/>
+                <constraint firstItem="ejG-mj-A9w" firstAttribute="leading" secondItem="vrA-tX-3fr" secondAttribute="leading" id="cNU-tZ-eeg"/>
+                <constraint firstItem="ejG-mj-A9w" firstAttribute="trailing" secondItem="vrA-tX-3fr" secondAttribute="trailing" id="k8d-oM-GPd"/>
+                <constraint firstItem="51B-Pb-3CF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tpv-hb-qqA"/>
+                <constraint firstAttribute="trailing" secondItem="vrA-tX-3fr" secondAttribute="trailing" id="x1O-OJ-8n8"/>
+            </constraints>
+            <connections>
+                <outlet property="btnAction" destination="nVV-1r-4Td" id="9t8-ne-FqM"/>
+                <outlet property="lblMessage" destination="Z85-lG-Gla" id="xHg-25-KVN"/>
+                <outlet property="lblTitle" destination="FHW-hv-kmc" id="iVg-wg-gwZ"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

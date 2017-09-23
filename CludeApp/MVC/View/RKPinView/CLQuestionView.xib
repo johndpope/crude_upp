@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CLQuestionView" customModule="CludeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBp-HJ-UMJ">
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMb-Tz-nE3">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations detective, you have located this witness. To read their testimony, please answer the following question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sK-TI-bpB" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is the name of Hitchin's knitting group?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXk-eO-hWN" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                            <color key="textColor" red="0.97254901959999995" green="0.0" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TB6-4j-dXk">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="TB6-4j-dXk" firstAttribute="top" secondItem="sXk-eO-hWN" secondAttribute="bottom" constant="8" id="2oX-UE-4Ge"/>
+                        <constraint firstAttribute="trailing" secondItem="TB6-4j-dXk" secondAttribute="trailing" constant="8" id="5HT-WW-3Xz"/>
+                        <constraint firstAttribute="bottom" secondItem="TB6-4j-dXk" secondAttribute="bottom" constant="8" id="9bP-EN-9vy"/>
+                        <constraint firstAttribute="trailing" secondItem="sXk-eO-hWN" secondAttribute="trailing" constant="12" id="OwJ-WH-OSQ"/>
+                        <constraint firstItem="sXk-eO-hWN" firstAttribute="top" secondItem="2sK-TI-bpB" secondAttribute="bottom" constant="16" id="Zh2-cR-fDY"/>
+                        <constraint firstItem="TB6-4j-dXk" firstAttribute="leading" secondItem="LMb-Tz-nE3" secondAttribute="leading" constant="8" id="e4R-Te-sPK"/>
+                        <constraint firstItem="2sK-TI-bpB" firstAttribute="leading" secondItem="LMb-Tz-nE3" secondAttribute="leading" constant="12" id="eF5-AM-N1F"/>
+                        <constraint firstAttribute="trailing" secondItem="2sK-TI-bpB" secondAttribute="trailing" constant="12" id="mi6-RT-Ela"/>
+                        <constraint firstItem="2sK-TI-bpB" firstAttribute="top" secondItem="LMb-Tz-nE3" secondAttribute="top" constant="8" id="p4d-YD-jq0"/>
+                        <constraint firstItem="sXk-eO-hWN" firstAttribute="leading" secondItem="LMb-Tz-nE3" secondAttribute="leading" constant="12" id="xEO-Eo-hpG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ZBp-HJ-UMJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1de-1Z-QzJ"/>
+                <constraint firstItem="LMb-Tz-nE3" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.572" id="5CW-94-iQB"/>
+                <constraint firstAttribute="trailing" secondItem="ZBp-HJ-UMJ" secondAttribute="trailing" id="6uK-zH-jWX"/>
+                <constraint firstItem="LMb-Tz-nE3" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.86" id="BHA-4M-dyE"/>
+                <constraint firstAttribute="bottom" secondItem="ZBp-HJ-UMJ" secondAttribute="bottom" id="ChO-4b-DVX"/>
+                <constraint firstItem="LMb-Tz-nE3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KjP-mF-zCv"/>
+                <constraint firstItem="LMb-Tz-nE3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ggw-XJ-o1u"/>
+                <constraint firstItem="ZBp-HJ-UMJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="s40-nO-wzi"/>
+            </constraints>
+            <connections>
+                <outlet property="lblCongratulation" destination="2sK-TI-bpB" id="XpN-Sr-ZAQ"/>
+                <outlet property="lblQuestion" destination="sXk-eO-hWN" id="RuC-B5-cOK"/>
+                <outlet property="tblOptions" destination="TB6-4j-dXk" id="znt-oy-JUr"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

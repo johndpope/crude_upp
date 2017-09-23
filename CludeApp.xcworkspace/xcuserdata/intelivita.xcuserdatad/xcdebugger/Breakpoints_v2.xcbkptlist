@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/Controller/DashBoard/CLEvidenceVC.swift"
+            timestampString = "527846993.658491"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/Model/APIModel/Witnesses.swift"
+            timestampString = "527847233.803141"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "dictionaryRepresentation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.Witnesses.dictionaryRepresentation () -&gt; Swift.Dictionary&lt;Swift.String, Any&gt;"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/intelivita/Desktop/CluedUpp/CludeApp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
+                  timestampString = "527852091.751722"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "786">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.Witnesses.dictionaryRepresentation () -&gt; Swift.Dictionary&lt;Swift.String, Any&gt;"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/intelivita/Desktop/CluedUpp/CludeApp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
+                  timestampString = "527852091.754647"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "841">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/View/Map/CLMapView.swift"
+            timestampString = "527852086.973744"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "customizeMap(witnesses:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/View/Map/CLMapView.swift"
+            timestampString = "527852121.484569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "customizeMap(witnesses:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.CLMapView.customizeMap (witnesses : Swift.Array&lt;CludeApp.Witnesses_db_cludeUpp&gt;) -&gt; ()"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/intelivita/Desktop/CluedUpp/CludeApp/CludeApp/MVC/View/Map/CLMapView.swift"
+                  timestampString = "527852121.491274"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "235">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.CLMapView.customizeMap (witnesses : Swift.Array&lt;CludeApp.Witnesses_db_cludeUpp&gt;) -&gt; ()"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/intelivita/Desktop/CluedUpp/CludeApp/CludeApp/MVC/View/Map/CLMapView.swift"
+                  timestampString = "527852121.495082"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "7252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

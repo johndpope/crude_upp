@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CLSubmitSolutionView" customModule="CludeApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-BG-fjb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="closeTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Cz9-Xg-CDl"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09u-Tm-9si">
+                    <rect key="frame" x="24" y="241" width="327" height="185"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgE-PV-myA">
+                            <rect key="frame" x="24" y="8" width="287" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="ce6-Zx-GxO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have to intrrogate all case witnesses before submitting a solution." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLw-TY-bR8">
+                            <rect key="frame" x="24" y="55" width="295" height="63"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp1-Gq-QLA">
+                            <rect key="frame" x="230" y="134" width="89" height="43"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="89" id="JnQ-fq-9yK"/>
+                                <constraint firstAttribute="height" constant="43" id="naT-MC-5fS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <state key="normal" title="CLOSE">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="Lfs-n1-G3O"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="WgE-PV-myA" firstAttribute="leading" secondItem="cLw-TY-bR8" secondAttribute="leading" id="FM9-Ex-h1A"/>
+                        <constraint firstItem="cLw-TY-bR8" firstAttribute="top" secondItem="WgE-PV-myA" secondAttribute="bottom" constant="16" id="Fpm-4R-Naq"/>
+                        <constraint firstItem="dp1-Gq-QLA" firstAttribute="top" secondItem="cLw-TY-bR8" secondAttribute="bottom" constant="16" id="G9e-pM-lzl"/>
+                        <constraint firstItem="dp1-Gq-QLA" firstAttribute="trailing" secondItem="cLw-TY-bR8" secondAttribute="trailing" id="MUr-re-VXJ"/>
+                        <constraint firstItem="dp1-Gq-QLA" firstAttribute="trailing" secondItem="09u-Tm-9si" secondAttribute="trailingMargin" id="Qbi-GE-wBO"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="dp1-Gq-QLA" secondAttribute="bottom" id="Uft-Ue-vYP"/>
+                        <constraint firstItem="WgE-PV-myA" firstAttribute="top" secondItem="09u-Tm-9si" secondAttribute="topMargin" id="awY-7w-t7D"/>
+                        <constraint firstItem="WgE-PV-myA" firstAttribute="leading" secondItem="09u-Tm-9si" secondAttribute="leadingMargin" constant="16" id="ewM-rJ-g1n"/>
+                        <constraint firstAttribute="trailing" secondItem="WgE-PV-myA" secondAttribute="trailing" constant="16" id="qJR-ex-EQJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="yJh-BG-fjb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="78R-yO-lqS"/>
+                <constraint firstItem="09u-Tm-9si" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="8Uk-GU-0dm"/>
+                <constraint firstAttribute="trailing" secondItem="09u-Tm-9si" secondAttribute="trailing" constant="24" id="DjL-Vz-EFq"/>
+                <constraint firstAttribute="bottom" secondItem="yJh-BG-fjb" secondAttribute="bottom" id="S4Z-3h-6Vm"/>
+                <constraint firstItem="09u-Tm-9si" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dw9-pv-pk5"/>
+                <constraint firstAttribute="trailing" secondItem="yJh-BG-fjb" secondAttribute="trailing" id="e0j-89-lyC"/>
+                <constraint firstItem="09u-Tm-9si" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nRB-Es-N1G"/>
+                <constraint firstItem="yJh-BG-fjb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yOV-Lx-Xzh"/>
+            </constraints>
+            <connections>
+                <outlet property="btnClose" destination="dp1-Gq-QLA" id="Phr-x6-IGa"/>
+                <outlet property="lblMessage" destination="cLw-TY-bR8" id="yal-uj-d5Y"/>
+                <outlet property="lblTitle" destination="WgE-PV-myA" id="o4X-RT-ObJ"/>
+            </connections>
+        </view>
+    </objects>
+</document>
