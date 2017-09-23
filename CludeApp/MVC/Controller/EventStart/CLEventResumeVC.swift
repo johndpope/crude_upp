@@ -99,33 +99,20 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
     
     func deletedEvent(sender:UIButton){
         
-        let alert = UIAlertController(title: "Alert",
-                                      message: "Are you sure want to delete?",
-                                      preferredStyle: .alert)
-        
-        let alertAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            
-            let event = self.events[sender.tag]
-            
-            NSManagedObjectContext.mr_default().delete(event)
-            _appDelegate.saveMagicalContext()
-            self.events.remove(at: sender.tag)
-            self.tblResumeEvent.reloadData()
-            
+        let alertData = ConfirmAlertView.AlertData(title: "Are you sure?",
+                                                   message: "You are about to delete this game permanetly",
+                                                   btnTitle: "I AM SURE, DELETE IT")
+        ConfirmAlertView.show(in: self.view, alertData: alertData) { (action) in
+            if action == .ok {
+                let event = self.events[sender.tag]
+                
+                NSManagedObjectContext.mr_default().delete(event)
+                _appDelegate.saveMagicalContext()
+                self.events.remove(at: sender.tag)
+                self.tblResumeEvent.reloadData()
+
+            }
         }
-        
-        let alertAction2 = UIAlertAction(title: "Cancel",
-                                         style: .default) { (action) in
-                                            
-                                            
-        }
-        
-        alert.addAction(alertAction)
-        alert.addAction(alertAction2)
-        
-        self.present(alert,
-                     animated: true,
-                     completion: nil)
     }
     
 }

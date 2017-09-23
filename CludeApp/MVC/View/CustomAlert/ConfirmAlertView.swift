@@ -59,6 +59,12 @@ class ConfirmAlertView: UIView {
 
     
     @IBAction func btnAction(_ sender: UIButton) {
+        actionBlock(.ok)
         self.hideWithAnimation()
     }
+    @IBAction func cancelAction(_ sender: UIButton) {
+        actionBlock(.cancel)
+        self.hideWithAnimation()
+    }
+
 }
