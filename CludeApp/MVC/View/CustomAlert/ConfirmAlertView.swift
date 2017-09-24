@@ -37,8 +37,9 @@ class ConfirmAlertView: UIView {
     class func show(in view: UIView, alertData: AlertData, actionBlock:  @escaping (Action)->Void) {
         let items  = Bundle.main.loadNibNamed("ConfirmAlertView", owner: nil, options: nil) as! [UIView]
         let cnfrmView = items.first as! ConfirmAlertView
+       
+        cnfrmView.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
         view.addSubview(cnfrmView)
-        view.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.width)
 
         cnfrmView.actionBlock = actionBlock
         cnfrmView.alertData = alertData
@@ -103,8 +104,9 @@ class CorrectSolutionAlertView: UIView {
     class func show(in view: UIView, description: String, actionBlock:  @escaping (_ action:Int)->Void) {
         let items  = Bundle.main.loadNibNamed("CorrectSolutionAlertView", owner: nil, options: nil) as! [UIView]
         let cnfrmView = items.first as! CorrectSolutionAlertView
+        cnfrmView.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
+
         view.addSubview(cnfrmView)
-        view.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.width)
         cnfrmView.actionBlock = actionBlock
         cnfrmView._description = description
         cnfrmView.showWithAnimation()
