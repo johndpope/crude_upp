@@ -11,6 +11,9 @@
 		7932B86F1F76D7A20020209F /* ConfirmAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932B86E1F76D7A20020209F /* ConfirmAlertView.swift */; };
 		79963BF81F77BB420013CD89 /* DropListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79963BF71F77BB420013CD89 /* DropListView.xib */; };
 		79963BFA1F77BB590013CD89 /* DropListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79963BF91F77BB590013CD89 /* DropListView.swift */; };
+		79963BFE1F781CE60013CD89 /* CLLeaderBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79963BFD1F781CE60013CD89 /* CLLeaderBoardVC.swift */; };
+		79963C041F781DD40013CD89 /* LeaderBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79963C031F781DD40013CD89 /* LeaderBoards.swift */; };
+		79963C081F781E950013CD89 /* CLLeaderBordTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79963C071F781E950013CD89 /* CLLeaderBordTblCell.swift */; };
 		79E3A8001F76F4580080907C /* CorrectSolutionAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E3A7FF1F76F4580080907C /* CorrectSolutionAlertView.xib */; };
 		ABA0A6D32D422251873CE586 /* Pods_CludeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1C2C9E041DA5FCACA49EE4 /* Pods_CludeApp.framework */; };
 		C804725A1F650E3E00C203DB /* CLMapListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80472591F650E3E00C203DB /* CLMapListVC.swift */; };
@@ -143,6 +146,9 @@
 		7932B86E1F76D7A20020209F /* ConfirmAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmAlertView.swift; path = MVC/View/CustomAlert/ConfirmAlertView.swift; sourceTree = "<group>"; };
 		79963BF71F77BB420013CD89 /* DropListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DropListView.xib; path = MVC/View/CustomAlert/DropListView.xib; sourceTree = "<group>"; };
 		79963BF91F77BB590013CD89 /* DropListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropListView.swift; path = MVC/View/CustomAlert/DropListView.swift; sourceTree = "<group>"; };
+		79963BFD1F781CE60013CD89 /* CLLeaderBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLLeaderBoardVC.swift; path = MVC/Controller/DashBoard/CLLeaderBoardVC.swift; sourceTree = "<group>"; };
+		79963C031F781DD40013CD89 /* LeaderBoards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoards.swift; sourceTree = "<group>"; };
+		79963C071F781E950013CD89 /* CLLeaderBordTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLLeaderBordTblCell.swift; path = MVC/View/CLTblCell/CLLeaderBordTblCell.swift; sourceTree = "<group>"; };
 		79E3A7FF1F76F4580080907C /* CorrectSolutionAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CorrectSolutionAlertView.xib; path = MVC/View/CustomAlert/CorrectSolutionAlertView.xib; sourceTree = "<group>"; };
 		BA1C2C9E041DA5FCACA49EE4 /* Pods_CludeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CludeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76D6F9E544F44B2676AA3C8 /* Pods-CludeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CludeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CludeApp/Pods-CludeApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -287,6 +293,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79963C021F781DD40013CD89 /* LeaderBoard */ = {
+			isa = PBXGroup;
+			children = (
+				79963C031F781DD40013CD89 /* LeaderBoards.swift */,
+			);
+			name = LeaderBoard;
+			path = MVC/Model/APIModel/LeaderBoard;
+			sourceTree = "<group>";
+		};
 		BDB43E194ECC6E6163CB0BE0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +357,7 @@
 		C82A4FA31F5E78CC00FD1E25 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				79963C021F781DD40013CD89 /* LeaderBoard */,
 				C82A4FBD1F5E7A1900FD1E25 /* EventList.swift */,
 				C82A4FBE1F5E7A1900FD1E25 /* Evidences.swift */,
 				C82A4FBF1F5E7A1900FD1E25 /* Image.swift */,
@@ -608,6 +624,7 @@
 		C8644FE91F5BF39700777F62 /* CLTblCell */ = {
 			isa = PBXGroup;
 			children = (
+				79963C071F781E950013CD89 /* CLLeaderBordTblCell.swift */,
 				C8644FEA1F5BF3C600777F62 /* CLNewEventTblCell.swift */,
 				C804725B1F6510F300C203DB /* CLMapListTblCell.swift */,
 				C83C30951F67A93F000C43FA /* CLEvidenceCollectionCell.swift */,
@@ -640,6 +657,7 @@
 				C83C30931F67A757000C43FA /* CLEvidenceVC.swift */,
 				C8E49C2A1F67AFDA002ED0C2 /* CLSuspectsVC.swift */,
 				C888AABF1F783040009D2EA3 /* CLPdfSolutionVC.swift */,
+				79963BFD1F781CE60013CD89 /* CLLeaderBoardVC.swift */,
 			);
 			name = DashBoard;
 			sourceTree = "<group>";
@@ -855,6 +873,7 @@
 				C8644FE81F5BF32100777F62 /* CLRoundView.swift in Sources */,
 				C84BE3421F6C559200C10AD5 /* CLEventResumeVC.swift in Sources */,
 				C82A4FC81F5E7A1900FD1E25 /* EventList.swift in Sources */,
+				79963C081F781E950013CD89 /* CLLeaderBordTblCell.swift in Sources */,
 				C84BE32A1F6BCA5800C10AD5 /* WitnessLocation_db+CoreDataClass.swift in Sources */,
 				C83C30981F67A9FE000C43FA /* UICollectionView+Layout.swift in Sources */,
 				C8644F5F1F5BB95B00777F62 /* CLAppDelegate.swift in Sources */,
@@ -900,12 +919,14 @@
 				C8E49C2B1F67AFDA002ED0C2 /* CLSuspectsVC.swift in Sources */,
 				C84BE33A1F6C52D000C10AD5 /* WitnessQue_db+CoreDataProperties.swift in Sources */,
 				C8644FEB1F5BF3C600777F62 /* CLNewEventTblCell.swift in Sources */,
+				79963BFE1F781CE60013CD89 /* CLLeaderBoardVC.swift in Sources */,
 				C84BE3441F6C577100C10AD5 /* CLResumeEventTblCell.swift in Sources */,
 				C804725A1F650E3E00C203DB /* CLMapListVC.swift in Sources */,
 				C84BE33B1F6C52D000C10AD5 /* WitnessOption_db+CoreDataClass.swift in Sources */,
 				79963BFA1F77BB590013CD89 /* DropListView.swift in Sources */,
 				C84BE3521F6C60CF00C10AD5 /* SuspectImage_db+CoreDataClass.swift in Sources */,
 				C84BE3391F6C52D000C10AD5 /* WitnessQue_db+CoreDataClass.swift in Sources */,
+				79963C041F781DD40013CD89 /* LeaderBoards.swift in Sources */,
 				C84BE3331F6BCC6C00C10AD5 /* EvidenceImage_db+CoreDataClass.swift in Sources */,
 				C84BE3551F6C60CF00C10AD5 /* Suspects_db+CoreDataProperties.swift in Sources */,
 				C8644FED1F5BF68100777F62 /* CLEventDetailVC.swift in Sources */,

@@ -22,6 +22,8 @@ class CLApiManager: NSObject {
         static let vocuher            = "redeem/checkVoucher"
         static let addTeam            = "redeem"
         static let submitSolutions    = "game/leaderboard/"
+        static let leaderBoard        = "/game/leaderboard/"
+
     }
     
     
@@ -115,6 +117,33 @@ class CLApiManager: NSObject {
         
     }
     
+    
+    
+    /*!
+     * @abstract leaderbord
+     */
+    func getLeaderBoard(gameID:String,completionHandler: @escaping SOAPICompletionHandler){
+        
+        SVProgressHUD.show()
+        let leaderBoard = API.baseURL+API.leaderBoard + gameID
+        
+        SVProgressHUD.show()
+        
+        Alamofire.request(leaderBoard).responseJSON{ response in
+            debugPrint(response)
+            let statuscode = response.response?.statusCode
+            if response.result.isSuccess {
+                let jsonObject = JSON(response.result.value!)
+                SVProgressHUD.dismiss()
+                completionHandler(1, nil, jsonObject , statuscode)
+            } else {
+                SVProgressHUD.dismiss()
+                let error = response.result.error! as NSError
+                completionHandler(0, error, nil , statuscode)
+            }
+        }
+    }
+
     
     /*!
      * @anstract submit solutions

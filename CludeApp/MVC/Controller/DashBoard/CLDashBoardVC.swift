@@ -138,6 +138,7 @@ class CLDashBoardVC: UIViewController {
     func submitSolutions(){
         let remainingWitness = (self.event_local?.witnesses?.allObjects as! [Witnesses_db_cludeUpp]).filter({$0.introgatted == false})
         
+        
         if remainingWitness.count > 0 {
             self.showSubmitPopUp(from: self, wrongAns: false)
         }else {
@@ -198,8 +199,21 @@ class CLDashBoardVC: UIViewController {
                                                                            animated: true,
                                                                            completion: nil)
                                             }
-                                        }
-                                    })
+                            } else if action == 1 {
+                                
+                                let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
+                                
+                                aViewController.eventID = self.event_local?.id
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    self.navigationController?.pushViewController(aViewController,
+                                                                                  animated: true)
+                                }
+
+                            }
+                                    
+                            })
                                     return
                                     }else{
                                     self.showSubmitPopUp(from: self, title: "OOPS!", message: (error?.localizedDescription)!)
