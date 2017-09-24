@@ -128,6 +128,7 @@
 		C8644FF81F5C060C00777F62 /* CLDashBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8644FF71F5C060C00777F62 /* CLDashBoardVC.swift */; };
 		C8644FFA1F5C075F00777F62 /* CLDashBoardTblVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8644FF91F5C075F00777F62 /* CLDashBoardTblVC.swift */; };
 		C8644FFD1F5C07A500777F62 /* CLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8644FFC1F5C07A500777F62 /* CLConstant.swift */; };
+		C888AAC01F783040009D2EA3 /* CLPdfSolutionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C888AABF1F783040009D2EA3 /* CLPdfSolutionVC.swift */; };
 		C8E49C2B1F67AFDA002ED0C2 /* CLSuspectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E49C2A1F67AFDA002ED0C2 /* CLSuspectsVC.swift */; };
 		C8E49C2D1F67B3A2002ED0C2 /* CLCaseNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8E49C2C1F67B3A2002ED0C2 /* CLCaseNote.xib */; };
 		C8E49C2F1F67B3B9002ED0C2 /* CLCaseNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E49C2E1F67B3B9002ED0C2 /* CLCaseNote.swift */; };
@@ -261,6 +262,7 @@
 		C8644FF71F5C060C00777F62 /* CLDashBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLDashBoardVC.swift; path = MVC/Controller/DashBoard/CLDashBoardVC.swift; sourceTree = "<group>"; };
 		C8644FF91F5C075F00777F62 /* CLDashBoardTblVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLDashBoardTblVC.swift; path = MVC/Controller/DashBoard/CLDashBoardTblVC.swift; sourceTree = "<group>"; };
 		C8644FFC1F5C07A500777F62 /* CLConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLConstant.swift; path = Constant/CLConstant.swift; sourceTree = "<group>"; };
+		C888AABF1F783040009D2EA3 /* CLPdfSolutionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLPdfSolutionVC.swift; path = MVC/Controller/DashBoard/CLPdfSolutionVC.swift; sourceTree = "<group>"; };
 		C8E49C2A1F67AFDA002ED0C2 /* CLSuspectsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLSuspectsVC.swift; path = MVC/Controller/DashBoard/CLSuspectsVC.swift; sourceTree = "<group>"; };
 		C8E49C2C1F67B3A2002ED0C2 /* CLCaseNote.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLCaseNote.xib; path = MVC/View/CustomAlert/CLCaseNote.xib; sourceTree = "<group>"; };
 		C8E49C2E1F67B3B9002ED0C2 /* CLCaseNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLCaseNote.swift; path = MVC/View/CustomAlert/CLCaseNote.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				C80472591F650E3E00C203DB /* CLMapListVC.swift */,
 				C83C30931F67A757000C43FA /* CLEvidenceVC.swift */,
 				C8E49C2A1F67AFDA002ED0C2 /* CLSuspectsVC.swift */,
+				C888AABF1F783040009D2EA3 /* CLPdfSolutionVC.swift */,
 			);
 			name = DashBoard;
 			sourceTree = "<group>";
@@ -688,7 +691,7 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = NTNR48E85F;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -871,6 +874,7 @@
 				C8644FE01F5BD79400777F62 /* CLMainVC.swift in Sources */,
 				C8644FF81F5C060C00777F62 /* CLDashBoardVC.swift in Sources */,
 				C82A4FD01F5E7A1900FD1E25 /* Suspects.swift in Sources */,
+				C888AAC01F783040009D2EA3 /* CLPdfSolutionVC.swift in Sources */,
 				C8644FEF1F5BFE4D00777F62 /* CLAddTeamEmailVC.swift in Sources */,
 				C8644F671F5BB95B00777F62 /* CludeApp.xcdatamodeld in Sources */,
 				C8644FE21F5BE15300777F62 /* CLMainTblVC.swift in Sources */,
@@ -1030,15 +1034,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Trefor Griffiths (A946R9MA26)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NTNR48E85F;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_SOURCE_FILE_NAMES = "";
 				INFOPLIST_FILE = CludeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cluedupp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46d6f5d5-b0eb-4314-9593-691fa4ec0dcf";
-				PROVISIONING_PROFILE_SPECIFIER = CluedUppDeveloperProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CludeApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1053,15 +1057,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Trefor Griffiths (A946R9MA26)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NTNR48E85F;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
 				INFOPLIST_FILE = CludeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cluedupp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46d6f5d5-b0eb-4314-9593-691fa4ec0dcf";
-				PROVISIONING_PROFILE_SPECIFIER = CluedUppDeveloperProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CludeApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

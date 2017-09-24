@@ -86,15 +86,19 @@ class CorrectSolutionAlertView: UIView {
     }
     
     
+    var action:((_ action:Int)->Void)?
+    
+    
+    
     var _description = "" {
         didSet {
             self.txtvDescription.text = _description
         }
     }
     
-    var actionBlock: (Action)-> Void = {_ in}
+    var actionBlock: ((_ action:Int)->Void)?
     
-    class func show(in view: UIView, description: String, actionBlock:  @escaping (Action)->Void) {
+    class func show(in view: UIView, description: String, actionBlock:  @escaping (_ action:Int)->Void) {
         let items  = Bundle.main.loadNibNamed("CorrectSolutionAlertView", owner: nil, options: nil) as! [UIView]
         let cnfrmView = items.first as! CorrectSolutionAlertView
         view.addSubview(cnfrmView)
@@ -120,12 +124,13 @@ class CorrectSolutionAlertView: UIView {
     
     
     @IBAction func btnSeeLeaderBoard (_ sender: UIButton) {
-        actionBlock(.SeeLeaderBoard)
+        actionBlock?(1)
         self.hideWithAnimation()
     }
     
     @IBAction func btnGetAnsBoard (_ sender: UIButton) {
-        actionBlock(.GetAnswers)
+        actionBlock?(0)
+
         self.hideWithAnimation()
     }
 
