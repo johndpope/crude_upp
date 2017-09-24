@@ -98,6 +98,7 @@ class CorrectSolutionAlertView: UIView {
         let items  = Bundle.main.loadNibNamed("CorrectSolutionAlertView", owner: nil, options: nil) as! [UIView]
         let cnfrmView = items.first as! CorrectSolutionAlertView
         view.addSubview(cnfrmView)
+       
         cnfrmView.actionBlock = actionBlock
         cnfrmView._description = description
         cnfrmView.showWithAnimation()
@@ -123,8 +124,12 @@ class CorrectSolutionAlertView: UIView {
         self.hideWithAnimation()
     }
     
-    @IBAction func cancelAction(_ sender: UIButton) {
+    @IBAction func btnGetAnsBoard (_ sender: UIButton) {
         actionBlock(.GetAnswers)
+        self.hideWithAnimation()
+    }
+
+    @IBAction func cancelAction(_ sender: UIButton) {
         self.hideWithAnimation()
     }
     

@@ -19,7 +19,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hi-aY-65d">
                     <connections>
-                        <action selector="cancelAction:" destination="paS-iV-jiy" eventType="touchUpInside" id="Y6l-1k-RKM"/>
+                        <action selector="cancelAction:" destination="paS-iV-jiy" eventType="touchUpInside" id="dU4-2E-tje"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7P-iN-cSA">
@@ -41,7 +41,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="btnAction:" destination="paS-iV-jiy" eventType="touchUpInside" id="xJe-Vv-1TU"/>
+                                <action selector="btnSeeLeaderBoard:" destination="paS-iV-jiy" eventType="touchUpInside" id="t7G-DO-g9b"/>
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geW-R8-j3U">
@@ -59,7 +59,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="btnAction:" destination="paS-iV-jiy" eventType="touchUpInside" id="HxG-Ae-evf"/>
+                                <action selector="btnGetAnsBoard:" destination="paS-iV-jiy" eventType="touchUpInside" id="yzr-oL-seZ"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35j-c4-3au">
@@ -75,16 +75,16 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="geW-R8-j3U" firstAttribute="top" secondItem="b5n-7u-rqU" secondAttribute="bottom" constant="55" id="4Ot-eX-SwR"/>
                         <constraint firstAttribute="bottom" secondItem="3R3-Qz-w9d" secondAttribute="bottom" constant="15" id="HqC-ux-NPo"/>
                         <constraint firstItem="b5n-7u-rqU" firstAttribute="top" secondItem="G7P-iN-cSA" secondAttribute="top" constant="24" id="Mlf-Wj-CQT"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="b5n-7u-rqU" secondAttribute="trailing" constant="12" id="NpZ-GZ-a1j"/>
                         <constraint firstItem="geW-R8-j3U" firstAttribute="leading" secondItem="G7P-iN-cSA" secondAttribute="leading" constant="10" id="Qef-Te-akg"/>
                         <constraint firstItem="35j-c4-3au" firstAttribute="leading" secondItem="G7P-iN-cSA" secondAttribute="leading" constant="16" id="Tn6-wh-zA5"/>
+                        <constraint firstItem="geW-R8-j3U" firstAttribute="top" secondItem="35j-c4-3au" secondAttribute="bottom" constant="4" id="Wex-uE-Akz"/>
                         <constraint firstAttribute="bottom" secondItem="MQc-CC-jlc" secondAttribute="bottom" constant="15" id="amO-dC-MUf"/>
                         <constraint firstItem="MQc-CC-jlc" firstAttribute="leading" secondItem="G7P-iN-cSA" secondAttribute="leading" constant="16" id="ff0-cG-9b7"/>
                         <constraint firstItem="b5n-7u-rqU" firstAttribute="leading" secondItem="G7P-iN-cSA" secondAttribute="leading" constant="16" id="iPX-qz-nLj"/>
-                        <constraint firstAttribute="bottom" secondItem="geW-R8-j3U" secondAttribute="bottom" constant="50" id="pXR-3H-Oxn"/>
+                        <constraint firstAttribute="bottom" secondItem="geW-R8-j3U" secondAttribute="bottom" constant="55" id="pXR-3H-Oxn"/>
                         <constraint firstItem="35j-c4-3au" firstAttribute="top" secondItem="b5n-7u-rqU" secondAttribute="bottom" constant="8" id="sbq-Nl-13R"/>
                         <constraint firstAttribute="trailing" secondItem="3R3-Qz-w9d" secondAttribute="trailing" constant="12" id="yl6-xZ-WIX"/>
                         <constraint firstAttribute="trailing" secondItem="geW-R8-j3U" secondAttribute="trailing" constant="10" id="zPT-Fe-iUt"/>
@@ -105,7 +105,6 @@
                 <constraint firstAttribute="trailing" secondItem="9Hi-aY-65d" secondAttribute="trailing" id="x2e-1C-CI2"/>
             </constraints>
             <connections>
-                <outlet property="actionButton" destination="3R3-Qz-w9d" id="VEQ-wa-UvO"/>
                 <outlet property="lblTitle" destination="b5n-7u-rqU" id="Zbc-Zx-gVM"/>
                 <outlet property="txtvDescription" destination="geW-R8-j3U" id="qNF-EM-fEA"/>
             </connections>
