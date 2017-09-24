@@ -134,12 +134,6 @@ class CLDashBoardVC: UIViewController {
     
     
     func submitSolutions(){
-        let description = "This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same. This will change to something more official in the next few weeks, but the functionality will likely stay the same."
-        CorrectSolutionAlertView.show(in: self.view, description: description) { (action) in
-            
-        }
-        
-        return
         let remainingWitness = (self.event_local?.witnesses?.allObjects as! [Witnesses_db_cludeUpp]).filter({$0.introgatted == false})
         
         if remainingWitness.count > 0 {
@@ -189,6 +183,17 @@ class CLDashBoardVC: UIViewController {
                                                                 
                                                                 let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
                                                                 CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
+                                                                
+                                                                
+                                                                //show correct solution alert view
+//                                                                let description = ""
+//                                                                CorrectSolutionAlertView.show(in: self.view, description: description)
+//                                                                { (action) in
+//                                                                
+//                                                                }
+                                                                
+                                                                return
+
                                                             }else{
                                                                 
                                                                 self.showSubmitPopUp(from: self, title: "OOPS!", message: (error?.localizedDescription)!)

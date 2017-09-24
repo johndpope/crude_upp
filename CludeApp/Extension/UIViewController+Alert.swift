@@ -250,7 +250,7 @@ extension UIViewController{
         
         notFoundPopup.frame = from.view.frame
         
-        notFoundPopup.lblTitle.text = "Can not Found"
+        notFoundPopup.lblTitle.text = "Cannot be Found"
         notFoundPopup.lblMessage.text = "This button will give you a instant access to the witness testimony in case a witness location cannot be accessed for any reason. Please use it spraingly as it comes with a time penalty of 15 minutes."
         notFoundPopup.btnClose.setTitle("I AGREE", for: .normal)
         
