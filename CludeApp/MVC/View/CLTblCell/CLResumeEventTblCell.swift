@@ -12,6 +12,8 @@ class CLResumeEventTblCell: UITableViewCell {
 
     @IBOutlet weak var lblEventName: UILabel!
     @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var btnMenu: UIButton!
+
     @IBOutlet weak var viewLeaderBoard: UIView!
     @IBOutlet weak var btnShowLeaderBoard: UIButton!
     

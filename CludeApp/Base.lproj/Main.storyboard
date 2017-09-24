@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gwp-4T-IcN">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gwp-4T-IcN">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,10 +27,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cK3-k0-AbB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="kGL-Ia-cH3">
-                                        <rect key="frame" x="32" y="92" width="311" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="58" id="o1n-GY-xDs"/>
                                         </constraints>
@@ -47,7 +42,6 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDb-IW-gKW">
-                                <rect key="frame" x="20" y="193" width="335" height="474"/>
                                 <connections>
                                     <segue destination="1rC-9Y-oCp" kind="embed" id="Qgx-ic-4In"/>
                                 </connections>
@@ -88,10 +82,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIs-SN-TxP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="New Event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leD-Yh-LxK">
-                                        <rect key="frame" x="104" y="22" width="168" height="34"/>
+                                        <frame key="frameInset" minX="104" minY="22" width="168" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,7 +97,6 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iat-S2-Phd">
-                                <rect key="frame" x="16" y="20" width="30" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="ABe-Ak-Vyo"/>
                                     <constraint firstAttribute="width" constant="30" id="hPr-G6-JHg"/>
@@ -115,37 +107,31 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="169" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xt0-cK-AkU">
-                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CLNewEventTblCell" rowHeight="169" id="rEx-C0-b5d" customClass="CLNewEventTblCell" customModule="CludeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rEx-C0-b5d" id="r0z-Ps-Ok9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="168.5"/>
+                                            <frame key="frameInset" width="375" height="168"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RpI-xQ-XA5">
-                                                    <rect key="frame" x="8" y="91" width="359" height="66.5"/>
                                                     <color key="backgroundColor" red="0.97647058823529409" green="0.96078431372549022" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ManHunt Hitchin" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05P-Ay-uEv">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeA-H2-m3x">
-                                                    <rect key="frame" x="0.0" y="43.5" width="125" height="95"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Witnesses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJs-fM-zDq">
-                                                            <rect key="frame" x="0.0" y="77" width="126" height="18"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kd-jX-zok" customClass="CLRoundView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="37.5" y="22.5" width="50" height="50"/>
                                                             <color key="backgroundColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="pM4-yX-By1"/>
@@ -153,7 +139,6 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OID-5I-x3O">
-                                                            <rect key="frame" x="0.0" y="17" width="125" height="61"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -173,20 +158,16 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhK-aR-tdK">
-                                                    <rect key="frame" x="125" y="43.5" width="125" height="95"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Suspects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPq-ys-0yA">
-                                                            <rect key="frame" x="0.0" y="77" width="125" height="18"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mO-ac-dpU" customClass="CLRoundView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="39.5" y="22.5" width="50" height="50"/>
                                                             <color key="backgroundColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oK-ly-cdO">
-                                                            <rect key="frame" x="0.0" y="17" width="125" height="61"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -206,20 +187,16 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cX9-wU-vzP">
-                                                    <rect key="frame" x="250" y="43.5" width="125" height="95"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Murder Weapons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMw-sa-OVy">
-                                                            <rect key="frame" x="0.0" y="78" width="120" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4F-qb-CAp" customClass="CLRoundView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="37.5" y="22.5" width="50" height="50"/>
                                                             <color key="backgroundColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76A-0t-9uk">
-                                                            <rect key="frame" x="0.0" y="17" width="125" height="61"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -238,7 +215,6 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bal-Qv-TC9">
-                                                    <rect key="frame" x="8" y="160.5" width="359" height="8"/>
                                                     <color key="backgroundColor" red="0.97254901959999995" green="0.0" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="8" id="6AP-kj-E4U"/>
@@ -323,7 +299,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpM-Jj-TMD">
-                                <rect key="frame" x="16" y="20" width="30" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="cxV-tX-QWe"/>
                                     <constraint firstAttribute="height" constant="37" id="qN2-tW-yq0"/>
@@ -334,29 +309,24 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ManHunt Hitchin" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbj-kU-vlw" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="65" width="343" height="27.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eCy-9l-C7D">
-                                <rect key="frame" x="16" y="100.5" width="343" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="KYP-dN-3Ed"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pev-Xh-oqZ">
-                                <rect key="frame" x="0.0" y="109.5" width="125" height="95"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Witness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTy-Dl-25R" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="77" width="125" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXp-Gw-Z2a" customClass="CLRoundView" customModule="CludeApp" customModuleProvider="target">
-                                        <rect key="frame" x="37.5" y="22.5" width="50" height="50"/>
                                         <color key="backgroundColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="H0h-iz-Whj"/>
@@ -364,7 +334,6 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htQ-Cd-EKF">
-                                        <rect key="frame" x="0.0" y="17" width="125" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -384,16 +353,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otq-WW-5KL">
-                                <rect key="frame" x="125" y="109.5" width="125" height="95"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Suspects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-rr-tgz" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="77" width="125" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPM-UF-tH4" customClass="CLRoundView" customModule="CludeApp" customModuleProvider="target">
-                                        <rect key="frame" x="37.5" y="22.5" width="50" height="50"/>
                                         <color key="backgroundColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="OET-kC-z3d"/>
@@ -401,7 +367,6 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2x-hF-9Co">
-                                        <rect key="frame" x="0.0" y="17" width="125" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -422,16 +387,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KnE-BR-AIT">
-                                <rect key="frame" x="250" y="109.5" width="125" height="95"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Murder Weapons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBy-91-C5H" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="77" width="120" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I64-qT-c2a" customClass="CLRoundView" customModule="CludeApp" customModuleProvider="target">
-                                        <rect key="frame" x="37.5" y="22.5" width="50" height="50"/>
                                         <color key="backgroundColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="Knn-B1-9DH"/>
@@ -439,7 +401,6 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ztb-AB-eCQ">
-                                        <rect key="frame" x="0.0" y="17" width="125" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -459,21 +420,18 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kGN-QG-ZjK">
-                                <rect key="frame" x="16" y="228.5" width="343" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="pRB-lM-szK"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2P-Q4-j61">
-                                <rect key="frame" x="16" y="237.5" width="343" height="361.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9r-ww-KeA">
-                                <rect key="frame" x="24" y="607" width="327" height="45"/>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.039215686274509803" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="RTA-iK-fsN"/>
@@ -542,17 +500,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aZ-9j-zu6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="DP7-fN-MCJ">
-                                        <rect key="frame" x="157.5" y="46.5" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="aZk-si-D5e"/>
                                             <constraint firstAttribute="height" constant="60" id="dWO-Di-Ky1"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accepted " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-oE-xMu">
-                                        <rect key="frame" x="16" y="127" width="343" height="27.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -568,7 +523,6 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uag-tx-QEq">
-                                <rect key="frame" x="16" y="20" width="30" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="9QJ-e9-LQo"/>
                                     <constraint firstAttribute="width" constant="30" id="kaL-BW-KmB"/>
@@ -579,13 +533,11 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXV-dt-WXe">
-                                <rect key="frame" x="0.0" y="177.5" width="375" height="421.5"/>
                                 <connections>
                                     <segue destination="CkE-ph-UW5" kind="embed" id="ART-aD-Qsw"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKT-tE-aHT">
-                                <rect key="frame" x="24" y="607" width="327" height="45"/>
                                 <color key="backgroundColor" red="0.90196078430000004" green="0.039215686270000001" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="iRq-pN-WkK"/>
@@ -640,23 +592,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="651"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jVb-lH-fSh" id="uBP-Fw-mQF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="650.5"/>
+                                            <frame key="frameInset" width="375" height="650"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqL-1D-D24">
-                                                    <rect key="frame" x="8" y="8" width="359" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wr0-Lj-H5k">
-                                                            <rect key="frame" x="8" y="8" width="343" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqm-mA-tWx" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="37" width="343" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KlS-cO-uCh">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="29"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -684,19 +632,15 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYe-Tf-91S">
-                                                    <rect key="frame" x="8" y="99" width="359" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2d-cg-Ign">
-                                                            <rect key="frame" x="8" y="8" width="343" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3S-tL-vO7" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="37" width="343" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="raD-kj-qVN">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="29"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -724,19 +668,15 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E45-BV-pjj">
-                                                    <rect key="frame" x="8" y="463" width="359" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 5 Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbJ-YT-QUC">
-                                                            <rect key="frame" x="8" y="8" width="343" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LnK-PZ-b4l" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="37" width="343" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ter-ms-Wbn">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="29"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -764,19 +704,15 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVa-kZ-quh">
-                                                    <rect key="frame" x="8" y="554" width="359" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 6 Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ils-ma-5Tw">
-                                                            <rect key="frame" x="8" y="8" width="343" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBm-J7-WNr" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="37" width="343" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oi3-VG-xvQ">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="29"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -804,19 +740,15 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCo-dP-Dg4">
-                                                    <rect key="frame" x="8" y="190" width="359" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 2 Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lY-cz-wXb">
-                                                            <rect key="frame" x="8" y="8" width="343" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jw-9N-FYa" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="37" width="343" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PMq-cD-P9D">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="29"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -844,19 +776,15 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9l-r8-clS">
-                                                    <rect key="frame" x="8" y="281" width="359" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 3 Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK4-sp-E3d">
-                                                            <rect key="frame" x="8" y="8" width="343" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vp-6R-3Wo" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="37" width="343" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fOv-9F-zmV">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="29"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -884,19 +812,15 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrS-TZ-Zle">
-                                                    <rect key="frame" x="8" y="372" width="359" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 4 Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1f-fb-gH7">
-                                                            <rect key="frame" x="8" y="8" width="343" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENS-jN-PTE" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="37" width="343" height="45"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="alI-0e-Fg9">
-                                                                    <rect key="frame" x="8" y="8" width="327" height="29"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -990,33 +914,28 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1gm-ag-J4X" id="LKI-dG-Cwd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
+                                            <frame key="frameInset" width="375" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tss-jG-p75">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="open_new_case.png" translatesAutoresizingMaskIntoConstraints="NO" id="XM0-pm-jv6">
-                                                            <rect key="frame" x="8" y="7.5" width="110" height="112"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="112" id="IcZ-8L-ggi"/>
                                                                 <constraint firstAttribute="width" constant="110" id="VS2-Eb-Qv5"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join New Event" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-wh-NoV" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="126" y="16" width="233" height="29"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Redeem a voucher and start a new case" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-Hj-f3F" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="126" y="53" width="233" height="41"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRH-V7-m32" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="127.5" width="375" height="1"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="zm6-2p-27j"/>
@@ -1053,33 +972,28 @@
                                         <rect key="frame" x="0.0" y="137" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s0Y-3J-UCc" id="efD-hz-J0N">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
+                                            <frame key="frameInset" width="375" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4V-PL-8YI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resume_case.png" translatesAutoresizingMaskIntoConstraints="NO" id="GZB-kX-YBe">
-                                                            <rect key="frame" x="8" y="6" width="110" height="112"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="112" id="DHN-6C-WGy"/>
                                                                 <constraint firstAttribute="width" constant="110" id="zeS-lS-bgi"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume Event" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ybv-Sj-Kpk" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="126" y="16" width="233" height="29"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Resume a paused game" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUv-8G-jz3" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="126" y="55" width="233" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ide-O6-vxj" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="127.5" width="375" height="1"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="Uyd-bm-jQF"/>
@@ -1116,33 +1030,28 @@
                                         <rect key="frame" x="0.0" y="274" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jfp-Sm-dR9" id="Vyy-9M-0xr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
+                                            <frame key="frameInset" width="375" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPc-iY-Ybq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closed_cases.png" translatesAutoresizingMaskIntoConstraints="NO" id="YvA-zm-CQf">
-                                                            <rect key="frame" x="8" y="9.5" width="110" height="110"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="110" id="3pP-e0-vTY"/>
                                                                 <constraint firstAttribute="height" constant="110" id="Ts4-N9-ga1"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed Event" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="b78-Fm-Uh3" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="126" y="16" width="233" height="29"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="View detail for a closed game" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EFq-lu-CX2" customClass="WidthLabel" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="126" y="55" width="233" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v60-1V-9Vx" customClass="CLShadowView" customModule="CludeApp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="126.5" width="375" height="1"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="CYo-5T-ZWz"/>
@@ -1237,7 +1146,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhJ-3L-dFr">
-                                <rect key="frame" x="16" y="28" width="30" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="cVs-kW-sc7"/>
                                     <constraint firstAttribute="height" constant="37" id="o3x-OO-fOV"/>
@@ -1248,7 +1156,6 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j4G-Lf-Apt">
-                                <rect key="frame" x="0.0" y="73" width="375" height="594"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1257,45 +1164,45 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yEc-bR-o6b" id="9nM-5g-lZs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                            <frame key="frameInset" width="375" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5IE-BC-Qgu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                                     <subviews>
                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFd-RE-Mtf">
-                                                            <rect key="frame" x="315" y="16.5" width="52" height="51"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="52" id="9XO-6l-0vK"/>
                                                                 <constraint firstAttribute="height" constant="51" id="zvf-H9-vPR"/>
                                                             </constraints>
                                                             <state key="normal" image="ic_shortcut_delete_forever.png"/>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhG-FE-ch0">
+                                                            <state key="normal" image="3Dot"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="BhG-FE-ch0" firstAttribute="height" secondItem="xFd-RE-Mtf" secondAttribute="height" id="8Fk-lG-wKC"/>
+                                                        <constraint firstItem="BhG-FE-ch0" firstAttribute="centerX" secondItem="xFd-RE-Mtf" secondAttribute="centerX" id="BEv-Gb-JzX"/>
+                                                        <constraint firstItem="BhG-FE-ch0" firstAttribute="width" secondItem="xFd-RE-Mtf" secondAttribute="width" id="IYY-p5-pQi"/>
                                                         <constraint firstAttribute="trailing" secondItem="xFd-RE-Mtf" secondAttribute="trailing" constant="8" id="Uyt-N7-Fnr"/>
                                                         <constraint firstItem="xFd-RE-Mtf" firstAttribute="centerY" secondItem="5IE-BC-Qgu" secondAttribute="centerY" id="rSc-nX-GOt"/>
+                                                        <constraint firstItem="BhG-FE-ch0" firstAttribute="centerY" secondItem="xFd-RE-Mtf" secondAttribute="centerY" id="xSE-in-s5J"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gh0-Xf-eej">
-                                                    <rect key="frame" x="24" y="20" width="283" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3kA-Qc-YJf">
-                                                    <rect key="frame" x="24" y="51" width="279" height="26"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHOW LEADERBOARD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eZ-MB-jZ5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="279" height="26"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.90196078430000004" green="0.039215686270000001" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3B-jV-83q">
-                                                            <rect key="frame" x="0.0" y="0.0" width="279" height="26"/>
-                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3B-jV-83q"/>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1329,6 +1236,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="btnDelete" destination="xFd-RE-Mtf" id="ufh-Hg-RQX"/>
+                                            <outlet property="btnMenu" destination="BhG-FE-ch0" id="zOA-l6-0jN"/>
                                             <outlet property="btnShowLeaderBoard" destination="v3B-jV-83q" id="fbK-QT-4NX"/>
                                             <outlet property="lblEventName" destination="Gh0-Xf-eej" id="IsK-Fp-89J"/>
                                             <outlet property="viewLeaderBoard" destination="3kA-Qc-YJf" id="4Z1-Rq-4fd"/>
@@ -1375,6 +1283,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="3Dot" width="18" height="18"/>
         <image name="back.png" width="200" height="200"/>
         <image name="closed_cases.png" width="200" height="200"/>
         <image name="ic_shortcut_delete_forever.png" width="48" height="48"/>

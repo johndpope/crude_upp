@@ -70,13 +70,18 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
         
         cell.btnDelete.isHidden         = boolCompletedEvent!
         cell.viewLeaderBoard.isHidden   = !boolCompletedEvent!
+        cell.btnMenu.isHidden           = !boolCompletedEvent!
+
         cell.btnDelete.tag              = indexPath.row
         cell.btnShowLeaderBoard.tag     = indexPath.row
-        
+        cell.btnMenu.tag                = indexPath.row
         cell.btnDelete.addTarget(self,
                                  action: #selector(deletedEvent(sender:)),
                                  for: .touchUpInside)
-        
+        cell.btnMenu.addTarget(self,
+                                 action: #selector(showMenuPopup(_:)),
+                                 for: .touchUpInside)
+
         return cell
     }
 
@@ -115,4 +120,9 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
         }
     }
     
+    func showMenuPopup(_ sender: UIButton)  {
+        let event = self.events[sender.tag]
+        
+        
+    }
 }
