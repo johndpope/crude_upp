@@ -29,6 +29,7 @@ public final class EventList: NSCoding {
     static let startLocation = "startLocation"
     static let caseNotes = "caseNotes"
     static let leaderboard = "leaderboard"
+    static let pdfSolutions = "pdfSolutions"
   }
 
   // MARK: Properties
@@ -49,7 +50,7 @@ public final class EventList: NSCoding {
   public var startLocation: StartLocation?
   public var caseNotes: String?
   public var leaderboard: [Leaderboard]?
-
+  public var pdfSolution:String?
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
   ///
@@ -110,6 +111,7 @@ public final class EventList: NSCoding {
     v = json[SerializationKeys.v].int
     startLocation = StartLocation(json: json[SerializationKeys.startLocation])
     caseNotes = json[SerializationKeys.caseNotes].string
+    pdfSolution = json[SerializationKeys.pdfSolutions].string
     if let items = json[SerializationKeys.leaderboard].array { leaderboard = items.map { Leaderboard(json: $0) } }
   }
 
@@ -134,6 +136,7 @@ public final class EventList: NSCoding {
     if let value = v { dictionary[SerializationKeys.v] = value }
     if let value = startLocation { dictionary[SerializationKeys.startLocation] = value.dictionaryRepresentation() }
     if let value = caseNotes { dictionary[SerializationKeys.caseNotes] = value }
+    if let value = pdfSolution{dictionary[SerializationKeys.pdfSolutions] = value}
     if let value = leaderboard { dictionary[SerializationKeys.leaderboard] = value.map { $0.dictionaryRepresentation() } }
     return dictionary
   }
@@ -156,6 +159,7 @@ public final class EventList: NSCoding {
     self.v = aDecoder.decodeObject(forKey: SerializationKeys.v) as? Int
     self.startLocation = aDecoder.decodeObject(forKey: SerializationKeys.startLocation) as? StartLocation
     self.caseNotes = aDecoder.decodeObject(forKey: SerializationKeys.caseNotes) as? String
+    self.pdfSolution = aDecoder.decodeObject(forKey: SerializationKeys.pdfSolutions) as? String
     self.leaderboard = aDecoder.decodeObject(forKey: SerializationKeys.leaderboard) as? [Leaderboard]
   }
 
@@ -176,6 +180,7 @@ public final class EventList: NSCoding {
     aCoder.encode(v, forKey: SerializationKeys.v)
     aCoder.encode(startLocation, forKey: SerializationKeys.startLocation)
     aCoder.encode(caseNotes, forKey: SerializationKeys.caseNotes)
+    aCoder.encode(pdfSolution, forKey: SerializationKeys.pdfSolutions)
     aCoder.encode(leaderboard, forKey: SerializationKeys.leaderboard)
   }
 

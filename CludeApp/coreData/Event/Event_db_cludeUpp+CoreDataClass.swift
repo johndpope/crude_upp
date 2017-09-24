@@ -39,7 +39,9 @@ public class Event_db_cludeUpp: NSManagedObject {
                 eventContext.endedAt          = 0
                 eventContext.delayTime        = 0
                 eventContext.isCompleted      = false
-                
+                eventContext.outcome          = event.outcome
+                eventContext.pdfSolution      = event.pdfSolution
+            
                 for witness_event in event.witnesses!{
                     
                     let witness_db = Witnesses_db_cludeUpp.mr_create(in: localContext) as! Witnesses_db_cludeUpp

@@ -181,27 +181,23 @@ class CLDashBoardVC: UIViewController {
                                                                 
                                                                 UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
                                                                 
-                                                                let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
-                                                                CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
                                                                 
-                                                                
-                                                                //show correct solution alert view
-//                                                                let description = ""
-//                                                                CorrectSolutionAlertView.show(in: self.view, description: description)
-//                                                                { (action) in
-//                                                                
-//                                                                }
-                                                                
-                                                                return
-
-                                                            }else{
-                                                                
-                                                                self.showSubmitPopUp(from: self, title: "OOPS!", message: (error?.localizedDescription)!)
-                                                                
-                                                                
-                                                            }
-                                                            
-                                                            
+                        CorrectSolutionAlertView.show(in: self.view,
+                                description: (self.event_local?.outcome)!, actionBlock: { (action) in
+                                                
+                            if action == 0{
+                                                                                
+                                    let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
+                                    aViewController.pdfUrl = CLConstant.witnessBaseURL + (self.event_local?.pdfSolution)!
+                                    DispatchQueue.main.async {
+                                            self.navigationController?.pushViewController(aViewController, animated: true)
+                                                }
+                                        }
+                                    })
+                                    return
+                                    }else{
+                                    self.showSubmitPopUp(from: self, title: "OOPS!", message: (error?.localizedDescription)!)
+                                    }
                             })
                             
                         }else{
