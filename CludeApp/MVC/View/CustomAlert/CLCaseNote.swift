@@ -18,7 +18,12 @@ class CLCaseNote: UIView {
     @IBOutlet weak var constraintGreen: NSLayoutConstraint!
     @IBOutlet weak var constraintImgWidht: NSLayoutConstraint!
     @IBOutlet weak var constraintLeadingTitle: NSLayoutConstraint!
+    @IBOutlet weak var btnHint: UIButton!
+    
     var dismiss:((_ code:Bool)->Void)?
+    
+    var hintAction: ((Void)->Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -36,5 +41,9 @@ class CLCaseNote: UIView {
         
         dismiss?(true)
 
+    }
+    
+    @IBAction func seeHintBtnClicked(_ sender: UIButton) {
+        hintAction?()
     }
 }

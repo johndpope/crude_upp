@@ -74,7 +74,7 @@
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
-                                <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="3zf-Tf-zfF"/>
+                                <action selector="seeHintBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="UMZ-Fu-z0z"/>
                             </connections>
                         </button>
                     </subviews>
@@ -113,6 +113,7 @@
                 <constraint firstAttribute="trailing" secondItem="IHv-34-hHx" secondAttribute="trailing" constant="16" id="ojV-RH-d77"/>
             </constraints>
             <connections>
+                <outlet property="btnHint" destination="vbo-mW-1FB" id="X6c-lJ-7Ac"/>
                 <outlet property="constraintGreen" destination="Rh9-sQ-wRB" id="b70-g9-raD"/>
                 <outlet property="constraintImgWidht" destination="zVa-uv-kPA" id="mus-0p-jti"/>
                 <outlet property="constraintLeadingTitle" destination="z87-gD-Cu4" id="sxH-Gz-qeG"/>

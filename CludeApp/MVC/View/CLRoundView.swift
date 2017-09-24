@@ -8,21 +8,15 @@
 
 import UIKit
 
-class CLRoundView: UIView {
+class CirleView: UIView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.commonInit()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        commonInit()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.commonInit()
-    }
-    
     func commonInit(){
         self.layer.cornerRadius  = self.bounds.height / 2
-        self.layer.masksToBounds = true
+        //self.layer.masksToBounds = true
         self.clipsToBounds       = true
     }
 }

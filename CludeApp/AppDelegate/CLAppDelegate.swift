@@ -39,7 +39,7 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
         MagicalRecord.setupCoreDataStack(withAutoMigratingSqliteStoreNamed: "CludeApp.sqlite")
 
         
-        FLEXManager.shared().showExplorer()
+        ///FLEXManager.shared().showExplorer()
         
         saveMagicalContext()
 

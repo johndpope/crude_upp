@@ -48,7 +48,7 @@ extension UIViewController{
         
     }
 
-    func showCaseNotePopUp(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String){
+    func showCaseNotePopUp(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String, witness: Witnesses_db_cludeUpp? = nil){
         
         let vocuherPopup = (Bundle.main.loadNibNamed("CLCaseNote",owner : nil,options:nil)?[0] as? UIView) as! CLCaseNote
         
@@ -60,6 +60,23 @@ extension UIViewController{
         if testinomy {
             
             vocuherPopup.lblTitle.text = "Testimony"
+            if let witness = witness  {
+                if witness.introgatted {
+                    if witness.showHint {
+                        let string = witness.statement! + "\n\n\n" + "HINT : \((witness.hint!))"
+                        
+                        vocuherPopup.tvCaseNotes.text = string
+                        vocuherPopup.btnHint.isHidden = true
+                    }else{
+                        vocuherPopup.tvCaseNotes.text = witness.statement
+                        vocuherPopup.btnHint.isHidden = false
+                    }
+                    
+
+                } else {
+                    vocuherPopup.btnHint.isHidden = true
+                }
+            }
         }
         
         
@@ -110,6 +127,24 @@ extension UIViewController{
         }) { (success) in}
         
         
+        vocuherPopup.hintAction = {
+            guard let witness = witness else {return}
+            witness.showHint = !witness.showHint
+            _appDelegate.saveMagicalContext()
+            
+            if witness.introgatted {
+                
+                if witness.showHint {
+                    let string = witness.statement! + "\n\n\n" + "HINT : \((witness.hint!))"
+                    
+                    vocuherPopup.tvCaseNotes.text = string
+                    vocuherPopup.btnHint.isHidden = true
+                }else{
+                    vocuherPopup.tvCaseNotes.text = witness.statement
+                    vocuherPopup.btnHint.isHidden = false
+                }
+            }
+        }
     }
     
     

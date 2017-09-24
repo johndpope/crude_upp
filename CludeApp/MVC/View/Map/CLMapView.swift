@@ -381,7 +381,7 @@ import SDWebImage
                                           text: (witnessData.statement)!,
                                           testinomy: true,
                                           imgID:"",
-                                          name:"")
+                                          name:"", witness: witnessData)
                 
                 
                 let pinView:RKPinView = marker.iconView as! RKPinView
