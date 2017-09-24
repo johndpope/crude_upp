@@ -47,9 +47,9 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
             
            // let event_continue = Event_db_cludeUpp.mr_findAll() as! [Event_db_cludeUpp]
             
-            if UserDefaults.standard.value(forKey: CLConstant.runningEventID) != nil{
+            if UserDefaults.standard.value(forKey: CLConstant.runningEventTeamID) != nil{
             
-                let Predicate = NSPredicate(format: "id = %@", UserDefaults.standard.value(forKey: CLConstant.runningEventID) as! String)
+                let Predicate = NSPredicate(format: "teamID = %@", UserDefaults.standard.value(forKey: CLConstant.runningEventTeamID) as! String)
                 
                 if Event_db_cludeUpp.mr_countOfEntities(with: Predicate) > 0 {
                     // save local event id
@@ -106,12 +106,11 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStore(completion: nil)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStore(completion: nil)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

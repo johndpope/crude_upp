@@ -14,16 +14,18 @@ import MagicalRecord
 public class Event_db_cludeUpp: NSManagedObject {
 
     
-    static func syncEventInCoreData(event:EventList,teamName:String){
+    static func syncEventInCoreData(event:EventList,teamName:String,teamID:String){
     
         MagicalRecord.save({ (localContext) in
             
-            let predicate = NSPredicate(format: "id = %@", event.id!)
+           // let predicate = NSPredicate(format: "teamID = %@", teamID)
             
-          //  if Event_db_cludeUpp.mr_countOfEntities(with: predicate, in: localContext) == 0{
-                
+           // if Event_db_cludeUpp.mr_countOfEntities(with: predicate, in: localContext) == 0{
+            
                 let eventContext = Event_db_cludeUpp.mr_create(in: localContext) as! Event_db_cludeUpp
-                
+            //let eventContext = Event_db_cludeUpp.mr_createEntity() as! Event_db_cludeUpp
+
+                eventContext.teamID           = teamID
                 eventContext.teamName         = teamName
                 eventContext.name             = event.name
                 eventContext.createdAt        = event.createdAt

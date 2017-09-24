@@ -21,6 +21,8 @@ class CLConstant: NSObject {
     static let witnessBaseURL = "https://s3.amazonaws.com/clueup2/"
     
     static let runningEventID = "runningEvent"
+    static let runningEventTeamID = "runningEventTeamID"
+
     static let homeFirstTime = "home"
     static let evideFirstTime = "evidence"
     static let suspectFirstTime = "suspects"
@@ -32,6 +34,8 @@ class CLConstant: NSObject {
         
         
     }
+    
+    
     
     static var firstHome: Bool? {
         set{

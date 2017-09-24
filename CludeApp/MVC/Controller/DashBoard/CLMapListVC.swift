@@ -10,6 +10,7 @@
 protocol WitnessTapped {
     
     func didTapAtWintess(witness:Witnesses_db_cludeUpp)
+    func didIntrogateWitness(witness:Witnesses_db_cludeUpp)
 }
 
 import UIKit
@@ -111,7 +112,12 @@ extension CLMapListVC: UITableViewDataSource, UITableViewDelegate{
                                         
                                         if agree{
                                         
+                                            
                                             self.witness?[sender.tag].introgatted = true
+                                            
+                                            self.protocolWitness?.didTapAtWintess(witness: (self.witness?[sender.tag])!)
+
+                                            
                                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil, userInfo: nil)
                                             
                                             self.tblMapList.reloadRows(at: [IndexPath(row: sender.tag, section: 0)],
