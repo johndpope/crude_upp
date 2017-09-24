@@ -1256,10 +1256,49 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="menuPopView" destination="FQt-k4-Ivo" id="mQ0-oE-7ck"/>
                         <outlet property="tblResumeEvent" destination="j4G-Lf-Apt" id="Bws-V4-5Eu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iif-Rz-qTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="FQt-k4-Ivo">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jrT-Ka-xnL">
+                            <frame key="frameInset" minX="67" minY="-14" width="240" height="128"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1VW-j3-qPK">
+                                    <frame key="frameInset" minY="24" width="240" height="128"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om0-8r-nQD">
+                                            <frame key="frameInset" width="240" height="60"/>
+                                            <state key="normal" title="Get Answers">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgv-rs-51J">
+                                            <frame key="frameInset" minY="68" width="240" height="60"/>
+                                            <state key="normal" title="Delete Event">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="1VW-j3-qPK" firstAttribute="leading" secondItem="jrT-Ka-xnL" secondAttribute="leading" id="AKU-dh-jXH"/>
+                                <constraint firstItem="1VW-j3-qPK" firstAttribute="top" secondItem="jrT-Ka-xnL" secondAttribute="top" id="EeC-Tm-z1E"/>
+                                <constraint firstAttribute="height" constant="128" id="b6M-c6-35M"/>
+                                <constraint firstAttribute="trailing" secondItem="1VW-j3-qPK" secondAttribute="trailing" id="btx-xs-nXI"/>
+                                <constraint firstAttribute="width" constant="240" id="mLh-DM-nG2"/>
+                                <constraint firstAttribute="bottom" secondItem="1VW-j3-qPK" secondAttribute="bottom" id="yoO-sV-zVt"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1989.5999999999999" y="687.7061469265368"/>
         </scene>

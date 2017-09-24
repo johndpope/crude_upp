@@ -13,6 +13,7 @@ import UIKit
 class CLEventResumeVC: UIViewController {
 
     @IBOutlet weak var tblResumeEvent: UITableView!
+    @IBOutlet weak var menuPopView: UIView!
     
     var events = [Event_db_cludeUpp]()
     var boolCompletedEvent:Bool?
@@ -121,8 +122,25 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
     }
     
     func showMenuPopup(_ sender: UIButton)  {
-        let event = self.events[sender.tag]
+        let fr = self.view.convert(sender.bounds, from: sender)
         
-        
+        DropListView.show(in: self.view, position: fr.origin) { (action) in //GetAnswers, DeleteEvent
+            if action == .GetAnswers {
+                let event = self.events[sender.tag]
+
+                let aViewController = CLConstant.storyBoard.dashBoard.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
+                aViewController.pdfUrl = CLConstant.witnessBaseURL + (event.pdfSolution)!
+               
+                DispatchQueue.main.async {
+                    
+                    self.navigationController?.present(aViewController,
+                                                       animated: true,
+                                                       completion: nil)
+                }
+
+            } else if action == .DeleteEvent {
+                self.deletedEvent(sender: sender)
+            }
+        }
     }
 }
