@@ -79,6 +79,8 @@ class CLDashBoardVC: UIViewController {
         UserDefaults.standard.set(self.event_local?.id, forKey: CLConstant.runningEventID)
         UserDefaults.standard.synchronize()
 
+        UserDefaults.standard.set(self.event_local?.teamID, forKey: CLConstant.runningEventTeamID)
+        UserDefaults.standard.synchronize()
         
         dashBoardTblVC?.btnTapped = {(index) in
             if index == 0 {
@@ -180,7 +182,8 @@ class CLDashBoardVC: UIViewController {
                                                                 self.timerCountdown.invalidate()
                                                                 
                                                                 UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
-                                                                
+                                                                UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+
                                                                 
                         CorrectSolutionAlertView.show(in: self.view,
                                 description: (self.event_local?.outcome)!, actionBlock: { (action) in
@@ -190,8 +193,11 @@ class CLDashBoardVC: UIViewController {
                                     let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
                                     aViewController.pdfUrl = CLConstant.witnessBaseURL + (self.event_local?.pdfSolution)!
                                     DispatchQueue.main.async {
-                                            self.navigationController?.pushViewController(aViewController, animated: true)
-                                                }
+                                        
+                                        self.navigationController?.present(aViewController,
+                                                                           animated: true,
+                                                                           completion: nil)
+                                            }
                                         }
                                     })
                                     return
@@ -306,6 +312,9 @@ class CLDashBoardVC: UIViewController {
         timerCountdown.invalidate()
         
         UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+        UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+
+        
         let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
         CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
         

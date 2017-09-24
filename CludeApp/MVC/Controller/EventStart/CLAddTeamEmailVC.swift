@@ -76,12 +76,13 @@ class CLAddTeamEmailVC: UIViewController {
                                                 
                                                 // sync event to coreData
                                                 let teamName = response?.dictionary?["name"]?.string ?? ""
-                                                Event_db_cludeUpp.syncEventInCoreData(event: self.event!,teamName:teamName)
+                                                let teamId   = response?.dictionary?["_id"]?.string ?? ""
+                                                Event_db_cludeUpp.syncEventInCoreData(event: self.event!,teamName:teamName,teamID:teamId)
                                                 
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
                                                                               execute: {
                                                                                 
-                                                                                self.loadLocalEvent()
+                                                                                self.loadLocalEvent(tameID:teamId)
                                                 })
                                                 
                                                 
@@ -109,15 +110,22 @@ class CLAddTeamEmailVC: UIViewController {
      * @abstract fetch request to particular event
      */
     
-    func loadLocalEvent(){
+    func loadLocalEvent(tameID:String){
     
-        let Predicate = NSPredicate(format: "id = %@", (self.event?.id)!)
+        
+        let Predicate = NSPredicate(format: "teamID = %@", tameID)
+
         
         if Event_db_cludeUpp.mr_countOfEntities(with: Predicate) > 0 {
             
             // save local event id
             UserDefaults.standard.set(self.event?.id, forKey: CLConstant.runningEventID)
             UserDefaults.standard.synchronize()
+            
+            UserDefaults.standard.set(tameID, forKey: CLConstant.runningEventTeamID)
+            UserDefaults.standard.synchronize()
+
+
             
             let event_local = Event_db_cludeUpp.mr_findAll(with: Predicate)[0] as! Event_db_cludeUpp
             
@@ -127,7 +135,6 @@ class CLAddTeamEmailVC: UIViewController {
                 self.navigationController?.pushViewController(aViewController, animated: true)
             }
         }
-        
         
     }
     

@@ -37,7 +37,7 @@ class CLMapListTblCell: UITableViewCell {
         self.viewActivity.startAnimating()
         
         self.imgWitness.sd_setImageWithPreviousCachedImage(with: URL(string: CLConstant.witnessBaseURL+(witness.witnessImage?.id!)!),
-                                                           placeholderImage: nil,
+                                                           placeholderImage: #imageLiteral(resourceName: "loading.jpg"),
                                                            options: SDWebImageOptions(rawValue: 0),
                                                            progress: nil) { (image, error, chache, url) in
                                                             

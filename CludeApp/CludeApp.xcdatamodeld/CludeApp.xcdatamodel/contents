@@ -15,6 +15,7 @@
         <attribute name="safeZones" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="startedAt" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teamName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeConsume" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updateAt" optional="YES" attributeType="String" syncable="YES"/>
@@ -94,7 +95,7 @@
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WitnessOption_db" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event_db_cludeUpp" positionX="-27" positionY="18" width="128" height="405"/>
+        <element name="Event_db_cludeUpp" positionX="-27" positionY="18" width="128" height="420"/>
         <element name="EvidenceImage_db" positionX="72" positionY="189" width="128" height="60"/>
         <element name="Evidences_db" positionX="18" positionY="135" width="128" height="120"/>
         <element name="Leaderboard_db" positionX="36" positionY="171" width="128" height="180"/>

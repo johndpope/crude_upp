@@ -30,8 +30,9 @@ class CLMapVC: UIViewController {
         
         mapIntrogation = (Bundle.main.loadNibNamed("CLMapView",owner : nil,options:nil)?[0] as? UIView) as? CLMapView
         mapIntrogation?.frame.size.height = viewMapContainer.bounds.height
+        mapIntrogation?.frame.size.width  = viewMapContainer.bounds.width
         mapIntrogation?.getCurrentLocation(from: self)
-        
+        mapIntrogation?.arrayWitnesses = witnessArray
         DispatchQueue.main.async {
             
              self.viewMapContainer.addSubview(self.mapIntrogation!)
@@ -39,28 +40,12 @@ class CLMapVC: UIViewController {
         
         mapIntrogation?.customizeMap(witnesses:witnessArray)
 
+
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        witnessArray = event_local?.witnesses?.allObjects as! [Witnesses_db_cludeUpp]
-        witnessArray = witnessArray.sorted(by: { ($0.name?.characters.count)! > ($1.name?.characters.count)! })
-        
-        mapIntrogation = (Bundle.main.loadNibNamed("CLMapView",owner : nil,options:nil)?[0] as? UIView) as? CLMapView
-        mapIntrogation?.frame.size.height = viewMapContainer.bounds.height
-        mapIntrogation?.getCurrentLocation(from: self)
-        
-        DispatchQueue.main.async {
-            
-            self.viewMapContainer.addSubview(self.mapIntrogation!)
-        }
-        
-//        viewMapContainer.addSubview(mapIntrogation!)
-        
-        mapIntrogation?.customizeMap(witnesses:witnessArray)
-    }
+   
+    
+    
     
     
     
@@ -88,9 +73,8 @@ class CLMapVC: UIViewController {
 
 
 extension CLMapVC:WitnessTapped{
-
-    func didTapAtWintess(witness: Witnesses_db_cludeUpp) {
-        
+    
+   func didIntrogateWitness(witness: Witnesses_db_cludeUpp) {
         if witness.introgatted {
             
             self.showCaseNotePopUp(from: self,
@@ -101,6 +85,15 @@ extension CLMapVC:WitnessTapped{
         }
     }
 
+
+    func didTapAtWintess(witness: Witnesses_db_cludeUpp) {
+        
+        self.mapIntrogation?.changeMarker(witness: witness)
+    }
+
+    
+    
+    
 }
 
 

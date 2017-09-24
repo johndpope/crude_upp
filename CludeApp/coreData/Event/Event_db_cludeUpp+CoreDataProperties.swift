@@ -40,6 +40,7 @@ extension Event_db_cludeUpp {
     @NSManaged public var delayTime:Double
     @NSManaged public var isCompleted:Bool
     @NSManaged public var pdfSolution:String?
+    @NSManaged public var teamID:String?
 }
 
 // MARK: Generated accessors for evidences

@@ -24,6 +24,7 @@ import SDWebImage
     
     var arrayWitnesses: [Witnesses_db_cludeUpp]?
     
+    var markerObject = [GMSMarker]()
     
     
     override init(frame: CGRect) {
@@ -99,6 +100,25 @@ import SDWebImage
     
     
     
+    func changeMarker(witness:Witnesses_db_cludeUpp){
+    
+        for marker_tapped in self.markerObject {
+            
+            if marker_tapped.position.isEqualLocation(CLLocationCoordinate2D(latitude: Double((witness.witnessLocation?.lat)!), longitude: Double((witness.witnessLocation?.long)!))) {
+                
+                if marker_tapped.iconView != nil{
+                    let pinView:RKPinView = marker_tapped.iconView as! RKPinView
+                    pinView.imgBox.image = #imageLiteral(resourceName: "full_box_green.png")
+                    pinView.imgCheck.isHidden = false
+                    self.viewMap.selectedMarker = nil
+                    
+                }
+            }
+        }
+        
+        
+    }
+    
     
     func customizeMap(witnesses:[Witnesses_db_cludeUpp]){
     
@@ -144,6 +164,10 @@ import SDWebImage
                                                                 }
             
             marker.iconView = pinView
+                                                                
+                                                                if !self.markerObject.contains(marker){
+                                                                    self.markerObject.append(marker)
+                                                                }
                                                                 
         }
     
@@ -415,9 +439,9 @@ import SDWebImage
                                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
                                                                                           execute: {
                                                                                             witnessData.introgatted = true
-                                                                                            let pinView:RKPinView = marker.iconView as! RKPinView
-                                                                                            pinView.imgBox.image = #imageLiteral(resourceName: "full_box_green.png")
-                                                                                            pinView.imgCheck.isHidden = false
+                                                                                            
+                                                                                            self.changeMarker(witness: witnessData)
+                                                                                            
                                                                                             self.arrayWitnesses = self.arrayWitnesses?.filter { $0 != witnessData }
                                                                                             
                                                                                             CLConstant.delegatObj.appDelegate.saveMagicalContext()
@@ -516,7 +540,12 @@ import SDWebImage
       //  let coordinate = locations.last?.coordinate
 //        let camera = GMSCameraPosition.camera(withLatitude: (coordinate?.latitude)!, longitude: (coordinate?.longitude)!, zoom: 14.0)
 //        viewMap.camera = camera
-        self.getDistance()
+        
+        if (self.arrayWitnesses?.count)! > 1 {
+            
+            self.getDistance()
+ 
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -563,15 +592,7 @@ import SDWebImage
                                                       action: { (correct) in
                                                         if correct{
                                                             
-                                                            if self.viewMap.selectedMarker?.iconView != nil{
-                                                                let pinView:RKPinView = self.viewMap.selectedMarker!.iconView as! RKPinView
-                                                                pinView.imgBox.image = #imageLiteral(resourceName: "full_box_green.png")
-                                                                pinView.imgCheck.isHidden = false
-                                                                
-                                                                self.viewMap.selectedMarker = nil
-
-                                                            }
-                                                            
+                                                            self.changeMarker(witness: placeObj!)
                                                             
                                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
                                                                                           execute: {
@@ -632,4 +653,10 @@ import SDWebImage
         
     }
     
+}
+
+extension CLLocationCoordinate2D {
+    func isEqualLocation(_ coord: CLLocationCoordinate2D) -> Bool {
+        return (fabs(self.latitude - coord.latitude) < .ulpOfOne) && (fabs(self.longitude - coord.longitude) < .ulpOfOne)
+    }
 }
