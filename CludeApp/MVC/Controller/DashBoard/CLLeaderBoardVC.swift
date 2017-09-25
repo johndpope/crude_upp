@@ -9,17 +9,17 @@
 import UIKit
 
 class CLLeaderBoardVC: UIViewController {
-
+    
     @IBOutlet weak var tblLeaderBoard: UITableView!
     
     var eventID:String?
     var leaderBoard = [LeaderBoards]()
-    
+    var tempLeaderboardItems = [LeaderBoards]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
         
         CLApiManager().getLeaderBoard(gameID: eventID!) { (code, error, response, statusCode) in
             
@@ -33,6 +33,8 @@ class CLLeaderBoardVC: UIViewController {
                     self.leaderBoard.append(leaderBoard)
                     
                 }
+                
+                self.tempLeaderboardItems = self.leaderBoard
                 DispatchQueue.main.async {
                     self.tblLeaderBoard.reloadData()
                 }
@@ -47,7 +49,7 @@ class CLLeaderBoardVC: UIViewController {
         
         
     }
-
+    
     @IBAction func back(_ sender: Any) {
         
         _ = self.navigationController?.popViewController(animated: true)
@@ -55,16 +57,23 @@ class CLLeaderBoardVC: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
+    }
+    
+    @IBAction func year_btnClicked(_ sender: UIButton) {
+        self.leaderBoard = tempLeaderboardItems
+        self.tblLeaderBoard.reloadData()
+    }
+    
+    @IBAction func today_btnClicked(_ sender: UIButton) {
+        self.leaderBoard = tempLeaderboardItems.filter({$0.todayEvent})
+        self.tblLeaderBoard.reloadData()
     }
     
     
-    
-
 }
 
 extension CLLeaderBoardVC:UITableViewDataSource, UITableViewDelegate{
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return leaderBoard.count
@@ -74,12 +83,12 @@ extension CLLeaderBoardVC:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CLLeaderBordTblCell.self)) as! CLLeaderBordTblCell
-        
-        cell.lblTeamName.text = leaderBoard[indexPath.row].name
-        cell.lblRank.text     = "\((leaderBoard[indexPath.row].score)!)"
-        
+        let item = leaderBoard[indexPath.row]
+        cell.lblTeamName.text = item.name
+        cell.lblRank.text     = "\(item.score!)"
+        cell.lblTime.text = item.timeInHHMMSS
         return cell
         
     }
-
+    
 }

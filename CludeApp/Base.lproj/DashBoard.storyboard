@@ -949,6 +949,9 @@
                                     <constraint firstAttribute="height" constant="45" id="jan-iw-yzn"/>
                                 </constraints>
                                 <state key="normal" title="Today"/>
+                                <connections>
+                                    <action selector="today_btnClicked:" destination="Utf-Wm-PF0" eventType="touchUpInside" id="To7-oI-LYk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HX1-b2-8dE">
                                 <color key="backgroundColor" red="0.90196078430000004" green="0.039215686270000001" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -957,6 +960,9 @@
                                     <constraint firstAttribute="height" constant="45" id="gZX-OO-oh7"/>
                                 </constraints>
                                 <state key="normal" title="This Year"/>
+                                <connections>
+                                    <action selector="year_btnClicked:" destination="Utf-Wm-PF0" eventType="touchUpInside" id="Qq0-IJ-MUh"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YOi-1Z-uyn">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

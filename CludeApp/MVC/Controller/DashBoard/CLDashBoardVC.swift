@@ -193,34 +193,32 @@ class CLDashBoardVC: UIViewController {
                         CorrectSolutionAlertView.show(in: self.view,
                                 description: (self.event_local?.outcome)!, actionBlock: { (action) in
                                                 
-                            if action == 0{
-                                                                                
-                                    let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
-                                    aViewController.pdfUrl = CLConstant.witnessBaseURL + (self.event_local?.pdfSolution)!
-                                    DispatchQueue.main.async {
+                                    if action == CorrectSolutionAlertView.Action.GetAnswers{
                                         
-                                        self.navigationController?.present(aViewController,
-                                                                           animated: true,
-                                                                           completion: nil)
-                                            }
-                            }
-                                    
-                                    
-                                    
-                                    if action == 1{
-                                    
+                                        let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
+                                        aViewController.pdfUrl = CLConstant.witnessBaseURL + (self.event_local?.pdfSolution)!
+                                        DispatchQueue.main.async {
+                                            
+                                            self.navigationController?.present(aViewController,
+                                                                               animated: true,
+                                                                               completion: nil)
+                                        }
+                                    } else if action == CorrectSolutionAlertView.Action.SeeLeaderBoard {
+                                        
                                         let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
                                         
                                         aViewController.eventID = self.event_local?.id
                                         
                                         DispatchQueue.main.async {
                                             
-                                           self.navigationController?.pushViewController(aViewController,
-                                                                                         animated: true)
+                                            self.navigationController?.pushViewController(aViewController,
+                                                                                          animated: true)
                                         }
-                                    
+                                        
+                                    } else if action == CorrectSolutionAlertView.Action.Share {
+                                        
+                                        self.shareEvent()
                                     }
-                                    
                                     
                                     })
                                     return
@@ -270,6 +268,8 @@ class CLDashBoardVC: UIViewController {
         }
 
     }
+   
+    
     func showStartGamePopup(isShowPopup:Bool){
         
         
@@ -313,7 +313,14 @@ class CLDashBoardVC: UIViewController {
     
     
     
-    
+    func shareEvent() {
+        let shareString = "I just solved a case! \n\n http://www.cluedupp.com"
+        let shareController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+        DispatchQueue.main.async {
+            self.present(shareController, animated: true, completion: nil)
+        }
+    }
+
     
     override func viewDidDisappear(_ animated: Bool) {
         
