@@ -189,7 +189,7 @@ class CLDashBoardVC: UIViewController {
                         CorrectSolutionAlertView.show(in: self.view,
                                 description: (self.event_local?.outcome)!, actionBlock: { (action) in
                                                 
-                            if action == 0{
+                            if action == CorrectSolutionAlertView.Action.GetAnswers{
                                                                                 
                                     let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
                                     aViewController.pdfUrl = CLConstant.witnessBaseURL + (self.event_local?.pdfSolution)!
@@ -199,7 +199,7 @@ class CLDashBoardVC: UIViewController {
                                                                            animated: true,
                                                                            completion: nil)
                                             }
-                            } else if action == 1 {
+                            } else if action == CorrectSolutionAlertView.Action.SeeLeaderBoard {
                                 
                                 let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
                                 
@@ -211,7 +211,10 @@ class CLDashBoardVC: UIViewController {
                                                                                   animated: true)
                                 }
 
-                            }
+                            } else if action == CorrectSolutionAlertView.Action.Share {
+                                
+                                self.shareEvent()
+                                }
                                     
                             })
                                     return
@@ -303,7 +306,13 @@ class CLDashBoardVC: UIViewController {
     }
     
     
-    
+    func shareEvent() {
+        let shareString = "I just solved a case! \n\n http://www.cluedupp.com"
+        let shareController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+        DispatchQueue.main.async {
+            self.present(shareController, animated: true, completion: nil)
+        }
+    }
     
     
     override func viewDidDisappear(_ animated: Bool) {

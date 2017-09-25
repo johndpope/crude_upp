@@ -143,4 +143,16 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
             }
         }
     }
+    
+    @IBAction func showLeaderboard_btnClicked(_ sender: UIButton) {
+        let envent = events[sender.tag]
+        let aViewController = CLConstant.storyBoard.dashBoard.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
+        
+        aViewController.eventID = envent.id
+        
+        self.navigationController?.pushViewController(aViewController,
+                                                      animated: true)
+        
+    }
+
 }

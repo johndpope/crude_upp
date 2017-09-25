@@ -71,6 +71,9 @@
                             <state key="normal" title="SHARE ON FACEBOOK">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="facebook_btnClicked:" destination="paS-iV-jiy" eventType="touchUpInside" id="pzJ-4M-K28"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

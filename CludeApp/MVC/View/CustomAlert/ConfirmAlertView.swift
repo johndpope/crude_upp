@@ -85,11 +85,11 @@ class CorrectSolutionAlertView: UIView {
     @IBOutlet var txtvDescription: UITextView!
     
     enum Action {
-        case GetAnswers, SeeLeaderBoard
+        case GetAnswers, SeeLeaderBoard, Share
     }
     
     
-    var action:((_ action:Int)->Void)?
+    var action:((Action)->Void)?
     
     
     
@@ -99,9 +99,9 @@ class CorrectSolutionAlertView: UIView {
         }
     }
     
-    var actionBlock: ((_ action:Int)->Void)?
+    var actionBlock: ((Action)->Void)?
     
-    class func show(in view: UIView, description: String, actionBlock:  @escaping (_ action:Int)->Void) {
+    class func show(in view: UIView, description: String, actionBlock:  @escaping (Action)->Void) {
         let items  = Bundle.main.loadNibNamed("CorrectSolutionAlertView", owner: nil, options: nil) as! [UIView]
         let cnfrmView = items.first as! CorrectSolutionAlertView
         cnfrmView.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
@@ -128,18 +128,22 @@ class CorrectSolutionAlertView: UIView {
     
     
     @IBAction func btnSeeLeaderBoard (_ sender: UIButton) {
-        actionBlock?(1)
+        actionBlock?(CorrectSolutionAlertView.Action.SeeLeaderBoard)
         self.hideWithAnimation()
     }
     
     @IBAction func btnGetAnsBoard (_ sender: UIButton) {
-        actionBlock?(0)
+        actionBlock?(CorrectSolutionAlertView.Action.GetAnswers)
 
         self.hideWithAnimation()
     }
 
     @IBAction func cancelAction(_ sender: UIButton) {
         self.hideWithAnimation()
+    }
+    
+    @IBAction func facebook_btnClicked(_ sender: UIButton) {
+        actionBlock?(CorrectSolutionAlertView.Action.Share)
     }
     
 }

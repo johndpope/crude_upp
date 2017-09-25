@@ -32,6 +32,7 @@ class CLMapListVC: UIViewController {
         self.tblMapList.dataSource = self
         self.tblMapList.delegate   = self
         
+        
     }
     
     @IBAction func back(_ sender: Any) {

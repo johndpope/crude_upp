@@ -76,7 +76,11 @@ extension UIViewController{
                 } else {
                     vocuherPopup.btnHint.isHidden = true
                 }
+            }  else {
+                vocuherPopup.btnHint.isHidden = true
             }
+        } else {
+            vocuherPopup.btnHint.isHidden = true
         }
         
         
@@ -132,18 +136,29 @@ extension UIViewController{
             witness.showHint = !witness.showHint
             _appDelegate.saveMagicalContext()
             
-            if witness.introgatted {
-                
-                if witness.showHint {
-                    let string = witness.statement! + "\n\n\n" + "HINT : \((witness.hint!))"
-                    
-                    vocuherPopup.tvCaseNotes.text = string
-                    vocuherPopup.btnHint.isHidden = true
-                }else{
-                    vocuherPopup.tvCaseNotes.text = witness.statement
-                    vocuherPopup.btnHint.isHidden = false
+            
+            self.showCannotFoundHintPopup(from: self) { (action) in
+                if action{
+                    witness.showHint = true
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.hint), object: nil, userInfo: nil)
+                   
+                    if witness.introgatted {
+                        
+                        if witness.showHint {
+                            let string = witness.statement! + "\n\n\n" + "HINT : \((witness.hint!))"
+                            
+                            vocuherPopup.tvCaseNotes.text = string
+                            vocuherPopup.btnHint.isHidden = true
+                        }else{
+                            vocuherPopup.tvCaseNotes.text = witness.statement
+                            vocuherPopup.btnHint.isHidden = false
+                        }
+                    }
+
                 }
+                
             }
+
         }
     }
     
