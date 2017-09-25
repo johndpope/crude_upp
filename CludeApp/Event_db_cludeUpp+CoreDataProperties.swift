@@ -2,7 +2,7 @@
 //  Event_db_cludeUpp+CoreDataProperties.swift
 //  CludeApp
 //
-//  Created by Reus on 15/09/17.
+//  Created by Reus on 26/09/17.
 //  Copyright © 2017 Reus. All rights reserved.
 //
 
@@ -18,29 +18,31 @@ extension Event_db_cludeUpp {
 
     @NSManaged public var caseNotes: String?
     @NSManaged public var createdAt: String?
+    @NSManaged public var delayTime: Double
+    @NSManaged public var endedAt: Double
     @NSManaged public var id: String?
+    @NSManaged public var isCompleted: Bool
     @NSManaged public var name: String?
     @NSManaged public var outcome: String?
+    @NSManaged public var pdfSolution: String?
     @NSManaged public var price: String?
+    @NSManaged public var reviews: NSObject?
+    @NSManaged public var safeZones: NSObject?
+    @NSManaged public var startedAt: Double
     @NSManaged public var status: String?
+    @NSManaged public var teamID: String?
+    @NSManaged public var teamName: String?
+    @NSManaged public var timeConsume: Double
     @NSManaged public var updateAt: String?
     @NSManaged public var v: Int16
     @NSManaged public var evidences: NSSet?
     @NSManaged public var leaderboard: NSSet?
     @NSManaged public var startLocation: StartLocation_db?
     @NSManaged public var suspects: NSSet?
-    @NSManaged public var timeStoppers: TimeStoppers_db?
+    @NSManaged public var timeStoppers: NSSet?
     @NSManaged public var witnesses: NSSet?
-    @NSManaged public var safeZones: Any
-    @NSManaged public var reviews: Any
-    @NSManaged public var startedAt:Double
-    @NSManaged public var endedAt :Double
-    @NSManaged public var timeConsume:Double
-    @NSManaged public var teamName:String?
-    @NSManaged public var delayTime:Double
-    @NSManaged public var isCompleted:Bool
-    @NSManaged public var pdfSolution:String?
-    @NSManaged public var teamID:String?
+    @NSManaged public var timeStoppersLocation: NSSet?
+
 }
 
 // MARK: Generated accessors for evidences
@@ -94,6 +96,23 @@ extension Event_db_cludeUpp {
 
 }
 
+// MARK: Generated accessors for timeStoppers
+extension Event_db_cludeUpp {
+
+    @objc(addTimeStoppersObject:)
+    @NSManaged public func addToTimeStoppers(_ value: TimeStoppers_db)
+
+    @objc(removeTimeStoppersObject:)
+    @NSManaged public func removeFromTimeStoppers(_ value: TimeStoppers_db)
+
+    @objc(addTimeStoppers:)
+    @NSManaged public func addToTimeStoppers(_ values: NSSet)
+
+    @objc(removeTimeStoppers:)
+    @NSManaged public func removeFromTimeStoppers(_ values: NSSet)
+
+}
+
 // MARK: Generated accessors for witnesses
 extension Event_db_cludeUpp {
 
@@ -108,5 +127,22 @@ extension Event_db_cludeUpp {
 
     @objc(removeWitnesses:)
     @NSManaged public func removeFromWitnesses(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for timeStoppersLocation
+extension Event_db_cludeUpp {
+
+    @objc(addTimeStoppersLocationObject:)
+    @NSManaged public func addToTimeStoppersLocation(_ value: TimeStopperLocation_db)
+
+    @objc(removeTimeStoppersLocationObject:)
+    @NSManaged public func removeFromTimeStoppersLocation(_ value: TimeStopperLocation_db)
+
+    @objc(addTimeStoppersLocation:)
+    @NSManaged public func addToTimeStoppersLocation(_ values: NSSet)
+
+    @objc(removeTimeStoppersLocation:)
+    @NSManaged public func removeFromTimeStoppersLocation(_ values: NSSet)
 
 }

@@ -10,10 +10,10 @@
 
 
 import UIKit
-
 import GoogleMaps
-
 import SDWebImage
+import AudioToolbox
+
 
 @objc class CLMapView: UIView, GMSMapViewDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate {
     
@@ -21,11 +21,12 @@ import SDWebImage
     
     let locationManager =  CLLocationManager()
     var VC = UIViewController()
-    
     var arrayWitnesses: [Witnesses_db_cludeUpp]?
-    
+    var timeStopperObj:[TimeStopperLocation_db]?
     var markerObject = [GMSMarker]()
     
+    var counter = 0
+    var timer : Timer?
     
     override init(frame: CGRect) {
         
@@ -120,10 +121,12 @@ import SDWebImage
     }
     
     
-    func customizeMap(witnesses:[Witnesses_db_cludeUpp]){
+    func customizeMap(witnesses:[Witnesses_db_cludeUpp],timeStopperObj:[TimeStopperLocation_db]){
     
         
         self.arrayWitnesses = witnesses
+        
+        self.timeStopperObj = timeStopperObj
         
         for witness in witnesses {
             
@@ -377,11 +380,14 @@ import SDWebImage
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil, userInfo: nil)
                 
-                self.VC.showCaseNotePopUp(from: self.VC,
+                self.VC.showCaseNotePopUpHint(from: self.VC,
                                           text: (witnessData.statement)!,
                                           testinomy: true,
                                           imgID:"",
-                                          name:"", witness: witnessData)
+                                          name:"",
+                                          showHint:witnessData.showHint,
+                                          hint:witnessData.hint!,
+                                          witnessData: witnessData)
                 
                 
                 let pinView:RKPinView = marker.iconView as! RKPinView
@@ -404,11 +410,14 @@ import SDWebImage
         
         if witnessData.introgatted {
             
-            VC.showCaseNotePopUp(from: VC,
+            VC.showCaseNotePopUpHint(from: VC,
                                  text: witnessData.statement!,
                                  testinomy: true,
                                  imgID: (witnessData.witnessImage?.id)!,
-                                 name: witnessData.name!)
+                                 name: witnessData.name!,
+                                 showHint:witnessData.showHint,
+                                  hint:witnessData.hint!,
+                                  witnessData: witnessData)
             
             return nil
             
@@ -447,11 +456,14 @@ import SDWebImage
                                                                                             CLConstant.delegatObj.appDelegate.saveMagicalContext()
                                                             })
                                                             
-                                                            self.VC.showCaseNotePopUp(from: self.VC,
+                                                            self.VC.showCaseNotePopUpHint(from: self.VC,
                                                                                       text: (witnessData.statement)!,
                                                                                       testinomy: true,
                                                                                       imgID:"",
-                                                                                      name:"")
+                                                                                      name:"",
+                                                                                      showHint:witnessData.showHint,
+                                                                                       hint:witnessData.hint!,
+                                                                                       witnessData: witnessData)
                                                             
                                                         }else{
                                                             witnessData.coolDown  = true
@@ -509,30 +521,7 @@ import SDWebImage
     }
     
     
-    // can not be found logic
     
-    func cannotBeFound(witness:Witnesses_db_cludeUpp){
-    
-        VC.showCannotFoundPopup(from: VC) { (success) in
-            
-            if success{
-            
-                witness.introgatted = true
-                
-                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil, userInfo: nil)
-                
-                self.VC.showCaseNotePopUp(from: self.VC,
-                                          text: (witness.statement)!,
-                                          testinomy: true,
-                                          imgID:"",
-                                          name:"")
-                
-               self.customizeMap(witnesses: self.arrayWitnesses!)
-                
-            }
-        }
-    
-    }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -540,12 +529,12 @@ import SDWebImage
       //  let coordinate = locations.last?.coordinate
 //        let camera = GMSCameraPosition.camera(withLatitude: (coordinate?.latitude)!, longitude: (coordinate?.longitude)!, zoom: 14.0)
 //        viewMap.camera = camera
-        
         if (self.arrayWitnesses?.count)! > 1 {
-            
             self.getDistance()
- 
         }
+        
+        self.getTimeStoppperObj(location: locations.first!)
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -587,6 +576,9 @@ import SDWebImage
                     
                     CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = true
                     
+                    counter = 0
+                    timer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(CLMapView.vibratePhone), userInfo: nil, repeats: true)
+                    
                     VC.showQuestionDailougeForWitness(from: VC,
                                                       witness: placeObj!,
                                                       action: { (correct) in
@@ -604,11 +596,14 @@ import SDWebImage
                                                             
                                                             
                                                             
-                                                            self.VC.showCaseNotePopUp(from: self.VC,
+                                                            self.VC.showCaseNotePopUpHint(from: self.VC,
                                                                                       text: (placeObj?.statement)!,
                                                                                       testinomy: true,
                                                                                       imgID:"",
-                                                                                      name:"")
+                                                                                      name:"",
+                                                                                      showHint:(placeObj?.showHint)!,
+                                                                                       hint:(placeObj?.hint!)!,
+                                                                                       witnessData: placeObj!)
                                                             
                                                         }else{
                                                             
@@ -641,6 +636,61 @@ import SDWebImage
                 
             }
         }
+        
+    }
+    
+    
+    
+    
+    /*vibrate phone*/
+    
+    func vibratePhone() {
+        counter += 1
+        switch counter {
+        case 1, 2:
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        default:
+            timer?.invalidate()
+        }
+    }
+    
+    
+    func getTimeStoppperObj(location:CLLocation){
+    
+        
+        if self.timeStopperObj != nil {
+            
+            for stoperLocation in self.timeStopperObj! {
+                
+               // if stoperLocation.lat != nil {
+                    
+                    let stopperLoc = CLLocationCoordinate2D(latitude: Double((stoperLocation.lat)),
+                                                            longitude: Double((stoperLocation.long)))
+                    
+                    if stopperLoc.isEqualLocation(location.coordinate) && !CLConstant.delegatObj.appDelegate.timeStopperShow {
+                        
+                        CLConstant.delegatObj.appDelegate.timeStopperShow = true
+                        
+                        counter = 0
+                        timer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(CLMapView.vibratePhone), userInfo: nil, repeats: true)
+                        
+                        VC.showTimeStopperPopup(from: VC,
+                                                action: { (action) in
+                                                    
+                                                    if action{
+                                                        
+                                                        CLConstant.delegatObj.appDelegate.timeStopperShow = false
+                                                        
+                                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil, userInfo: nil)
+                                                        
+                                                    }
+                        })
+                    }
+                //}
+            }
+ 
+        }
+        
         
     }
     

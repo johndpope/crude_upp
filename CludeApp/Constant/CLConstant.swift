@@ -31,7 +31,7 @@ class CLConstant: NSObject {
         
         static let cannotFound = "cannotFound"
         static let hint = "hint"
-        
+        static let stoppper = "stopper"
         
     }
     

@@ -38,7 +38,7 @@ class CLMapVC: UIViewController {
              self.viewMapContainer.addSubview(self.mapIntrogation!)
         }
         
-        mapIntrogation?.customizeMap(witnesses:witnessArray)
+        mapIntrogation?.customizeMap(witnesses:witnessArray,timeStopperObj:event_local?.timeStoppersLocation?.allObjects as! [TimeStopperLocation_db])
 
 
     }
@@ -77,11 +77,14 @@ extension CLMapVC:WitnessTapped{
    func didIntrogateWitness(witness: Witnesses_db_cludeUpp) {
         if witness.introgatted {
             
-            self.showCaseNotePopUp(from: self,
+            self.showCaseNotePopUpHint(from: self,
                                    text: witness.statement!,
                                    testinomy: true,
                                    imgID:(witness.witnessImage?.id)!,
-                                   name:witness.name!)
+                                   name:witness.name!,
+                                   showHint: witness.showHint,
+                                   hint: witness.hint!,
+                                   witnessData: witness)
         }
     }
 

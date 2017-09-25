@@ -24,7 +24,8 @@
         <relationship name="leaderboard" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Leaderboard_db" syncable="YES"/>
         <relationship name="startLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StartLocation_db" syncable="YES"/>
         <relationship name="suspects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Suspects_db" syncable="YES"/>
-        <relationship name="timeStoppers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeStoppers_db" syncable="YES"/>
+        <relationship name="timeStoppers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimeStoppers_db" syncable="YES"/>
+        <relationship name="timeStoppersLocation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimeStopperLocation_db" syncable="YES"/>
         <relationship name="witnesses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Witnesses_db_cludeUpp" syncable="YES"/>
     </entity>
     <entity name="EvidenceImage_db" representedClassName="EvidenceImage_db" syncable="YES">
@@ -59,11 +60,13 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="suspectImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SuspectImage_db" syncable="YES"/>
     </entity>
-    <entity name="TimeStopperLocation_db" representedClassName="TimeStopperLocation_db" syncable="YES" codeGenerationType="class">
+    <entity name="TimeStopperLocation_db" representedClassName="TimeStopperLocation_db" syncable="YES">
         <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="long" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="TimeStoppers_db" representedClassName="TimeStoppers_db" syncable="YES" codeGenerationType="class"/>
+    <entity name="TimeStoppers_db" representedClassName="TimeStoppers_db" syncable="YES">
+        <relationship name="timeStopperLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeStopperLocation_db" syncable="YES"/>
+    </entity>
     <entity name="Witnesses_db_cludeUpp" representedClassName="Witnesses_db_cludeUpp" syncable="YES">
         <attribute name="coolDown" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -95,7 +98,7 @@
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WitnessOption_db" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event_db_cludeUpp" positionX="-27" positionY="18" width="128" height="420"/>
+        <element name="Event_db_cludeUpp" positionX="-27" positionY="18" width="128" height="435"/>
         <element name="EvidenceImage_db" positionX="72" positionY="189" width="128" height="60"/>
         <element name="Evidences_db" positionX="18" positionY="135" width="128" height="120"/>
         <element name="Leaderboard_db" positionX="36" positionY="171" width="128" height="180"/>
@@ -103,7 +106,7 @@
         <element name="SuspectImage_db" positionX="54" positionY="189" width="128" height="60"/>
         <element name="Suspects_db" positionX="9" positionY="117" width="128" height="120"/>
         <element name="TimeStopperLocation_db" positionX="27" positionY="153" width="128" height="75"/>
-        <element name="TimeStoppers_db" positionX="0" positionY="99" width="128" height="45"/>
+        <element name="TimeStoppers_db" positionX="0" positionY="99" width="128" height="60"/>
         <element name="Witnesses_db_cludeUpp" positionX="18" positionY="72" width="128" height="240"/>
         <element name="WitnessImage_db" positionX="27" positionY="162" width="128" height="60"/>
         <element name="WitnessLocation_db" positionX="54" positionY="180" width="128" height="75"/>

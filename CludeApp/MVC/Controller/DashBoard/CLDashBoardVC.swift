@@ -29,12 +29,17 @@ class CLDashBoardVC: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         
     NotificationCenter.default.addObserver(self, selector: #selector(terminationNotification(_:)), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
 
      NotificationCenter.default.addObserver(self, selector: #selector(addCannotFoundSeconds(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil)
+        
       NotificationCenter.default.addObserver(self, selector: #selector(addhintSeconds(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.hint), object: nil)
+        
+      NotificationCenter.default.addObserver(self, selector: #selector(pauseTimeForFiveMinute(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil)
         
         totalSeconds = (event_local?.timeConsume)!
         
@@ -113,7 +118,7 @@ class CLDashBoardVC: UIViewController {
                 }
             }else if index == 5{
             
-                self.showCaseNotePopUp(from: self,text :(self.event_local?.caseNotes)!, testinomy:false,imgID:"",name:"")
+                self.showCaseNotePopUp(from: self,text :(self.event_local?.caseNotes)!, testinomy:false,imgID:"",name:"",showHint:true,hint:"")
                 
             }else if index == 2{
                 
@@ -137,7 +142,6 @@ class CLDashBoardVC: UIViewController {
     
     func submitSolutions(){
         let remainingWitness = (self.event_local?.witnesses?.allObjects as! [Witnesses_db_cludeUpp]).filter({$0.introgatted == false})
-        
         
         if remainingWitness.count > 0 {
             self.showSubmitPopUp(from: self, wrongAns: false)
@@ -189,7 +193,7 @@ class CLDashBoardVC: UIViewController {
                         CorrectSolutionAlertView.show(in: self.view,
                                 description: (self.event_local?.outcome)!, actionBlock: { (action) in
                                                 
-                            if action == CorrectSolutionAlertView.Action.GetAnswers{
+                            if action == 0{
                                                                                 
                                     let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
                                     aViewController.pdfUrl = CLConstant.witnessBaseURL + (self.event_local?.pdfSolution)!
@@ -199,24 +203,26 @@ class CLDashBoardVC: UIViewController {
                                                                            animated: true,
                                                                            completion: nil)
                                             }
-                            } else if action == CorrectSolutionAlertView.Action.SeeLeaderBoard {
-                                
-                                let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
-                                
-                                aViewController.eventID = self.event_local?.id
-                                
-                                DispatchQueue.main.async {
+                            }
                                     
-                                    self.navigationController?.pushViewController(aViewController,
-                                                                                  animated: true)
-                                }
-
-                            } else if action == CorrectSolutionAlertView.Action.Share {
-                                
-                                self.shareEvent()
-                                }
                                     
-                            })
+                                    
+                                    if action == 1{
+                                    
+                                        let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
+                                        
+                                        aViewController.eventID = self.event_local?.id
+                                        
+                                        DispatchQueue.main.async {
+                                            
+                                           self.navigationController?.pushViewController(aViewController,
+                                                                                         animated: true)
+                                        }
+                                    
+                                    }
+                                    
+                                    
+                                    })
                                     return
                                     }else{
                                     self.showSubmitPopUp(from: self, title: "OOPS!", message: (error?.localizedDescription)!)
@@ -306,13 +312,7 @@ class CLDashBoardVC: UIViewController {
     }
     
     
-    func shareEvent() {
-        let shareString = "I just solved a case! \n\n http://www.cluedupp.com"
-        let shareController = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
-        DispatchQueue.main.async {
-            self.present(shareController, animated: true, completion: nil)
-        }
-    }
+    
     
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -422,12 +422,26 @@ extension CLDashBoardVC{
     }
     
     func addhintSeconds(_ notif:NSNotification)->Void{
+        
         self.totalSeconds = self.totalSeconds + 300
         event_local?.timeConsume = self.totalSeconds
         event_local?.delayTime = (event_local?.delayTime)! + Double(300)
         CLConstant.delegatObj.appDelegate.saveMagicalContext()
         
     }
+    
+    
+    func pauseTimeForFiveMinute(_ notif:NSNotification)->Void{
+        
+        self.timerCountdown.invalidate()
+        self.insertSecondToDataBase()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 300) {
+            self.runTimer()
+        }
+        
+    }
+    
     
 }
 

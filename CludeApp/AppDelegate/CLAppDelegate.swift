@@ -23,6 +23,7 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
     let locationManager =  CLLocationManager()
 
     var questionAlreadyinWindow:Bool = false
+    var timeStopperShow:Bool = false
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -39,7 +40,7 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
         MagicalRecord.setupCoreDataStack(withAutoMigratingSqliteStoreNamed: "CludeApp.sqlite")
 
         
-        ///FLEXManager.shared().showExplorer()
+        FLEXManager.shared().showExplorer()
         
         saveMagicalContext()
 

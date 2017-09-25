@@ -88,10 +88,7 @@ class CorrectSolutionAlertView: UIView {
         case GetAnswers, SeeLeaderBoard, Share
     }
     
-    
     var action:((Action)->Void)?
-    
-    
     
     var _description = "" {
         didSet {

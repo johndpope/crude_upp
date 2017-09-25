@@ -28,6 +28,12 @@
 		C80C3A401F6D043B004F7783 /* CLOptionTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80C3A3E1F6D043B004F7783 /* CLOptionTblCell.xib */; };
 		C8155E2F1F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8155E2D1F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataClass.swift */; };
 		C8155E301F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8155E2E1F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataProperties.swift */; };
+		C82427471F7A510800B5A662 /* Event_db_cludeUpp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82427451F7A510800B5A662 /* Event_db_cludeUpp+CoreDataClass.swift */; };
+		C82427481F7A510800B5A662 /* Event_db_cludeUpp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82427461F7A510800B5A662 /* Event_db_cludeUpp+CoreDataProperties.swift */; };
+		C824274E1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C824274A1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataClass.swift */; };
+		C824274F1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C824274B1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataProperties.swift */; };
+		C82427501F7A510F00B5A662 /* TimeStoppers_db+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C824274C1F7A510F00B5A662 /* TimeStoppers_db+CoreDataClass.swift */; };
+		C82427511F7A510F00B5A662 /* TimeStoppers_db+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C824274D1F7A510F00B5A662 /* TimeStoppers_db+CoreDataProperties.swift */; };
 		C82A4F9F1F5E65BA00FD1E25 /* CLMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82A4F9D1F5E65BA00FD1E25 /* CLMapView.swift */; };
 		C82A4FA01F5E65BA00FD1E25 /* CLMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C82A4F9E1F5E65BA00FD1E25 /* CLMapView.xib */; };
 		C82A4FA21F5E681200FD1E25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C82A4FA11F5E681200FD1E25 /* GoogleService-Info.plist */; };
@@ -51,8 +57,6 @@
 		C83C30981F67A9FE000C43FA /* UICollectionView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83C30971F67A9FE000C43FA /* UICollectionView+Layout.swift */; };
 		C84BE3121F6BABC600C10AD5 /* RKCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C84BE3111F6BABC600C10AD5 /* RKCalloutView.xib */; };
 		C84BE3141F6BABE000C10AD5 /* RKCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BE3131F6BABE000C10AD5 /* RKCalloutView.swift */; };
-		C84BE31F1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BE31D1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataClass.swift */; };
-		C84BE3201F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BE31E1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataProperties.swift */; };
 		C84BE32A1F6BCA5800C10AD5 /* WitnessLocation_db+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BE3281F6BCA5800C10AD5 /* WitnessLocation_db+CoreDataClass.swift */; };
 		C84BE32B1F6BCA5800C10AD5 /* WitnessLocation_db+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BE3291F6BCA5800C10AD5 /* WitnessLocation_db+CoreDataProperties.swift */; };
 		C84BE3311F6BCC6C00C10AD5 /* Evidences_db+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BE32D1F6BCC6C00C10AD5 /* Evidences_db+CoreDataClass.swift */; };
@@ -164,6 +168,12 @@
 		C80C3A3E1F6D043B004F7783 /* CLOptionTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CLOptionTblCell.xib; path = MVC/View/RKPinView/CLOptionTblCell.xib; sourceTree = "<group>"; };
 		C8155E2D1F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WitnessImage_db+CoreDataClass.swift"; path = "coreData/Witnesses/WitnessImage_db+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C8155E2E1F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WitnessImage_db+CoreDataProperties.swift"; path = "coreData/Witnesses/WitnessImage_db+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C82427451F7A510800B5A662 /* Event_db_cludeUpp+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event_db_cludeUpp+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C82427461F7A510800B5A662 /* Event_db_cludeUpp+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event_db_cludeUpp+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C824274A1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeStopperLocation_db+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C824274B1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeStopperLocation_db+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C824274C1F7A510F00B5A662 /* TimeStoppers_db+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeStoppers_db+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C824274D1F7A510F00B5A662 /* TimeStoppers_db+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeStoppers_db+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C82A4F9D1F5E65BA00FD1E25 /* CLMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLMapView.swift; sourceTree = "<group>"; };
 		C82A4F9E1F5E65BA00FD1E25 /* CLMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLMapView.xib; sourceTree = "<group>"; };
 		C82A4FA11F5E681200FD1E25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -188,8 +198,6 @@
 		C84BE3111F6BABC600C10AD5 /* RKCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RKCalloutView.xib; path = MVC/View/RKPinView/RKCalloutView.xib; sourceTree = "<group>"; };
 		C84BE3131F6BABE000C10AD5 /* RKCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RKCalloutView.swift; path = MVC/View/RKPinView/RKCalloutView.swift; sourceTree = "<group>"; };
 		C84BE3151F6BB8B200C10AD5 /* CludeApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CludeApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		C84BE31D1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_db_cludeUpp+CoreDataClass.swift"; path = "coreData/Event/Event_db_cludeUpp+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C84BE31E1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_db_cludeUpp+CoreDataProperties.swift"; path = "coreData/Event/Event_db_cludeUpp+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C84BE3281F6BCA5800C10AD5 /* WitnessLocation_db+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WitnessLocation_db+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C84BE3291F6BCA5800C10AD5 /* WitnessLocation_db+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WitnessLocation_db+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C84BE32D1F6BCC6C00C10AD5 /* Evidences_db+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Evidences_db+CoreDataClass.swift"; path = "coreData/Evidence/Evidences_db+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -344,6 +352,18 @@
 			name = CustomAlert;
 			sourceTree = "<group>";
 		};
+		C82427491F7A510F00B5A662 /* timeStopper */ = {
+			isa = PBXGroup;
+			children = (
+				C824274A1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataClass.swift */,
+				C824274B1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataProperties.swift */,
+				C824274C1F7A510F00B5A662 /* TimeStoppers_db+CoreDataClass.swift */,
+				C824274D1F7A510F00B5A662 /* TimeStoppers_db+CoreDataProperties.swift */,
+			);
+			name = timeStopper;
+			path = coreData/timeStopper;
+			sourceTree = "<group>";
+		};
 		C82A4F9C1F5E65BA00FD1E25 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,8 +422,8 @@
 		C84BE3211F6BBAF700C10AD5 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				C84BE31D1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataClass.swift */,
-				C84BE31E1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataProperties.swift */,
+				C82427451F7A510800B5A662 /* Event_db_cludeUpp+CoreDataClass.swift */,
+				C82427461F7A510800B5A662 /* Event_db_cludeUpp+CoreDataProperties.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -457,6 +477,7 @@
 		C8617A741F68FAE700CE9B33 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				C82427491F7A510F00B5A662 /* timeStopper */,
 				C84BE3451F6C604600C10AD5 /* Suspects */,
 				C84BE32C1F6BCC2900C10AD5 /* Evidence */,
 				C84BE3271F6BCA3600C10AD5 /* witnessLocation */,
@@ -869,7 +890,7 @@
 				C82A4FC91F5E7A1900FD1E25 /* Evidences.swift in Sources */,
 				C8644FE61F5BEC6200777F62 /* CLNewEventVC.swift in Sources */,
 				C80472611F65254A00C203DB /* RKPinView.swift in Sources */,
-				C84BE3201F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataProperties.swift in Sources */,
+				C824274F1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataProperties.swift in Sources */,
 				C8644FE81F5BF32100777F62 /* CLRoundView.swift in Sources */,
 				C84BE3421F6C559200C10AD5 /* CLEventResumeVC.swift in Sources */,
 				C82A4FC81F5E7A1900FD1E25 /* EventList.swift in Sources */,
@@ -878,6 +899,7 @@
 				C83C30981F67A9FE000C43FA /* UICollectionView+Layout.swift in Sources */,
 				C8644F5F1F5BB95B00777F62 /* CLAppDelegate.swift in Sources */,
 				C84BE33C1F6C52D000C10AD5 /* WitnessOption_db+CoreDataProperties.swift in Sources */,
+				C82427481F7A510800B5A662 /* Event_db_cludeUpp+CoreDataProperties.swift in Sources */,
 				C84BE3541F6C60CF00C10AD5 /* Suspects_db+CoreDataClass.swift in Sources */,
 				C82A4FCE1F5E7A1900FD1E25 /* Question.swift in Sources */,
 				C82A4FCA1F5E7A1900FD1E25 /* Image.swift in Sources */,
@@ -887,6 +909,7 @@
 				C82A4FD11F5E7A1900FD1E25 /* TimeStoppers.swift in Sources */,
 				C82A4FCB1F5E7A1900FD1E25 /* Leaderboard.swift in Sources */,
 				C8155E301F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataProperties.swift in Sources */,
+				C824274E1F7A510F00B5A662 /* TimeStopperLocation_db+CoreDataClass.swift in Sources */,
 				C84BE33F1F6C533400C10AD5 /* Witnesses_db_cludeUpp+CoreDataClass.swift in Sources */,
 				C8644FFA1F5C075F00777F62 /* CLDashBoardTblVC.swift in Sources */,
 				C80C3A3F1F6D043B004F7783 /* CLOptionTblCell.swift in Sources */,
@@ -894,6 +917,7 @@
 				C83C30941F67A757000C43FA /* CLEvidenceVC.swift in Sources */,
 				C82A4FD21F5E7A1900FD1E25 /* Witnesses.swift in Sources */,
 				C82A4FCC1F5E7A1900FD1E25 /* Location.swift in Sources */,
+				C82427501F7A510F00B5A662 /* TimeStoppers_db+CoreDataClass.swift in Sources */,
 				C80472661F652AF400C203DB /* CLCustomAlert.swift in Sources */,
 				C82A4FBC1F5E79E200FD1E25 /* CLApiManager.swift in Sources */,
 				C82A4FCD1F5E7A1900FD1E25 /* Options.swift in Sources */,
@@ -906,7 +930,6 @@
 				C8644FE21F5BE15300777F62 /* CLMainTblVC.swift in Sources */,
 				C82A4F9F1F5E65BA00FD1E25 /* CLMapView.swift in Sources */,
 				C84BE3401F6C533400C10AD5 /* Witnesses_db_cludeUpp+CoreDataProperties.swift in Sources */,
-				C84BE31F1F6BBAF200C10AD5 /* Event_db_cludeUpp+CoreDataClass.swift in Sources */,
 				C82A4FD71F5E8DF500FD1E25 /* CLAddVoucherView.swift in Sources */,
 				C84BE3531F6C60CF00C10AD5 /* SuspectImage_db+CoreDataProperties.swift in Sources */,
 				C8155E2F1F6C65AD00C3B0C8 /* WitnessImage_db+CoreDataClass.swift in Sources */,
@@ -922,11 +945,13 @@
 				79963BFE1F781CE60013CD89 /* CLLeaderBoardVC.swift in Sources */,
 				C84BE3441F6C577100C10AD5 /* CLResumeEventTblCell.swift in Sources */,
 				C804725A1F650E3E00C203DB /* CLMapListVC.swift in Sources */,
+				C82427471F7A510800B5A662 /* Event_db_cludeUpp+CoreDataClass.swift in Sources */,
 				C84BE33B1F6C52D000C10AD5 /* WitnessOption_db+CoreDataClass.swift in Sources */,
 				79963BFA1F77BB590013CD89 /* DropListView.swift in Sources */,
 				C84BE3521F6C60CF00C10AD5 /* SuspectImage_db+CoreDataClass.swift in Sources */,
 				C84BE3391F6C52D000C10AD5 /* WitnessQue_db+CoreDataClass.swift in Sources */,
 				79963C041F781DD40013CD89 /* LeaderBoards.swift in Sources */,
+				C82427511F7A510F00B5A662 /* TimeStoppers_db+CoreDataProperties.swift in Sources */,
 				C84BE3331F6BCC6C00C10AD5 /* EvidenceImage_db+CoreDataClass.swift in Sources */,
 				C84BE3551F6C60CF00C10AD5 /* Suspects_db+CoreDataProperties.swift in Sources */,
 				C8644FED1F5BF68100777F62 /* CLEventDetailVC.swift in Sources */,

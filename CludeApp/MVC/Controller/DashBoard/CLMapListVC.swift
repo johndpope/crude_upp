@@ -32,7 +32,6 @@ class CLMapListVC: UIViewController {
         self.tblMapList.dataSource = self
         self.tblMapList.delegate   = self
         
-        
     }
     
     @IBAction func back(_ sender: Any) {
@@ -128,7 +127,8 @@ extension CLMapListVC: UITableViewDataSource, UITableViewDelegate{
                                                                       text: (self.witness?[sender.tag].statement)!,
                                                                       testinomy: true,
                                                                       imgID:"",
-                                                                      name:"")
+                                                                      name:"",showHint:(self.witness?[sender.tag].showHint)!,
+                                                                      hint:(self.witness?[sender.tag].hint)!)
                                         }
             })
         }else{
@@ -137,7 +137,9 @@ extension CLMapListVC: UITableViewDataSource, UITableViewDelegate{
                                    text: (self.witness?[sender.tag].statement!)!,
                                    testinomy: true,
                                    imgID:(self.witness?[sender.tag].witnessImage?.id)!,
-                                   name:(self.witness?[sender.tag].name!)!)
+                                   name:(self.witness?[sender.tag].name!)!,
+                                   showHint:(self.witness?[sender.tag].showHint)!,
+                                   hint:(self.witness?[sender.tag].hint)!)
             
         }
     
