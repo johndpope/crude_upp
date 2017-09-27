@@ -37,14 +37,12 @@ public final class LeaderBoards: NSCoding {
     lazy var requestedComponent: Set<Calendar.Component> = [.year,.month,.hour,.minute,.second,.nanosecond]
     
     var timeInHHMMSS: String {
-        let userCalendar = Calendar.current
         
-        let startTime = Date(timeIntervalSince1970: Double(time!))       // let endTime   = Date(timeIntervalSince1970: TimeInterval(endedAt!) + Double(minutesDelay!))
-        let hour = userCalendar.component(.hour, from: startTime)
-        let minutes = userCalendar.component(.minute, from: startTime)
-        let seconds = userCalendar.component(.second, from: startTime)
-     
-        return "\(hour):\(minutes):\(seconds)"
+        let h = (time! / 3600000).truncatingRemainder(dividingBy: 24)
+        let m = (time! / 60000).truncatingRemainder(dividingBy: 60)
+        let s = (time! / 1000).truncatingRemainder(dividingBy: 60)
+        
+        return "\(Int(h)):\(Int(m)):\(Int(s))"
     }
     
     lazy var dateFormattor: DateFormatter = {
