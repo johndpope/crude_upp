@@ -14,6 +14,9 @@ class CLPdfSolutionVC: UIViewController {
     @IBOutlet weak var webViewSolutions: UIWebView!
     
     var pdfUrl:String?
+    var boolTapped:Bool? = false
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +32,17 @@ class CLPdfSolutionVC: UIViewController {
 
     @IBAction func btnBack(_ sender: Any) {
         
-        self.dismiss(animated: true,
-                     completion: nil)
+        
+        if boolTapped! {
+            
+            let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
+            CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
+        }else{
+            self.dismiss(animated: true,
+                         completion: nil)
+
+        }
+        
     }
     
 

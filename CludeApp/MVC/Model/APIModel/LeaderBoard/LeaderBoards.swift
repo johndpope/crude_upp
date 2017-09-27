@@ -34,15 +34,17 @@ public final class LeaderBoards: NSCoding {
     public var endedAtMili: Float?
     public var endedAt: Float?
     
-    lazy var requestedComponent: Set<Calendar.Component> = [.month,.day,.hour,.minute,.second]
+    lazy var requestedComponent: Set<Calendar.Component> = [.year,.month,.hour,.minute,.second,.nanosecond]
     
     var timeInHHMMSS: String {
         let userCalendar = Calendar.current
         
-        let startTime = Date(timeIntervalSince1970: TimeInterval(startedAt!))
-        let endTime = Date(timeIntervalSince1970: TimeInterval(endedAt!))
-        let timeDiff = userCalendar.dateComponents(requestedComponent, from: startTime, to: endTime)
-        return "\(timeDiff.hour!):\(timeDiff.minute!):\(timeDiff.second!)"
+        let startTime = Date(timeIntervalSince1970: Double(time!))       // let endTime   = Date(timeIntervalSince1970: TimeInterval(endedAt!) + Double(minutesDelay!))
+        let hour = userCalendar.component(.hour, from: startTime)
+        let minutes = userCalendar.component(.minute, from: startTime)
+        let seconds = userCalendar.component(.second, from: startTime)
+     
+        return "\(hour):\(minutes):\(seconds)"
     }
     
     lazy var dateFormattor: DateFormatter = {
@@ -53,7 +55,7 @@ public final class LeaderBoards: NSCoding {
     }()
     
     var todayEvent: Bool {
-        let startDateTime = Date(timeIntervalSince1970: TimeInterval(startedAt!))
+        let startDateTime = Date(timeIntervalSince1970: TimeInterval(timestamp!))
         let stDateStr = dateFormattor.string(from: startDateTime)
         let nowDateStr = dateFormattor.string(from: Date())
         

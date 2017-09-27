@@ -15,6 +15,10 @@ class CLEventResumeVC: UIViewController {
     @IBOutlet weak var tblResumeEvent: UITableView!
     @IBOutlet weak var menuPopView: UIView!
     
+    @IBOutlet weak var viewNotFound: UIView!
+   
+    @IBOutlet weak var lblNotFound:UILabel!
+    
     var events = [Event_db_cludeUpp]()
     var boolCompletedEvent:Bool?
     
@@ -23,11 +27,34 @@ class CLEventResumeVC: UIViewController {
         super.viewDidLoad()
         
         if boolCompletedEvent!{
-            let predicate1 = NSPredicate(format: "isCompleted = 0")
+            
+            let predicate1 = NSPredicate(format: "isCompleted = 1")
             events = Event_db_cludeUpp.mr_findAll(with: predicate1) as! [Event_db_cludeUpp]
+            lblNotFound.text = "You have no completed cases."
+
+            if events.count > 0 {
+                self.viewNotFound.isHidden = true
+                self.tblResumeEvent.isHidden = false
+            }else{
+                self.viewNotFound.isHidden = false
+                self.tblResumeEvent.isHidden = true
+
+            }
+            
         }else{
             let predicate = NSPredicate(format: "isCompleted = 0")
             events = Event_db_cludeUpp.mr_findAll(with: predicate) as! [Event_db_cludeUpp]
+            lblNotFound.text = "You have no paused cases."
+
+            if events.count > 0 {
+                self.viewNotFound.isHidden = true
+                self.tblResumeEvent.isHidden = false
+
+            }else{
+                self.viewNotFound.isHidden = false
+                self.tblResumeEvent.isHidden = true
+
+            }
         }
         
         self.tblResumeEvent.dataSource = self

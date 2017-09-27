@@ -65,6 +65,8 @@ public class Event_db_cludeUpp: NSManagedObject {
             //
             //            eventContext.reviews          = event.reviews! as NSObject?
             
+            
+            
             eventContext.caseNotes        = event.caseNotes
             eventContext.timeConsume      = 0
             eventContext.startedAt        = Date().timeIntervalSince1970
@@ -235,13 +237,5 @@ public class Event_db_cludeUpp: NSManagedObject {
 
 
 
-extension Date {
-    
-    func toMillis() -> Int64! {
-        
-        return Int64(self.timeIntervalSince1970 * 1000)
-        
-    }
-    
-}
+
 

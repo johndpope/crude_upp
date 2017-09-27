@@ -12,9 +12,15 @@ class CLLeaderBoardVC: UIViewController {
     
     @IBOutlet weak var tblLeaderBoard: UITableView!
     
+    @IBOutlet weak var btnYear: UIButton!
+    @IBOutlet weak var btnToday: UIButton!
+    
     var eventID:String?
     var leaderBoard = [LeaderBoards]()
     var tempLeaderboardItems = [LeaderBoards]()
+    
+    var boolTapped:Bool? = false
+    
     
     override func viewDidLoad() {
         
@@ -28,10 +34,8 @@ class CLLeaderBoardVC: UIViewController {
                 
             } else if statusCode == 200 {
                 for dicPost in response!.array! {
-                    
                     let leaderBoard = LeaderBoards.init(json: dicPost)
                     self.leaderBoard.append(leaderBoard)
-                    
                 }
                 
                 self.tempLeaderboardItems = self.leaderBoard
@@ -47,12 +51,32 @@ class CLLeaderBoardVC: UIViewController {
         }
         
         
+        self.btnToday.setTitleColor(.white, for: .normal)
+        self.btnToday.backgroundColor = UIColor(colorLiteralRed: 230.0/255.0, green: 10.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        
+        self.btnYear.setTitleColor(.black, for: .normal)
+        self.btnYear.backgroundColor = .white
+        
+        
+        self.leaderBoard = tempLeaderboardItems.filter({$0.todayEvent})
+        self.tblLeaderBoard.reloadData()
+        
+        
         
     }
     
     @IBAction func back(_ sender: Any) {
         
-        _ = self.navigationController?.popViewController(animated: true)
+        if boolTapped! {
+            
+            let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
+            CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
+            
+        }else{
+            _ = self.navigationController?.popViewController(animated: true)
+
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,11 +84,25 @@ class CLLeaderBoardVC: UIViewController {
     }
     
     @IBAction func year_btnClicked(_ sender: UIButton) {
+        
+        self.btnYear.setTitleColor(.white, for: .normal)
+        self.btnYear.backgroundColor = UIColor(colorLiteralRed: 230.0/255.0, green: 10.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        
+        self.btnToday.setTitleColor(.black, for: .normal)
+        self.btnToday.backgroundColor = .white
+        
         self.leaderBoard = tempLeaderboardItems
         self.tblLeaderBoard.reloadData()
     }
     
     @IBAction func today_btnClicked(_ sender: UIButton) {
+        
+        self.btnToday.setTitleColor(.white, for: .normal)
+        self.btnToday.backgroundColor = UIColor(colorLiteralRed: 230.0/255.0, green: 10.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        
+        self.btnYear.setTitleColor(.black, for: .normal)
+        self.btnYear.backgroundColor = .white
+        
         self.leaderBoard = tempLeaderboardItems.filter({$0.todayEvent})
         self.tblLeaderBoard.reloadData()
     }
@@ -85,8 +123,8 @@ extension CLLeaderBoardVC:UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CLLeaderBordTblCell.self)) as! CLLeaderBordTblCell
         let item = leaderBoard[indexPath.row]
         cell.lblTeamName.text = item.name
-        cell.lblRank.text     = "\(item.score!)"
-        cell.lblTime.text = item.timeInHHMMSS
+        cell.lblRank.text     = "\(indexPath.row + 1)"
+        cell.lblTime.text     = item.timeInHHMMSS
         return cell
         
     }

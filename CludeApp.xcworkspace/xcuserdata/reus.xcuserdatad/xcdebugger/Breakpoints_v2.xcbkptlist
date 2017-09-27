@@ -25,14 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CludeApp/MVC/Controller/DashBoard/CLMapVC.swift"
-            timestampString = "527980056.626948"
+            filePath = "CludeApp/MVC/Controller/DashBoard/CLDashBoardVC.swift"
+            timestampString = "528192783.533492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "CLMapVC"
-            landmarkType = "4">
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "submitSolutions()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

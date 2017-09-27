@@ -161,17 +161,41 @@ class CLDashBoardVC: UIViewController {
                         if remainEvidence[0].designation == "1"{
                             
                             event_local?.endedAt = Date().timeIntervalSince1970
-                            CLConstant.delegatObj.appDelegate.saveMagicalContext()
+                            self.insertWhileTerminate()
                             
-                            let time = ((event_local?.endedAt)! - (event_local?.startedAt)!) + (event_local?.delayTime)!
+                            self.timerCountdown.invalidate()
+                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
                             
+                            let date_start = Date(timeIntervalSince1970: (event_local?.startedAt)!)
+                            let date_end   = Date(timeIntervalSince1970: (event_local?.endedAt)!) //current date time
+                            
+                            let milli_dateStart = date_start.millisecondsSince1970
+                            let milli_dateEnd = date_end.millisecondsSince1970
+                            
+                            let time = abs((milli_dateEnd - milli_dateStart) + (Int32(event_local!.delayTime) * 1000))
+
+                            let calendar = NSCalendar.current
+                            
+                            let components_sDate = calendar.dateComponents([.hour,.minute,.second ,.nanosecond], from: date_start)
+                            let nanoSecondsStart = components_sDate.nanosecond!
+                            
+                            let components_eDate = calendar.dateComponents([.hour,.minute,.second ,.nanosecond], from: date_end)
+                            let nanoSecondsEnd = components_eDate.nanosecond!
+
+                            //let time = (abs((nanoSecondsEnd - milli_dateStart)/1000000) + (Int32(event_local!.delayTime) * 1000))
+
+
+ 
+                           // let time = (nanoSecondsEnd! - nanoSecondsStart!) + Int(((event_local?.delayTime)! / 60))
+
                             let params = ["name":(event_local?.teamName)!,
                                           "time":time,
-                                          "startedAt":(event_local?.startedAt)! ,
-                                          "endedAt":(event_local?.endedAt)!,
-                                          "startedAt_mili":(event_local?.startedAt)! * 1000,
-                                          "endedAt_mili":((event_local?.endedAt)! * 1000),
-                                          "minutesDelay":(event_local?.delayTime)!] as! [String : Any]
+                                          "startedAt":nanoSecondsStart! ,
+                                          "endedAt":nanoSecondsEnd!,
+                                          "startedAt_mili":milli_dateStart,
+                                          "endedAt_mili":milli_dateEnd,
+                                          "minutesDelay":((event_local?.delayTime)! / 60 )] as [String : Any] 
                             
                             print(params)
                             //nowDouble*1000
@@ -197,8 +221,8 @@ class CLDashBoardVC: UIViewController {
                                         
                                         let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLPdfSolutionVC.self)) as! CLPdfSolutionVC
                                         aViewController.pdfUrl = CLConstant.witnessBaseURL + (self.event_local?.pdfSolution)!
+                                        aViewController.boolTapped = true
                                         DispatchQueue.main.async {
-                                            
                                             self.navigationController?.present(aViewController,
                                                                                animated: true,
                                                                                completion: nil)
@@ -206,7 +230,7 @@ class CLDashBoardVC: UIViewController {
                                     } else if action == CorrectSolutionAlertView.Action.SeeLeaderBoard {
                                         
                                         let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
-                                        
+                                        aViewController.boolTapped = true
                                         aViewController.eventID = self.event_local?.id
                                         
                                         DispatchQueue.main.async {
@@ -218,6 +242,10 @@ class CLDashBoardVC: UIViewController {
                                     } else if action == CorrectSolutionAlertView.Action.Share {
                                         
                                         self.shareEvent()
+                                    }else{
+                                    
+                                        let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
+                                        CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
                                     }
                                     
                                     })
@@ -258,8 +286,8 @@ class CLDashBoardVC: UIViewController {
     
     func showAlertForIncorrectCombination() {
         
-        let alertData = ConfirmAlertView.AlertData(title: "Incorrect",
-                                                   message: "Sorry Detective - that's the wrong combination, please try again",
+        let alertData = ConfirmAlertView.AlertData(title: "Not Yet",
+                                                   message: "Please visit all witnesses before submitting a solution",
                                                    btnTitle: "CLOSE")
         ConfirmAlertView.show(in: self.view, alertData: alertData) { (action) in
             if action == .ok {
@@ -400,7 +428,6 @@ extension CLDashBoardVC{
         
         event_local?.timeConsume = self.totalSeconds
         CLConstant.delegatObj.appDelegate.saveMagicalContext()
-
        
     }
         
@@ -425,7 +452,6 @@ extension CLDashBoardVC{
         event_local?.timeConsume = self.totalSeconds
         event_local?.delayTime = (event_local?.delayTime)! + Double(900)
         CLConstant.delegatObj.appDelegate.saveMagicalContext()
-        
     }
     
     func addhintSeconds(_ notif:NSNotification)->Void{
@@ -452,6 +478,23 @@ extension CLDashBoardVC{
     
 }
 
+extension Date {
+    var ticks: UInt64 {
+        return UInt64((self.timeIntervalSince1970 + 62_135_596_800) * 10_000_000)
+    }
+    
+    func toMillis() -> Int64! {
+        return Int64(self.timeIntervalSince1970 * 1000)
+    }
+    
+        var millisecondsSince1970:Int {
+            return Int((self.timeIntervalSince1970 * 1000.0).rounded())
+        }
+        
+        init(milliseconds:Int) {
+            self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
+        }
 
+}
 
 

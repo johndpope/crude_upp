@@ -57,7 +57,7 @@ import AudioToolbox
         
         if locationManager.location?.coordinate != nil {
             
-            let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: 12.0)
+            let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: kGMSMaxZoomLevel)
             viewMap.camera = camera
             
             
@@ -71,6 +71,7 @@ import AudioToolbox
             marker.map = viewMap
             marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
             getAddress(marker: marker)*/
+            
             
         }
         
@@ -533,7 +534,7 @@ import AudioToolbox
             self.getDistance()
         }
         
-        self.getTimeStoppperObj(location: locations.first!)
+       // self.getTimeStoppperObj(location: locations.first!)
         
     }
     

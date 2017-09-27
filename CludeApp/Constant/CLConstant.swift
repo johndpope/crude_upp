@@ -71,13 +71,13 @@ class CLConstant: NSObject {
     
     struct Alert {
         
-        static let dashTitle = "Hi, Detective"
+        static let dashTitle = "Hi Detective,"
         static let dashMsg   = "Here's a handy induction video to get you started. Once you've wathced it once, you'll be able to find it again under the \"Instruction\" menu option"
         static let dashButton = "VIEW"
         
-        static let evidMsg  = "Please press on a evidence and hold down to eliminate them from your list."
+        static let evidMsg  = "Please press on a weapon and hold-down to eliminate it from your list."
         static let gotIt = "GOT IT"
-        static let suspectMsg  = "Please press on a suspect and hold down to eliminate them from your list."
+        static let suspectMsg  = "Please press on a suspect and hold-down to eliminate it from your list."
         
         static let startGameTitle = "Start Game Now"
         static let startGameMessage = "If you press the button below your game-timer will start, do you wish to procced?"

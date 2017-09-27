@@ -85,7 +85,7 @@ class CorrectSolutionAlertView: UIView {
     @IBOutlet var txtvDescription: UITextView!
     
     enum Action {
-        case GetAnswers, SeeLeaderBoard, Share
+        case GetAnswers, SeeLeaderBoard, Share,Close
     }
     
     var action:((Action)->Void)?
@@ -137,6 +137,7 @@ class CorrectSolutionAlertView: UIView {
 
     @IBAction func cancelAction(_ sender: UIButton) {
         self.hideWithAnimation()
+        actionBlock?(CorrectSolutionAlertView.Action.Close)
     }
     
     @IBAction func facebook_btnClicked(_ sender: UIButton) {
