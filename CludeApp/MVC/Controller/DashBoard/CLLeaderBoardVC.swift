@@ -39,6 +39,7 @@ class CLLeaderBoardVC: UIViewController {
                 }
                 
                 self.tempLeaderboardItems = self.leaderBoard
+                self.leaderBoard = self.tempLeaderboardItems.filter({$0.checkDate(timeStamp: $0.timestamp!/1000)})
                 DispatchQueue.main.async {
                     self.tblLeaderBoard.reloadData()
                 }
@@ -58,8 +59,8 @@ class CLLeaderBoardVC: UIViewController {
         self.btnYear.backgroundColor = .white
         
         
-        self.leaderBoard = tempLeaderboardItems.filter({$0.todayEvent})
-        self.tblLeaderBoard.reloadData()
+       
+        
         
         
         
@@ -103,7 +104,7 @@ class CLLeaderBoardVC: UIViewController {
         self.btnYear.setTitleColor(.black, for: .normal)
         self.btnYear.backgroundColor = .white
         
-        self.leaderBoard = tempLeaderboardItems.filter({$0.todayEvent})
+        self.leaderBoard = self.tempLeaderboardItems.filter({$0.checkDate(timeStamp: $0.timestamp!/1000)})
         self.tblLeaderBoard.reloadData()
     }
     

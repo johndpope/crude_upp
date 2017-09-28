@@ -144,7 +144,7 @@ class CLDashBoardVC: UIViewController {
         let remainingWitness = (self.event_local?.witnesses?.allObjects as! [Witnesses_db_cludeUpp]).filter({$0.introgatted == false})
         
         if remainingWitness.count > 0 {
-            self.showSubmitPopUp(from: self, wrongAns: false)
+            self.incorrectSolutiosForWitness()
         }else {
             
             let remainSuspects:[Suspects_db]
@@ -275,16 +275,27 @@ class CLDashBoardVC: UIViewController {
             
         }
         
-       // self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
-        
-        
-        //                self.showSubmitPopUp(from:self,wrongAns:false)
-        
-    }
+          }
     
     
     
     func showAlertForIncorrectCombination() {
+        
+        let alertData = ConfirmAlertView.AlertData(title: "Incorrect",
+                                                   message: "Sorry Detective - that the wrong combination, please try again",
+                                                   btnTitle: "CLOSE")
+        ConfirmAlertView.show(in: self.view, alertData: alertData) { (action) in
+            if action == .ok {
+                
+            }
+        }
+
+    }
+    
+    
+    func incorrectSolutiosForWitness(){
+    
+//        Please visit all witnesses before submitting a solution
         
         let alertData = ConfirmAlertView.AlertData(title: "Not Yet",
                                                    message: "Please visit all witnesses before submitting a solution",
@@ -294,7 +305,7 @@ class CLDashBoardVC: UIViewController {
                 
             }
         }
-
+        
     }
    
     

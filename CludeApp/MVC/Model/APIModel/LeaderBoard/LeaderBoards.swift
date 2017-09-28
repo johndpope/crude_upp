@@ -45,19 +45,41 @@ public final class LeaderBoards: NSCoding {
         return "\(Int(h)):\(Int(m)):\(Int(s))"
     }
     
-    lazy var dateFormattor: DateFormatter = {
+    var dateFormattor: DateFormatter = {
         let dateformator = DateFormatter()
         dateformator.dateFormat = "dd/MM/yyyy"
-        dateformator.timeZone = TimeZone(identifier: "UTC")
+        dateformator.timeZone = TimeZone.current
         return dateformator
     }()
     
     var todayEvent: Bool {
-        let startDateTime = Date(timeIntervalSince1970: TimeInterval(timestamp!))
+
+        let startDateTime = Date(timeIntervalSince1970: 1506447604871.0)
         let stDateStr = dateFormattor.string(from: startDateTime)
         let nowDateStr = dateFormattor.string(from: Date())
         
-        return stDateStr == nowDateStr
+        print("TIMESTAMP:\(Double(timestamp!))")
+        print("STARTDATE: \(stDateStr)")
+        print("TODAYDATE: \(nowDateStr)")
+
+        return stDateStr == nowDateStr ? true:false
+        
+    }
+    
+    
+    
+    func checkDate(timeStamp:Int)->Bool{
+    
+        let startDateTime = Date(timeIntervalSince1970: TimeInterval(timeStamp))
+        let stDateStr = dateFormattor.string(from: startDateTime)
+        let nowDateStr = dateFormattor.string(from: Date())
+        
+        print("TIMESTAMP:\(timeStamp)")
+        print("STARTDATE: \(stDateStr)")
+        print("TODAYDATE: \(nowDateStr)")
+        
+        return stDateStr == nowDateStr ? true:false
+        
     }
     
     // MARK: SwiftyJSON Initializers
