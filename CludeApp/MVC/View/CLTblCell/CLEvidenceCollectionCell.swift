@@ -27,7 +27,7 @@ class CLEvidenceCollectionCell: UICollectionViewCell,UIGestureRecognizerDelegate
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
         self.imgEvidence.addGestureRecognizer(longPressRecognizer)
        // self.imgCross.addGestureRecognizer(longPressRecognizer)
-        longPressRecognizer.minimumPressDuration = 1
+        longPressRecognizer.minimumPressDuration = 0.5
         
         
     }

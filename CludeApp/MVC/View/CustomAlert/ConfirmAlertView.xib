@@ -37,18 +37,18 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIS-tH-lV9">
-                            <rect key="frame" x="20" y="63" width="267" height="17.5"/>
+                            <rect key="frame" x="20" y="63" width="267" height="18"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h40-Bc-YBg">
-                            <rect key="frame" x="223" y="93" width="64" height="30"/>
+                            <rect key="frame" x="187" y="93" width="100" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="6aF-xE-AXg"/>
-                                <constraint firstAttribute="width" constant="64" id="An2-5J-JDa"/>
+                                <constraint firstAttribute="width" constant="100" id="An2-5J-JDa"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -83,6 +83,7 @@
             </constraints>
             <connections>
                 <outlet property="actionButton" destination="h40-Bc-YBg" id="ww5-zB-nU1"/>
+                <outlet property="constraintBtnWidht" destination="An2-5J-JDa" id="3tg-PP-sc8"/>
                 <outlet property="lblMessage" destination="ZIS-tH-lV9" id="zm4-0O-wfr"/>
                 <outlet property="lblTitle" destination="Nb6-H2-eVf" id="dch-aQ-uOd"/>
             </connections>

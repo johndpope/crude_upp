@@ -13,6 +13,7 @@ class ConfirmAlertView: UIView {
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var lblMessage: UILabel!
     @IBOutlet var actionButton: UIButton!
+    @IBOutlet weak var constraintBtnWidht: NSLayoutConstraint!
     
     enum Action {
         case ok, cancel
@@ -34,10 +35,17 @@ class ConfirmAlertView: UIView {
     
     var actionBlock: (Action)-> Void = {_ in}
     
-    class func show(in view: UIView, alertData: AlertData, actionBlock:  @escaping (Action)->Void) {
+    
+    
+    class func show(in view: UIView, alertData: AlertData,constant:Bool , actionBlock:  @escaping (Action)->Void) {
         let items  = Bundle.main.loadNibNamed("ConfirmAlertView", owner: nil, options: nil) as! [UIView]
         let cnfrmView = items.first as! ConfirmAlertView
        
+        if constant {
+            
+            cnfrmView.constraintBtnWidht.constant = 200
+        }
+        
         cnfrmView.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
         view.addSubview(cnfrmView)
 

@@ -284,7 +284,7 @@ class CLDashBoardVC: UIViewController {
         let alertData = ConfirmAlertView.AlertData(title: "Incorrect",
                                                    message: "Sorry Detective - that the wrong combination, please try again",
                                                    btnTitle: "CLOSE")
-        ConfirmAlertView.show(in: self.view, alertData: alertData) { (action) in
+        ConfirmAlertView.show(in: self.view, alertData: alertData,constant:false) { (action) in
             if action == .ok {
                 
             }
@@ -300,7 +300,7 @@ class CLDashBoardVC: UIViewController {
         let alertData = ConfirmAlertView.AlertData(title: "Not Yet",
                                                    message: "Please visit all witnesses before submitting a solution",
                                                    btnTitle: "CLOSE")
-        ConfirmAlertView.show(in: self.view, alertData: alertData) { (action) in
+        ConfirmAlertView.show(in: self.view, alertData: alertData, constant:false) { (action) in
             if action == .ok {
                 
             }

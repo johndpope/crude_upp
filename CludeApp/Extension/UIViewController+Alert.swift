@@ -171,6 +171,7 @@ extension UIViewController{
             vocuherPopup.constraintImgWidht.constant = 0
             vocuherPopup.constraintLeadingTitle.constant = 0
             vocuherPopup.constraintGreen.constant = 0
+            vocuherPopup.btnSeeHint.isHidden = true
             
         }else{
             

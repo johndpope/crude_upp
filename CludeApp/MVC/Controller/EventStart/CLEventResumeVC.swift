@@ -76,6 +76,29 @@ class CLEventResumeVC: UIViewController {
 extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if boolCompletedEvent!{
+            if events.count > 0 {
+                self.viewNotFound.isHidden = true
+                self.tblResumeEvent.isHidden = false
+            }else{
+                self.viewNotFound.isHidden = false
+                self.tblResumeEvent.isHidden = true
+                
+            }
+        }else{
+            
+            if events.count > 0 {
+                self.viewNotFound.isHidden = true
+                self.tblResumeEvent.isHidden = false
+                
+            }else{
+                self.viewNotFound.isHidden = false
+                self.tblResumeEvent.isHidden = true
+                
+            }
+        }
+        
         return events.count
     }
     
@@ -135,7 +158,9 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
         let alertData = ConfirmAlertView.AlertData(title: "Are you sure?",
                                                    message: "You are about to delete this game permanetly",
                                                    btnTitle: "I AM SURE, DELETE IT")
-        ConfirmAlertView.show(in: self.view, alertData: alertData) { (action) in
+        
+        
+        ConfirmAlertView.show(in: self.view, alertData: alertData, constant:true) { (action) in
             if action == .ok {
                 let event = self.events[sender.tag]
                 
