@@ -217,8 +217,6 @@ extension UIViewController{
     }
     
     
-    
-    
     func showCoolDownPopUp(from:UIViewController, wrongAns:Bool){
         
         let vocuherPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
@@ -228,7 +226,7 @@ extension UIViewController{
         if wrongAns {
             
             vocuherPopup.lblTitle.text = "Cool-down needed"
-            vocuherPopup.lblMessage.text = "Please wait for at least one minute before re-typing the question."
+            vocuherPopup.lblMessage.text = "Please wait for at least 1 minute before re-trying."
         }
         
         vocuherPopup.dismiss = {(codeVoucher) in

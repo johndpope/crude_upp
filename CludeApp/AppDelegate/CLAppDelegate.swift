@@ -32,7 +32,8 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
         self.locationPermission()
         GMSServices.provideAPIKey(CLConstant.Keys.map)
 
-        
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+
         // magical core data record
         
         //MagicalRecord.setupCoreDataStack(withStoreNamed: "CludeApp")
@@ -108,8 +109,16 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         NSManagedObjectContext.mr_default().mr_saveToPersistentStore(completion: nil)
+        
+        
+        
     }
 
+    
+    
+    
+    
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         NSManagedObjectContext.mr_default().mr_saveToPersistentStore(completion: nil)
     }

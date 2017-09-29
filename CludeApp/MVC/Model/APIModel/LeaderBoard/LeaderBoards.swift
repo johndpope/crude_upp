@@ -42,7 +42,7 @@ public final class LeaderBoards: NSCoding {
         let m = (time! / 60000).truncatingRemainder(dividingBy: 60)
         let s = (time! / 1000).truncatingRemainder(dividingBy: 60)
         
-        return "\(Int(h) > 10 ? "\(Int(h))" : "0\(Int(h))"):\(Int(m) > 10 ? "\(Int(m))" : "0\(Int(m))"):\(Int(s) > 10 ? "\(Int(s))" : "0\(Int(s))")"
+        return "\(Int(h) > 9 ? "\(Int(h))" : "0\(Int(h))"):\(Int(m) > 9 ? "\(Int(m))" : "0\(Int(m))"):\(Int(s) > 9 ? "\(Int(s))" : "0\(Int(s))")"
     }
     
     var dateFormattor: DateFormatter = {

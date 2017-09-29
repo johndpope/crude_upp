@@ -119,11 +119,22 @@ extension CLLeaderBoardVC:UITableViewDataSource, UITableViewDelegate{
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableViewAutomaticDimension
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CLLeaderBordTblCell.self)) as! CLLeaderBordTblCell
         let item = leaderBoard[indexPath.row]
-        cell.lblTeamName.text = item.name
+        cell.lblTeamName.text = item.name!
         cell.lblRank.text     = "\(indexPath.row + 1)"
         cell.lblTime.text     = item.timeInHHMMSS
         return cell

@@ -57,7 +57,7 @@ import AudioToolbox
         
         if locationManager.location?.coordinate != nil {
             
-            let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: kGMSMaxZoomLevel)
+            let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: 20.0)
             viewMap.camera = camera
             
             
@@ -530,7 +530,7 @@ import AudioToolbox
       //  let coordinate = locations.last?.coordinate
 //        let camera = GMSCameraPosition.camera(withLatitude: (coordinate?.latitude)!, longitude: (coordinate?.longitude)!, zoom: 14.0)
 //        viewMap.camera = camera
-        if (self.arrayWitnesses?.count)! > 1 {
+        if (self.arrayWitnesses?.count)! > 0 {
             self.getDistance()
         }
         

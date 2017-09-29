@@ -21,7 +21,8 @@ class CLDashBoardVC: UIViewController {
     var remainingSuspects = Suspects_db()
     var remainingWeapons  = Evidences_db()
     
-    
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+
     var timerCountdown = Timer()
     var totalSeconds:Double = 0
     
@@ -40,6 +41,9 @@ class CLDashBoardVC: UIViewController {
       NotificationCenter.default.addObserver(self, selector: #selector(addhintSeconds(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.hint), object: nil)
         
       NotificationCenter.default.addObserver(self, selector: #selector(pauseTimeForFiveMinute(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil)
+        
+        
+      NotificationCenter.default.addObserver(self, selector: #selector(reinstateBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         totalSeconds = (event_local?.timeConsume)!
         
@@ -140,6 +144,26 @@ class CLDashBoardVC: UIViewController {
     
     
     
+    func registerBackgroundTask() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+        assert(backgroundTask != UIBackgroundTaskInvalid)
+    }
+    
+    func endBackgroundTask() {
+        print("Background task ended.")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid
+    }
+    
+    
+    func reinstateBackgroundTask() {
+        if updateTimer != nil && (backgroundTask == UIBackgroundTaskInvalid) {
+            registerBackgroundTask()
+        }
+    }
+    
     func submitSolutions(){
         let remainingWitness = (self.event_local?.witnesses?.allObjects as! [Witnesses_db_cludeUpp]).filter({$0.introgatted == false})
         
@@ -163,10 +187,6 @@ class CLDashBoardVC: UIViewController {
                             event_local?.endedAt = Date().timeIntervalSince1970
                             self.insertWhileTerminate()
                             
-                            self.timerCountdown.invalidate()
-                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
-                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
-                            
                             let date_start = Date(timeIntervalSince1970: (event_local?.startedAt)!)
                             let date_end   = Date(timeIntervalSince1970: (event_local?.endedAt)!) //current date time
                             
@@ -183,11 +203,7 @@ class CLDashBoardVC: UIViewController {
                             let components_eDate = calendar.dateComponents([.hour,.minute,.second ,.nanosecond], from: date_end)
                             let nanoSecondsEnd = components_eDate.nanosecond!
 
-                            //let time = (abs((nanoSecondsEnd - milli_dateStart)/1000000) + (Int32(event_local!.delayTime) * 1000))
-
-
- 
-                           // let time = (nanoSecondsEnd! - nanoSecondsStart!) + Int(((event_local?.delayTime)! / 60))
+                           
 
                             let params = ["name":(event_local?.teamName)!,
                                           "time":time,
@@ -282,7 +298,7 @@ class CLDashBoardVC: UIViewController {
     func showAlertForIncorrectCombination() {
         
         let alertData = ConfirmAlertView.AlertData(title: "Incorrect",
-                                                   message: "Sorry Detective - that the wrong combination, please try again",
+                                                   message: "Sorry Detective - That's the wrong combination, please try again",
                                                    btnTitle: "CLOSE")
         ConfirmAlertView.show(in: self.view, alertData: alertData,constant:false) { (action) in
             if action == .ok {
@@ -324,8 +340,9 @@ class CLDashBoardVC: UIViewController {
                                     self.runTimer()
                                     self.perform(#selector(self.insertSecondToDataBase),
                                                  with: nil,
-                                                 afterDelay: 20.0)
-                                    
+                                                 afterDelay: 10.0)
+                                    self.registerBackgroundTask()
+
                                     let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLMapVC.self)) as! CLMapVC
                                     aViewController.event_local = self.event_local
                                     DispatchQueue.main.async {
@@ -412,13 +429,16 @@ extension CLDashBoardVC{
         timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
         timerCountdown.fire()
-        
+        self.registerBackgroundTask()
+
     }
     
     
     func updateTimer() {
         
         totalSeconds += 1
+        print(totalSeconds)
+        
         let hours = Int(totalSeconds) / 3600
         let minutes = Int(totalSeconds) / 60 % 60
         let seconds = Int(totalSeconds) % 60

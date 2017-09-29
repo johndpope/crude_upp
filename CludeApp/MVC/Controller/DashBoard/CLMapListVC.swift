@@ -39,12 +39,9 @@ class CLMapListVC: UIViewController {
     }
 
     @IBAction func testomonyBtnClicked(_ sender: UIButton) {
+        
         _ = self.navigationController?.popViewController(animated: true)
         
-        DispatchQueue.main.async {
-            
-            self.protocolWitness?.didTapAtWintess(witness: (self.witness?[sender.tag])!)
-        }
     }
 
     override func didReceiveMemoryWarning() {
