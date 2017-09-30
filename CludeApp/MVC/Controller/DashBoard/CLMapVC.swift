@@ -43,9 +43,22 @@ class CLMapVC: UIViewController {
 
     }
     
-   
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        mapIntrogation?.locationManager.stopUpdatingLocation()
+    }
     
     
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        super.viewDidDisappear(animated)
+        
+        mapIntrogation?.locationManager.stopUpdatingLocation()
+    }
     
     
     

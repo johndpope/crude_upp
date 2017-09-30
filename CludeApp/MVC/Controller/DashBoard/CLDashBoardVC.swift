@@ -44,9 +44,9 @@ class CLDashBoardVC: UIViewController {
       NotificationCenter.default.addObserver(self, selector: #selector(pauseTimeForFiveMinute(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil)
         
         
-      NotificationCenter.default.addObserver(self, selector: #selector(endBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(endBackgroundTask), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(registerBackgroundTask), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+     NotificationCenter.default.addObserver(self, selector: #selector(registerBackgroundTask), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
         totalSeconds = (event_local?.timeConsume)!
         
@@ -59,7 +59,26 @@ class CLDashBoardVC: UIViewController {
         
         if totalSeconds > 0 {
             
+            
+            if  (event_local?.terminateTime)! > Double(0.0) {
+                
+                let context = NSManagedObjectContext.mr_default()
+                
+                event_local?.timeConsume = Date().timeIntervalSince1970 - (event_local?.terminateTime)!
+                event_local?.terminateTime = 0
+                
+                totalSeconds = (event_local?.timeConsume)!
+                
+                context?.mr_saveToPersistentStoreAndWait()
+                
+            }
+            
+            
             self.runTimer()
+            
+            
+            
+            
 //            self.perform(#selector(self.insertSecondToDataBase),
 //                         with: nil,
 //                         afterDelay: 5.0)
@@ -468,6 +487,8 @@ extension CLDashBoardVC{
         
         let context = NSManagedObjectContext.mr_default()
         event_local?.timeConsume = self.totalSeconds
+        event_local?.terminateTime = Date().timeIntervalSince1970
+        
         context?.mr_saveToPersistentStoreAndWait()
        
     }
