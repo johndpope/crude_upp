@@ -21,8 +21,10 @@ class CLDashBoardVC: UIViewController {
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     var timerCountdown = Timer()
     var timerCountdownInsert = Timer()
-
     var totalSeconds:Double = 0
+    
+    var startBackgroundTime:Double = 0
+    var endBackgroundTime:Double   = 0
     
     
     
@@ -34,7 +36,7 @@ class CLDashBoardVC: UIViewController {
         super.viewDidLoad()
         
         
-    NotificationCenter.default.addObserver(self, selector: #selector(terminationNotification(_:)), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+     NotificationCenter.default.addObserver(self, selector: #selector(terminationNotification(_:)), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
 
      NotificationCenter.default.addObserver(self, selector: #selector(addCannotFoundSeconds(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil)
         
@@ -43,7 +45,9 @@ class CLDashBoardVC: UIViewController {
       NotificationCenter.default.addObserver(self, selector: #selector(pauseTimeForFiveMinute(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil)
         
         
-      NotificationCenter.default.addObserver(self, selector: #selector(reinstateBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+//      NotificationCenter.default.addObserver(self, selector: #selector(endBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(registerBackgroundTask), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         totalSeconds = (event_local?.timeConsume)!
         
@@ -145,24 +149,23 @@ class CLDashBoardVC: UIViewController {
     
     
     func registerBackgroundTask() {
-        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            self?.endBackgroundTask()
-        }
-        assert(backgroundTask != UIBackgroundTaskInvalid)
+        
+        self.startBackgroundTime = Date().timeIntervalSince1970
+        
     }
     
     func endBackgroundTask() {
-        print("Background task ended.")
-        UIApplication.shared.endBackgroundTask(backgroundTask)
-        backgroundTask = UIBackgroundTaskInvalid
+       
+        let  diffrenceSeconds = (Date(timeIntervalSince1970: self.startBackgroundTime) .timeIntervalSince(Date(timeIntervalSince1970: Date().timeIntervalSince1970)))
+        
+        self.totalSeconds = self.totalSeconds + diffrenceSeconds
+        self.insertWhileTerminate()
+
+        self.startBackgroundTime = 0
+        runTimer()
     }
     
     
-    func reinstateBackgroundTask() {
-        //if updateTimer != nil && (backgroundTask == UIBackgroundTaskInvalid) {
-            registerBackgroundTask()
-        //}
-    }
     
     func submitSolutions(){
         let remainingWitness = (self.event_local?.witnesses?.allObjects as! [Witnesses_db_cludeUpp]).filter({$0.introgatted == false})
@@ -402,7 +405,8 @@ class CLDashBoardVC: UIViewController {
         UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
         
         self.insertWhileTerminate()
-
+        
+        NotificationCenter.default.removeObserver(self)
         
         let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
         CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
@@ -429,7 +433,7 @@ extension CLDashBoardVC{
 
     func runTimer() {
         
-        timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         timerCountdown.fire()
         
         self.registerBackgroundTask()
@@ -440,9 +444,8 @@ extension CLDashBoardVC{
     func updateTimer() {
         
         totalSeconds += 1
-        print(totalSeconds)
         
-        let hours = Int(totalSeconds) / 3600
+        let hours   = Int(totalSeconds) / 3600
         let minutes = Int(totalSeconds) / 60 % 60
         let seconds = Int(totalSeconds) % 60
         
@@ -452,7 +455,6 @@ extension CLDashBoardVC{
         event_local?.timeConsume = self.totalSeconds
         context?.mr_saveToPersistentStoreAndWait()
         
-//        event_local?.timeConsume = self.totalSeconds
     }
     
     
@@ -480,10 +482,7 @@ extension CLDashBoardVC{
         let context = NSManagedObjectContext.mr_default()
         event_local?.timeConsume = self.totalSeconds
         context?.mr_saveToPersistentStoreAndWait()
-        
-//        self.perform(#selector(insertSecondToDataBase),
-//                     with: nil,
-//                     afterDelay: 10.0)
+
     }
 
     

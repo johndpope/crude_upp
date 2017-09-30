@@ -13,7 +13,6 @@ import IQKeyboardManagerSwift
 import MagicalRecord
 import FLEX
 
-
 let _appDelegate = UIApplication.shared.delegate as! CLAppDelegate
 
 @UIApplicationMain
@@ -27,6 +26,7 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
 
     var questionAlreadyinWindow:Bool = false
     var timeStopperShow:Bool = false
+    
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -112,26 +112,18 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         NSManagedObjectContext.mr_default().mr_saveToPersistentStore(completion: nil)
-        
-        
-        
     }
 
-    
-    
-    
-    
-    
     func applicationWillEnterForeground(_ application: UIApplication) {
         NSManagedObjectContext.mr_default().mr_saveToPersistentStore(completion: nil)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-//        NotificationCenter.default.post(name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+        
         self.saveMagicalContext()
     }
 
