@@ -35,7 +35,6 @@ class CLDashBoardVC: UIViewController {
         
         super.viewDidLoad()
         
-        
      NotificationCenter.default.addObserver(self, selector: #selector(terminationNotification(_:)), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
 
      NotificationCenter.default.addObserver(self, selector: #selector(addCannotFoundSeconds(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil)
@@ -45,9 +44,9 @@ class CLDashBoardVC: UIViewController {
       NotificationCenter.default.addObserver(self, selector: #selector(pauseTimeForFiveMinute(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil)
         
         
-//      NotificationCenter.default.addObserver(self, selector: #selector(endBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-//        
-//        NotificationCenter.default.addObserver(self, selector: #selector(registerBackgroundTask), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+      NotificationCenter.default.addObserver(self, selector: #selector(endBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(registerBackgroundTask), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
         totalSeconds = (event_local?.timeConsume)!
         
@@ -150,19 +149,20 @@ class CLDashBoardVC: UIViewController {
     
     func registerBackgroundTask() {
         
+        self.timerCountdown.invalidate()
         self.startBackgroundTime = Date().timeIntervalSince1970
         
     }
     
     func endBackgroundTask() {
        
-        let  diffrenceSeconds = (Date(timeIntervalSince1970: self.startBackgroundTime) .timeIntervalSince(Date(timeIntervalSince1970: Date().timeIntervalSince1970)))
         
+        self.timerCountdown.invalidate()
+        let  diffrenceSeconds = Date().timeIntervalSince1970 - startBackgroundTime
         self.totalSeconds = self.totalSeconds + diffrenceSeconds
         self.insertWhileTerminate()
-
         self.startBackgroundTime = 0
-        runTimer()
+        self.runTimer()
     }
     
     
@@ -344,7 +344,6 @@ class CLDashBoardVC: UIViewController {
                                     self.perform(#selector(self.insertSecondToDataBase),
                                                  with: nil,
                                                  afterDelay: 10.0)
-                                    self.registerBackgroundTask()
 
                                     let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLMapVC.self)) as! CLMapVC
                                     aViewController.event_local = self.event_local
@@ -435,8 +434,6 @@ extension CLDashBoardVC{
         
         timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         timerCountdown.fire()
-        
-        self.registerBackgroundTask()
 
     }
     
