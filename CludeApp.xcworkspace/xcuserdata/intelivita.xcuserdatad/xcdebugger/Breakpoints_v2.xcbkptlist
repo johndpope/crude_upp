@@ -26,12 +26,12 @@
                   moduleName = "CludeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
-                  timestampString = "528451057.421786"
+                  timestampString = "528454936.44361"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
                   endingLineNumber = "69"
-                  offsetFromSymbolStart = "786">
+                  offsetFromSymbolStart = "584">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "CludeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
-                  timestampString = "528451057.424567"
+                  timestampString = "528454936.446576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
                   endingLineNumber = "69"
-                  offsetFromSymbolStart = "841">
+                  offsetFromSymbolStart = "624">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -106,12 +106,12 @@
                   moduleName = "CludeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/View/Map/CLMapView.swift"
-                  timestampString = "528451057.440743"
+                  timestampString = "528454936.461234"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "630"
-                  endingLineNumber = "630"
-                  offsetFromSymbolStart = "3311">
+                  startingLineNumber = "641"
+                  endingLineNumber = "641"
+                  offsetFromSymbolStart = "2780">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,12 +121,12 @@
                   moduleName = "CludeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/View/Map/CLMapView.swift"
-                  timestampString = "528451057.44337"
+                  timestampString = "528454936.463413"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "630"
-                  endingLineNumber = "630"
-                  offsetFromSymbolStart = "3692">
+                  startingLineNumber = "641"
+                  endingLineNumber = "641"
+                  offsetFromSymbolStart = "3108">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -144,6 +144,22 @@
             startingLineNumber = "576"
             endingLineNumber = "576"
             landmarkName = "getDistance()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/Controller/DashBoard/CLDashBoardVC.swift"
+            timestampString = "528454739.249856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
+            landmarkName = "terminationNotification(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

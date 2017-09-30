@@ -64,7 +64,7 @@ class CLDashBoardVC: UIViewController {
                 
                 let context = NSManagedObjectContext.mr_default()
                 
-                event_local?.timeConsume = Date().timeIntervalSince1970 - (event_local?.terminateTime)!
+                event_local?.timeConsume = (event_local?.timeConsume)! + Date().timeIntervalSince1970 - (event_local?.terminateTime)!
                 event_local?.terminateTime = 0
                 
                 totalSeconds = (event_local?.timeConsume)!
