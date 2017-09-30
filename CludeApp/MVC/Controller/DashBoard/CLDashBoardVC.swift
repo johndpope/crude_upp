@@ -16,15 +16,15 @@ class CLDashBoardVC: UIViewController {
     var dashBoardTblVC:CLDashBoardTblVC?
     var event:EventList?
     var event_local:Event_db_cludeUpp?
-    
-    
     var remainingSuspects = Suspects_db()
     var remainingWeapons  = Evidences_db()
-    
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
-
     var timerCountdown = Timer()
+    var timerCountdownInsert = Timer()
+
     var totalSeconds:Double = 0
+    
+    
     
     @IBOutlet weak var lblTime: UILabel!
     
@@ -57,9 +57,9 @@ class CLDashBoardVC: UIViewController {
         if totalSeconds > 0 {
             
             self.runTimer()
-            self.perform(#selector(self.insertSecondToDataBase),
-                         with: nil,
-                         afterDelay: 20.0)
+//            self.perform(#selector(self.insertSecondToDataBase),
+//                         with: nil,
+//                         afterDelay: 5.0)
         }
         
         
@@ -159,9 +159,9 @@ class CLDashBoardVC: UIViewController {
     
     
     func reinstateBackgroundTask() {
-        if updateTimer != nil && (backgroundTask == UIBackgroundTaskInvalid) {
+        //if updateTimer != nil && (backgroundTask == UIBackgroundTaskInvalid) {
             registerBackgroundTask()
-        }
+        //}
     }
     
     func submitSolutions(){
@@ -357,6 +357,7 @@ class CLDashBoardVC: UIViewController {
             
             let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLMapVC.self)) as! CLMapVC
             aViewController.event_local = self.event_local
+            
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(aViewController, animated: true)
             }
@@ -381,7 +382,7 @@ class CLDashBoardVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         
         super.viewDidDisappear(animated)
-        self.insertWhileTerminate()
+        //self.insertWhileTerminate()
 
     }
     
@@ -399,6 +400,8 @@ class CLDashBoardVC: UIViewController {
         
         UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
         UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+        
+        self.insertWhileTerminate()
 
         
         let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
@@ -427,8 +430,8 @@ extension CLDashBoardVC{
     func runTimer() {
         
         timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
         timerCountdown.fire()
+        
         self.registerBackgroundTask()
 
     }
@@ -444,21 +447,29 @@ extension CLDashBoardVC{
         let seconds = Int(totalSeconds) % 60
         
         self.lblTime.text = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+
+        let context = NSManagedObjectContext.mr_default()
         event_local?.timeConsume = self.totalSeconds
+        context?.mr_saveToPersistentStoreAndWait()
+        
+//        event_local?.timeConsume = self.totalSeconds
     }
     
     
     
     func insertWhileTerminate(){
     
+        let context = NSManagedObjectContext.mr_default()
         event_local?.timeConsume = self.totalSeconds
-        CLConstant.delegatObj.appDelegate.saveMagicalContext()
+        context?.mr_saveToPersistentStoreAndWait()
+
     }
     
     func terminationNotification(_ notification: NSNotification) -> Void {
         
+        let context = NSManagedObjectContext.mr_default()
         event_local?.timeConsume = self.totalSeconds
-        CLConstant.delegatObj.appDelegate.saveMagicalContext()
+        context?.mr_saveToPersistentStoreAndWait()
        
     }
         
@@ -466,12 +477,13 @@ extension CLDashBoardVC{
     
     func insertSecondToDataBase(){
     
+        let context = NSManagedObjectContext.mr_default()
         event_local?.timeConsume = self.totalSeconds
-        CLConstant.delegatObj.appDelegate.saveMagicalContext()
+        context?.mr_saveToPersistentStoreAndWait()
         
-        self.perform(#selector(insertSecondToDataBase),
-                     with: nil,
-                     afterDelay: 20.0)
+//        self.perform(#selector(insertSecondToDataBase),
+//                     with: nil,
+//                     afterDelay: 10.0)
     }
 
     
@@ -480,17 +492,19 @@ extension CLDashBoardVC{
     
     func addCannotFoundSeconds(_ notif:NSNotification)->Void{
         self.totalSeconds = self.totalSeconds + 900
-        event_local?.timeConsume = self.totalSeconds
+        let context = NSManagedObjectContext.mr_default()
         event_local?.delayTime = (event_local?.delayTime)! + Double(900)
-        CLConstant.delegatObj.appDelegate.saveMagicalContext()
+        event_local?.timeConsume = self.totalSeconds
+        context?.mr_saveToPersistentStoreAndWait()
     }
     
     func addhintSeconds(_ notif:NSNotification)->Void{
         
         self.totalSeconds = self.totalSeconds + 300
+        let context = NSManagedObjectContext.mr_default()
+        event_local?.delayTime = (event_local?.delayTime)! + Double(900)
         event_local?.timeConsume = self.totalSeconds
-        event_local?.delayTime = (event_local?.delayTime)! + Double(300)
-        CLConstant.delegatObj.appDelegate.saveMagicalContext()
+        context?.mr_saveToPersistentStoreAndWait()
         
     }
     

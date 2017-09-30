@@ -146,6 +146,7 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
             let aViewController = CLConstant.storyBoard.dashBoard.instantiateViewController(withIdentifier: String(describing: CLDashBoardVC.self)) as! CLDashBoardVC
             
             aViewController.event_local = events[indexPath.row]
+            
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(aViewController, animated: true)
             }
@@ -197,6 +198,7 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
     }
     
     @IBAction func showLeaderboard_btnClicked(_ sender: UIButton) {
+        
         let envent = events[sender.tag]
         let aViewController = CLConstant.storyBoard.dashBoard.instantiateViewController(withIdentifier: String(describing: CLLeaderBoardVC.self)) as! CLLeaderBoardVC
         
