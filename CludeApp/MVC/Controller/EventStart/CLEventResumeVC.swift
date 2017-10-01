@@ -28,7 +28,7 @@ class CLEventResumeVC: UIViewController {
         
         if boolCompletedEvent!{
             
-            let predicate1 = NSPredicate(format: "isCompleted = 1")
+            let predicate1 = NSPredicate(format: "isCompleted = 0")
             events = Event_db_cludeUpp.mr_findAll(with: predicate1) as! [Event_db_cludeUpp]
             lblNotFound.text = "You have no completed cases."
 
