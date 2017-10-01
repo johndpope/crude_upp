@@ -297,20 +297,16 @@ class CLDashBoardVC: UIViewController {
                             
                         }else{
                             showAlertForIncorrectCombination()
-                           //   self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
                         }
                     }else{
                         showAlertForIncorrectCombination()
-                       // self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
                     }
                     
                 }else{
                     showAlertForIncorrectCombination()
-                    //self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
                 }
             }else{
                 showAlertForIncorrectCombination()
-                //self.showSubmitPopUp(from: self, title: "Not Yet", message: "Combo of suspect and weapon is not correct")
             }
             
         }
