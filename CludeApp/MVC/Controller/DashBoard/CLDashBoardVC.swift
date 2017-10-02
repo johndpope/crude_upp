@@ -498,7 +498,7 @@ extension CLDashBoardVC{
         
         self.totalSeconds = self.totalSeconds + 300
         let context = NSManagedObjectContext.mr_default()
-        event_local?.delayTime = (event_local?.delayTime)! + Double(900)
+        event_local?.delayTime = (event_local?.delayTime)! + Double(300)
         event_local?.timeConsume = self.totalSeconds
         context?.mr_saveToPersistentStoreAndWait()
         
