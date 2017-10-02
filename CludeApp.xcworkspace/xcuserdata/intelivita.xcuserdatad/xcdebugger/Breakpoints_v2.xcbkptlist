@@ -25,8 +25,8 @@
                   symbolName = "CludeApp.Witnesses.dictionaryRepresentation () -&gt; Swift.Dictionary&lt;Swift.String, Any&gt;"
                   moduleName = "CludeApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/intelivita/Desktop/CluedUpp/26-9-2017/crude_upp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
-                  timestampString = "528135256.665581"
+                  urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
+                  timestampString = "528454936.44361"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -40,8 +40,8 @@
                   symbolName = "CludeApp.Witnesses.dictionaryRepresentation () -&gt; Swift.Dictionary&lt;Swift.String, Any&gt;"
                   moduleName = "CludeApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/intelivita/Desktop/CluedUpp/26-9-2017/crude_upp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
-                  timestampString = "528135256.668229"
+                  urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/Model/APIModel/Witnesses.swift"
+                  timestampString = "528454936.446576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -58,44 +58,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CludeApp/MVC/Controller/DashBoard/CLDashBoardVC.swift"
-            timestampString = "528133737.189912"
+            timestampString = "528454289.611618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "427"
-            endingLineNumber = "427"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "submitSolutions()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/Controller/DashBoard/CLDashBoardVC.swift"
+            timestampString = "528454289.611618"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "submitSolutions()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/View/Map/CLMapView.swift"
+            timestampString = "528451633.732132"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "641"
+            endingLineNumber = "641"
+            landmarkName = "getDistance()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.CLMapView.getDistance () -&gt; ()"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/View/Map/CLMapView.swift"
+                  timestampString = "528454936.461234"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "641"
+                  endingLineNumber = "641"
+                  offsetFromSymbolStart = "2780">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.CLMapView.getDistance () -&gt; ()"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/intelivita/Desktop/crude_upp/CludeApp/MVC/View/Map/CLMapView.swift"
+                  timestampString = "528454936.463413"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "641"
+                  endingLineNumber = "641"
+                  offsetFromSymbolStart = "3108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/View/Map/CLMapView.swift"
+            timestampString = "528450668.637641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "576"
+            endingLineNumber = "576"
+            landmarkName = "getDistance()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/Controller/DashBoard/CLDashBoardVC.swift"
+            timestampString = "528454739.249856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
             landmarkName = "terminationNotification(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CludeApp/MVC/Controller/DashBoard/CLDashBoardVC.swift"
-            timestampString = "528133099.115669"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "submitSolutions()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CludeApp/MVC/Controller/DashBoard/CLDashBoardVC.swift"
-            timestampString = "528134951.607974"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "submitSolutions()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

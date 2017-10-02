@@ -72,6 +72,7 @@ public class Event_db_cludeUpp: NSManagedObject {
             eventContext.startedAt        = Date().timeIntervalSince1970
             eventContext.endedAt          = 0
             eventContext.delayTime        = 0
+            eventContext.terminateTime    = 0
             eventContext.isCompleted      = false
             eventContext.outcome          = event.outcome
             eventContext.pdfSolution      = event.pdfSolution

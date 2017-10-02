@@ -33,6 +33,7 @@ extension Event_db_cludeUpp {
     @NSManaged public var teamID: String?
     @NSManaged public var teamName: String?
     @NSManaged public var timeConsume: Double
+    @NSManaged public var terminateTime: Double
     @NSManaged public var updateAt: String?
     @NSManaged public var v: Int16
     @NSManaged public var evidences: NSSet?

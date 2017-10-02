@@ -21,7 +21,8 @@ class CLNewEventVC: UIViewController {
         CLApiManager().getEventList { (code, error, response, statusCode) in
             
             if let error = error {
-                self.showSubmitPopUp(from: self, title: "OOPS!", message: error.localizedDescription)
+                let message = error.code == -1009 ? "The internet connection appears to be offline." : "Something happen wrong."
+                self.showSubmitPopUp(from: self, title: "OOPS!", message: message)
                 
             } else if statusCode == 200 {
                 for dicPost in response!.array! {

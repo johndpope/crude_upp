@@ -567,6 +567,7 @@ import AudioToolbox
         
         self.arrayWitnesses = array?.sorted(by: {$0.distance < $1.distance})
         
+       
         if (self.arrayWitnesses?.count)! > 0 {
             
             let placeObj = self.arrayWitnesses?.first
@@ -583,6 +584,8 @@ import AudioToolbox
                     VC.showQuestionDailougeForWitness(from: VC,
                                                       witness: placeObj!,
                                                       action: { (correct) in
+                                                        
+                                                        
                                                         if correct{
                                                             
                                                             self.changeMarker(witness: placeObj!)
@@ -590,6 +593,9 @@ import AudioToolbox
                                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
                                                                                           execute: {
                                                                                             placeObj?.introgatted = true
+                                                                                            
+
+                                                                                            
                                                                                             self.arrayWitnesses = self.arrayWitnesses?.filter { $0 != placeObj }
                                                                                             
                                                                                             CLConstant.delegatObj.appDelegate.saveMagicalContext()
@@ -619,6 +625,15 @@ import AudioToolbox
                                                             self.VC.showSubmitPopUp(from: self.VC,wrongAns:true)
                                                             
                                                         }
+                                                        
+                                                        
+                                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
+                                                                                      execute: {
+                                                                                        
+                                                                                        CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
+                    
+                                                        })
+                                                        
                                                         
                     })
                 }else{
