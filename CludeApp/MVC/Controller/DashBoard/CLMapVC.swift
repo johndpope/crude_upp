@@ -97,7 +97,11 @@ extension CLMapVC:WitnessTapped{
                                    name:witness.name!,
                                    showHint: witness.showHint,
                                    hint: witness.hint!,
-                                   witnessData: witness)
+                                   witnessData: witness,
+                                   checkWitness: { (succes) in
+                                    
+                                    
+            })
         }
     }
 

@@ -388,7 +388,11 @@ import AudioToolbox
                                           name:"",
                                           showHint:witnessData.showHint,
                                           hint:witnessData.hint!,
-                                          witnessData: witnessData)
+                                          witnessData: witnessData,
+                                          checkWitness: { (succes) in
+                                            
+                                            
+                })
                 
                 
                 let pinView:RKPinView = marker.iconView as! RKPinView
@@ -418,7 +422,11 @@ import AudioToolbox
                                  name: witnessData.name!,
                                  showHint:witnessData.showHint,
                                   hint:witnessData.hint!,
-                                  witnessData: witnessData)
+                                  witnessData: witnessData,
+                                  checkWitness: { (succes) in
+                                    
+                                    
+            })
             
             return nil
             
@@ -464,7 +472,11 @@ import AudioToolbox
                                                                                       name:"",
                                                                                       showHint:witnessData.showHint,
                                                                                        hint:witnessData.hint!,
-                                                                                       witnessData: witnessData)
+                                                                                       witnessData: witnessData,
+                                                                                       checkWitness: { (succes) in
+                                                                                        
+                                                                                        
+                                                            })
                                                             
                                                         }else{
                                                             witnessData.coolDown  = true
@@ -610,7 +622,24 @@ import AudioToolbox
                                                                                       name:"",
                                                                                       showHint:(placeObj?.showHint)!,
                                                                                        hint:(placeObj?.hint!)!,
-                                                                                       witnessData: placeObj!)
+                                                                                       witnessData: placeObj!,
+                                                                                       checkWitness: { (succes) in
+                                                                                        
+                                                                                        self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
+
+                                                                                        if self.arrayWitnesses?.count == 0{
+                                                                                        
+                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+                                                                                            
+                                                                                          
+                                                                                            
+                                                let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
+                                                                                            CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
+                                                                                            
+                                                                                        }
+                                                                                        
+                                                            })
                                                             
                                                         }else{
                                                             

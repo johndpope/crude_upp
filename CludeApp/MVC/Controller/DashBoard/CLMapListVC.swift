@@ -125,7 +125,11 @@ extension CLMapListVC: UITableViewDataSource, UITableViewDelegate{
                                                                       testinomy: true,
                                                                       imgID:"",
                                                                       name:"",showHint:(self.witness?[sender.tag].showHint)!,
-                                                                      hint:(self.witness?[sender.tag].hint)!)
+                                                                      hint:(self.witness?[sender.tag].hint)!,
+                                                                      checkWitness: { (succes) in
+                                                                        
+                                                                        
+                                            })
                                         }
             })
         }else{
@@ -136,7 +140,11 @@ extension CLMapListVC: UITableViewDataSource, UITableViewDelegate{
                                    imgID:(self.witness?[sender.tag].witnessImage?.id)!,
                                    name:(self.witness?[sender.tag].name!)!,
                                    showHint:(self.witness?[sender.tag].showHint)!,
-                                   hint:(self.witness?[sender.tag].hint)!)
+                                   hint:(self.witness?[sender.tag].hint)!,
+                                   checkWitness: { (succes) in
+                                    
+                            
+            })
             
         }
     

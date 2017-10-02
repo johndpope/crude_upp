@@ -48,7 +48,7 @@ extension UIViewController{
         
     }
 
-    func showCaseNotePopUp(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String,showHint:Bool,hint:String){
+    func showCaseNotePopUp(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String,showHint:Bool,hint:String,checkWitness:(_ success:Bool)->Void){
         
         let vocuherPopup = (Bundle.main.loadNibNamed("CLCaseNote",owner : nil,options:nil)?[0] as? UIView) as! CLCaseNote
         
@@ -101,7 +101,11 @@ extension UIViewController{
                 UIView.animate(withDuration: 0.3) {
                     from.view.layoutIfNeeded()
                 }
+                
                 vocuherPopup.removeFromSuperview()
+                
+                
+                
                 
             }, completion: nil)
             
@@ -127,7 +131,7 @@ extension UIViewController{
     
     
     
-    func showCaseNotePopUpHint(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String,showHint:Bool,hint:String,witnessData:Witnesses_db_cludeUpp){
+    func showCaseNotePopUpHint(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String,showHint:Bool,hint:String,witnessData:Witnesses_db_cludeUpp,checkWitness:@escaping (_ success:Bool)->Void){
         
         let vocuherPopup = (Bundle.main.loadNibNamed("CLCaseNote",owner : nil,options:nil)?[0] as? UIView) as! CLCaseNote
         
@@ -198,6 +202,9 @@ extension UIViewController{
                 vocuherPopup.removeFromSuperview()
                 
             }, completion: nil)
+            
+            
+           checkWitness(true)
             
         }
         

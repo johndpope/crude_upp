@@ -144,7 +144,12 @@ class CLDashBoardVC: UIViewController {
                 }
             }else if index == 5{
             
-                self.showCaseNotePopUp(from: self,text :(self.event_local?.caseNotes)!, testinomy:false,imgID:"",name:"",showHint:true,hint:"")
+               
+                
+                self.showCaseNotePopUp(from: self,text :(self.event_local?.caseNotes)!, testinomy:false,imgID:"",name:"",showHint:true,hint:"",checkWitness: { (succes) in
+                    
+                    
+                })
                 
             }else if index == 2{
                 
