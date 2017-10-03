@@ -405,7 +405,6 @@ import AudioToolbox
     
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        return nil
         let witnessData = marker.userData as! Witnesses_db_cludeUpp
         
         if witnessData.introgatted {
@@ -529,7 +528,7 @@ import AudioToolbox
                                                                             }
                                                                             
                 }
-                return nil
+                return infoWindow
                 
             }
             
