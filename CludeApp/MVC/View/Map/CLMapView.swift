@@ -53,8 +53,6 @@ import AudioToolbox
      */
     
     func customizeMap() -> Void {
-        
-        
         if locationManager.location?.coordinate != nil {
             
             let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: 15)
@@ -407,7 +405,7 @@ import AudioToolbox
     
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        
+        return nil
         let witnessData = marker.userData as! Witnesses_db_cludeUpp
         
         if witnessData.introgatted {
@@ -531,7 +529,7 @@ import AudioToolbox
                                                                             }
                                                                             
                 }
-                return infoWindow
+                return nil
                 
             }
             
