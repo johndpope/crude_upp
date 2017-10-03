@@ -49,7 +49,7 @@ class CLMapVC: UIViewController {
         
         super.viewWillAppear(animated)
         
-        mapIntrogation?.locationManager.stopUpdatingLocation()
+        mapIntrogation?.locationManager.startUpdatingLocation()
     }
     
     
