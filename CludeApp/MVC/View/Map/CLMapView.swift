@@ -632,10 +632,10 @@ import AudioToolbox
                                                                                             UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
                                                                                             UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
                                                                                             
-                                                                                          
+                                                                                       self.VC.navigationController?.popViewController(animated: true)
                                                                                             
-                                                let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
-                                                                                            CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
+//                                                let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
+//                                                                                            CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
                                                                                             
                                                                                         }
                                                                                         
