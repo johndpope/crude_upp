@@ -53,11 +53,9 @@ import AudioToolbox
      */
     
     func customizeMap() -> Void {
-        
-        
         if locationManager.location?.coordinate != nil {
             
-            let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: 20.0)
+            let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: 15)
             viewMap.camera = camera
             
             
@@ -360,19 +358,6 @@ import AudioToolbox
         viewMap.selectedMarker = nil
         
         let witnessData = marker.userData as! Witnesses_db_cludeUpp
-//        self.cannotBeFound(witness: witnessData)
-        
-        /*if witness.introgatted {
-         
-         pinView.imgBox.image = #imageLiteral(resourceName: "full_box_green.png")
-         pinView.imgCheck.isHidden = false
-         
-         }else{
-         pinView.imgBox.image = #imageLiteral(resourceName: "full_box.png")
-         pinView.imgCheck.isHidden = true
-         
-         
-         }*/
         VC.showCannotFoundPopup(from: VC) { (success) in
             
             if success{
@@ -391,6 +376,16 @@ import AudioToolbox
                                           witnessData: witnessData,
                                           checkWitness: { (succes) in
                                             
+                                            self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
+                                            
+                                            if self.arrayWitnesses?.count == 0{
+                                                
+                                                UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+                                                UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+                                                
+                                                self.VC.navigationController?.popViewController(animated: true)
+                                                
+                                            }
                                             
                 })
                 
@@ -410,7 +405,6 @@ import AudioToolbox
     
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        
         let witnessData = marker.userData as! Witnesses_db_cludeUpp
         
         if witnessData.introgatted {
@@ -424,7 +418,17 @@ import AudioToolbox
                                   hint:witnessData.hint!,
                                   witnessData: witnessData,
                                   checkWitness: { (succes) in
+                                    self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
                                     
+                                    if self.arrayWitnesses?.count == 0{
+                                        
+                                        UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+                                        UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+                                        
+                                        self.VC.navigationController?.popViewController(animated: true)
+                                        
+                                        
+                                    }
                                     
             })
             
@@ -474,7 +478,17 @@ import AudioToolbox
                                                                                        hint:witnessData.hint!,
                                                                                        witnessData: witnessData,
                                                                                        checkWitness: { (succes) in
+                                                                                        self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
                                                                                         
+                                                                                        if self.arrayWitnesses?.count == 0{
+                                                                                            
+                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+                                                                                            
+                                                                                            self.VC.navigationController?.popViewController(animated: true)
+                                                                                            
+                                                                                            
+                                                                                        }
                                                                                         
                                                             })
                                                             
@@ -632,10 +646,8 @@ import AudioToolbox
                                                                                             UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
                                                                                             UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
                                                                                             
-                                                                                          
+                                                                                       self.VC.navigationController?.popViewController(animated: true)
                                                                                             
-                                                let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
-                                                                                            CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
                                                                                             
                                                                                         }
                                                                                         
