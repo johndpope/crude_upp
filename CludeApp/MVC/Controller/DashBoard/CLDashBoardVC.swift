@@ -233,12 +233,12 @@ class CLDashBoardVC: UIViewController {
                            
 
                             let params = ["name":(event_local?.teamName)!,
-                                          "time":time,
-                                          "startedAt":nanoSecondsStart ,
-                                          "endedAt":nanoSecondsEnd,
-                                          "startedAt_mili":milli_dateStart,
-                                          "endedAt_mili":milli_dateEnd,
-                                          "minutesDelay":((event_local?.delayTime)! / 60 )] as [String : Any]
+                                          "time": "\(time)" ,
+                                          "startedAt":"\(nanoSecondsStart)"  ,
+                                          "endedAt":"\(nanoSecondsEnd)",
+                                          "startedAt_mili": "\(milli_dateStart)",
+                                          "endedAt_mili":milli_dateEnd as NSNumber,
+                                          "minutesDelay":"\(((event_local?.delayTime)! / 60 ))"] as [String : Any]
                             
                             print(params)
                             //nowDouble*1000
