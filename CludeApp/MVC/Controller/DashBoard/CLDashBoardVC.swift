@@ -26,7 +26,7 @@ class CLDashBoardVC: UIViewController {
     var startBackgroundTime:Double = 0
     var endBackgroundTime:Double   = 0
     
-    
+    var isUserStartPlaying = false
     
     @IBOutlet weak var lblTime: UILabel!
     
@@ -35,6 +35,8 @@ class CLDashBoardVC: UIViewController {
         
         super.viewDidLoad()
         
+        isUserStartPlaying = false
+
      NotificationCenter.default.addObserver(self, selector: #selector(terminationNotification(_:)), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
 
      NotificationCenter.default.addObserver(self, selector: #selector(addCannotFoundSeconds(_:)), name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil)
@@ -73,9 +75,8 @@ class CLDashBoardVC: UIViewController {
                 
             }
             
-            
+            isUserStartPlaying = true
             self.runTimer()
-            
             
             
             
@@ -116,7 +117,7 @@ class CLDashBoardVC: UIViewController {
         dashBoardTblVC?.btnTapped = {(index) in
             if index == 0 {
                 
-                self.showStartGamePopup(isShowPopup: self.totalSeconds > 0 ? false : true)
+                self.showStartGamePopup(isShowPopup: !self.isUserStartPlaying )
                 
             }else if index == 4{
             
@@ -180,7 +181,7 @@ class CLDashBoardVC: UIViewController {
     
     func endBackgroundTask() {
        
-        
+    
         self.timerCountdown.invalidate()
         let  diffrenceSeconds = Date().timeIntervalSince1970 - startBackgroundTime
         self.totalSeconds = self.totalSeconds + diffrenceSeconds
@@ -361,7 +362,8 @@ class CLDashBoardVC: UIViewController {
                                message:CLConstant.Alert.startGameMessage,
                                buttonTitle:CLConstant.Alert.startGameButton) { (tapped) in
                                 if tapped{
-                                    
+                                    self.isUserStartPlaying = true
+
                                     self.runTimer()
                                     self.perform(#selector(self.insertSecondToDataBase),
                                                  with: nil,
@@ -453,10 +455,10 @@ extension CLDashBoardVC{
 
 
     func runTimer() {
-        
-        timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        timerCountdown.fire()
-
+        if isUserStartPlaying {
+            timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            timerCountdown.fire()
+        }
     }
     
     
