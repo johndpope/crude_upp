@@ -59,8 +59,9 @@ class CLDashBoardVC: UIViewController {
         self.lblTime.text = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
         
         
-        if totalSeconds > 0 {
-            
+//        if totalSeconds > 0 {
+        if event_local!.isStarted {
+
             
             if  (event_local?.terminateTime)! > Double(0.0) {
                 
@@ -117,7 +118,7 @@ class CLDashBoardVC: UIViewController {
         dashBoardTblVC?.btnTapped = {(index) in
             if index == 0 {
                 
-                self.showStartGamePopup(isShowPopup: !self.isUserStartPlaying )
+                self.showStartGamePopup(isShowPopup: !self.event_local!.isStarted )
                 
             }else if index == 4{
             
@@ -362,7 +363,7 @@ class CLDashBoardVC: UIViewController {
                                message:CLConstant.Alert.startGameMessage,
                                buttonTitle:CLConstant.Alert.startGameButton) { (tapped) in
                                 if tapped{
-                                    self.isUserStartPlaying = true
+                                    self.event_local!.isStarted = true
 
                                     self.runTimer()
                                     self.perform(#selector(self.insertSecondToDataBase),
@@ -455,7 +456,7 @@ extension CLDashBoardVC{
 
 
     func runTimer() {
-        if isUserStartPlaying {
+        if event_local!.isStarted {
             timerCountdown = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
             timerCountdown.fire()
         }

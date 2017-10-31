@@ -26,7 +26,6 @@ class CLLeaderBoardVC: UIViewController {
         
         super.viewDidLoad()
         
-        
         CLApiManager().getLeaderBoard(gameID: eventID!) { (code, error, response, statusCode) in
             
             if let error = error {
@@ -58,13 +57,6 @@ class CLLeaderBoardVC: UIViewController {
         
         self.btnYear.setTitleColor(.black, for: .normal)
         self.btnYear.backgroundColor = .white
-        
-        
-       
-        
-        
-        
-        
     }
     
     @IBAction func back(_ sender: Any) {
