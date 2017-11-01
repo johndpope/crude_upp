@@ -37,14 +37,56 @@ public final class LeaderBoards: NSCoding {
     lazy var requestedComponent: Set<Calendar.Component> = [.year,.month,.hour,.minute,.second,.nanosecond]
     
     var timeInHHMMSS: String {
-        
-        let h = (time! / 3600000).truncatingRemainder(dividingBy: 24)
-        let m = (time! / 60000).truncatingRemainder(dividingBy: 60)
-        let s = (time! / 1000).truncatingRemainder(dividingBy: 60)
-        
+        let miliseconds = Int(self.time!)
+        let minutesTemp = miliseconds / 1000 / 60
+        let h = minutesTemp / 60
+        let m = (miliseconds - h * 60 * 60 * 1000) / 1000 / 60
+        let s = (miliseconds - h * 60 * 60 * 1000 - m * 60 * 1000) / 1000
+
+//        let h = (time! / 3600000).truncatingRemainder(dividingBy: 24)
+//        let m = (time! / 60000).truncatingRemainder(dividingBy: 60)
+//        let s = (time! / 1000).truncatingRemainder(dividingBy: 60)
+//        
         return "\(Int(h) > 9 ? "\(Int(h))" : "0\(Int(h))"):\(Int(m) > 9 ? "\(Int(m))" : "0\(Int(m))"):\(Int(s) > 9 ? "\(Int(s))" : "0\(Int(s))")"
     }
     
+    
+    func convertTime(miliseconds: Int) -> String {
+        
+        var seconds: Int = 0
+        var minutes: Int = 0
+        var hours: Int = 0
+        var days: Int = 0
+        var secondsTemp: Int = 0
+        var minutesTemp: Int = 0
+        var hoursTemp: Int = 0
+        
+        if miliseconds < 1000 {
+            return ""
+        } else if miliseconds < 1000 * 60 {
+            seconds = miliseconds / 1000
+            return "\(seconds) seconds"
+        } else if miliseconds < 1000 * 60 * 60 {
+            secondsTemp = miliseconds / 1000
+            minutes = secondsTemp / 60
+            seconds = (miliseconds - minutes * 60 * 1000) / 1000
+            return "\(minutes) minutes, \(seconds) seconds"
+        } else if miliseconds < 1000 * 60 * 60 * 24 {
+            minutesTemp = miliseconds / 1000 / 60
+            hours = minutesTemp / 60
+            minutes = (miliseconds - hours * 60 * 60 * 1000) / 1000 / 60
+            seconds = (miliseconds - hours * 60 * 60 * 1000 - minutes * 60 * 1000) / 1000
+            return "\(hours) hours, \(minutes) minutes, \(seconds) seconds"
+        } else {
+            hoursTemp = miliseconds / 1000 / 60 / 60
+            days = hoursTemp / 24
+            hours = (miliseconds - days * 24 * 60 * 60 * 1000) / 1000 / 60 / 60
+            minutes = (miliseconds - days * 24 * 60 * 60 * 1000 - hours * 60 * 60 * 1000) / 1000 / 60
+            seconds = (miliseconds - days * 24 * 60 * 60 * 1000 - hours * 60 * 60 * 1000 - minutes * 60 * 1000) / 1000
+            return "\(days) days, \(hours) hours, \(minutes) minutes, \(seconds) seconds"
+        }
+    }
+
     var dateFormattor: DateFormatter = {
         let dateformator = DateFormatter()
         dateformator.dateFormat = "dd/MM/yyyy"

@@ -17,6 +17,38 @@
             endingLineNumber = "78"
             landmarkName = "didIntrogateWitness(witness:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.CLMapVC.btnViewListTapped (Any) -&gt; ()"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikashkumar/Desktop/Projects/CludeUpp/sourcecode/crude_upp/CludeApp/MVC/Controller/DashBoard/CLMapVC.swift"
+                  timestampString = "531218639.717239"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "727">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CludeApp.CLMapVC.(btnViewListTapped (Any) -&gt; ()).(closure #1)"
+                  moduleName = "CludeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikashkumar/Desktop/Projects/CludeUpp/sourcecode/crude_upp/CludeApp/MVC/Controller/DashBoard/CLMapVC.swift"
+                  timestampString = "531218639.719673"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "174">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -49,6 +81,22 @@
             endingLineNumber = "184"
             landmarkName = "endBackgroundTask()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CludeApp/MVC/Model/APIModel/LeaderBoard/LeaderBoards.swift"
+            timestampString = "531226866.543502"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "LeaderBoards"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
