@@ -43,6 +43,7 @@ extension Event_db_cludeUpp {
     @NSManaged public var timeStoppers: NSSet?
     @NSManaged public var witnesses: NSSet?
     @NSManaged public var timeStoppersLocation: NSSet?
+    @NSManaged public var isStarted: Bool
 
 }
 

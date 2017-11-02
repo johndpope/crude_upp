@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Event_db_cludeUpp" representedClassName="Event_db_cludeUpp" syncable="YES">
         <attribute name="caseNotes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,6 +7,7 @@
         <attribute name="endedAt" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isStarted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="outcome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pdfSolution" optional="YES" attributeType="String" syncable="YES"/>
@@ -99,7 +100,7 @@
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WitnessOption_db" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event_db_cludeUpp" positionX="-27" positionY="18" width="128" height="450"/>
+        <element name="Event_db_cludeUpp" positionX="-27" positionY="18" width="128" height="465"/>
         <element name="EvidenceImage_db" positionX="72" positionY="189" width="128" height="60"/>
         <element name="Evidences_db" positionX="18" positionY="135" width="128" height="120"/>
         <element name="Leaderboard_db" positionX="36" positionY="171" width="128" height="180"/>
