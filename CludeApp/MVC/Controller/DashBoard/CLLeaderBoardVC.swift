@@ -26,7 +26,7 @@ class CLLeaderBoardVC: UIViewController {
         
         super.viewDidLoad()
         
-        CLApiManager().getLeaderBoard(gameID: "59b6deba0056bf0828b3ad9c") { (code, error, response, statusCode) in
+        CLApiManager().getLeaderBoard(gameID: eventID!) { (code, error, response, statusCode) in
             
             if let error = error {
                 let message = error.code == -1009 ? "The internet connection appears to be offline." : "Something happen wrong."
