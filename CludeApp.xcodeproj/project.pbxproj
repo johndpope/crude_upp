@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		139070B81FB06EB4005892F8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139070B61FB06EB4005892F8 /* Crashlytics.framework */; };
+		139070B91FB06EB4005892F8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139070B71FB06EB4005892F8 /* Fabric.framework */; };
 		7932B86D1F76D7850020209F /* ConfirmAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7932B86C1F76D7850020209F /* ConfirmAlertView.xib */; };
 		7932B86F1F76D7A20020209F /* ConfirmAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932B86E1F76D7A20020209F /* ConfirmAlertView.swift */; };
 		79963BF81F77BB420013CD89 /* DropListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79963BF71F77BB420013CD89 /* DropListView.xib */; };
@@ -146,6 +148,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		139070B61FB06EB4005892F8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		139070B71FB06EB4005892F8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		7932B86C1F76D7850020209F /* ConfirmAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfirmAlertView.xib; path = MVC/View/CustomAlert/ConfirmAlertView.xib; sourceTree = "<group>"; };
 		7932B86E1F76D7A20020209F /* ConfirmAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmAlertView.swift; path = MVC/View/CustomAlert/ConfirmAlertView.swift; sourceTree = "<group>"; };
 		79963BF71F77BB420013CD89 /* DropListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DropListView.xib; path = MVC/View/CustomAlert/DropListView.xib; sourceTree = "<group>"; };
@@ -294,7 +298,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139070B81FB06EB4005892F8 /* Crashlytics.framework in Frameworks */,
 				ABA0A6D32D422251873CE586 /* Pods_CludeApp.framework in Frameworks */,
+				139070B91FB06EB4005892F8 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +496,8 @@
 		C8644F521F5BB95B00777F62 = {
 			isa = PBXGroup;
 			children = (
+				139070B61FB06EB4005892F8 /* Crashlytics.framework */,
+				139070B71FB06EB4005892F8 /* Fabric.framework */,
 				C8644F5D1F5BB95B00777F62 /* CludeApp */,
 				C8644F5C1F5BB95B00777F62 /* Products */,
 				BDB43E194ECC6E6163CB0BE0 /* Pods */,
@@ -712,6 +720,7 @@
 				C8644F591F5BB95B00777F62 /* Resources */,
 				2519CFDE50C16ACC889AFBEA /* [CP] Embed Pods Frameworks */,
 				8A2D94A153E2CF631ED3F7C2 /* [CP] Copy Pods Resources */,
+				139070B51FB06E95005892F8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -834,6 +843,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		139070B51FB06E95005892F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run bc0b7b92a339f865a054e14406b9b0a79f5f39f3 5200e159d55b2d2e5a2d90254286bd8be954a9767559495d615bc4ae127c5399";
+		};
 		22E9B96437F40D55C7201CEB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1096,6 +1118,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				EXCLUDED_SOURCE_FILE_NAMES = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CludeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1120,6 +1146,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CludeApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

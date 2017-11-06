@@ -12,6 +12,8 @@ import GoogleMaps
 import IQKeyboardManagerSwift
 import MagicalRecord
 import FLEX
+import Fabric
+import Crashlytics
 
 let _appDelegate = UIApplication.shared.delegate as! CLAppDelegate
 
@@ -31,6 +33,8 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        Fabric.with([Crashlytics.self])
+
         IQKeyboardManager.sharedManager().enable = true
         self.locationPermission()
         GMSServices.provideAPIKey(CLConstant.Keys.map)
