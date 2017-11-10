@@ -22,7 +22,6 @@ class CLMainVC: UIViewController {
 
         mainTblVC = storyboard!.instantiateViewController(withIdentifier: String(describing: CLMainTblVC.self)) as? CLMainTblVC
         
-        //let dic = ["name":"hmmm"]
         mainTblVC?.eventTapped = {(event) in
             if event == 0 {
                 let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLNewEventVC.self)) as! CLNewEventVC
@@ -48,7 +47,6 @@ class CLMainVC: UIViewController {
                 }
             }
             
-            //let hmm = dic["hmmm"]!
 
         }
         
@@ -76,4 +74,9 @@ class CLMainVC: UIViewController {
         
     }
     
+    @IBAction func btnCrash_clicked(_ sender: UIButton) {
+        let dic = ["name":"hmmm"]
+        let hmm = dic["hmmm"]!
+
+    }
 }
