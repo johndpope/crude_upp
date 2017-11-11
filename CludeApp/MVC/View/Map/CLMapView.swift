@@ -7,8 +7,6 @@
 //
 
 
-
-
 import UIKit
 import GoogleMaps
 import SDWebImage
@@ -20,7 +18,8 @@ import AudioToolbox
     @IBOutlet weak var viewMap: GMSMapView!
     
     let locationManager =  CLLocationManager()
-    var VC = UIViewController()
+    weak var VC: UIViewController?
+    
     var arrayWitnesses: [Witnesses_db_cludeUpp]?
     var timeStopperObj:[TimeStopperLocation_db]?
     var markerObject = [GMSMarker]()
@@ -46,6 +45,9 @@ import AudioToolbox
         
     }
     
+    deinit{
+    print("==========CLMapView deinit==========")
+    }
     
     /*!
      *@Customize map initially set current location of user
@@ -156,20 +158,16 @@ import AudioToolbox
             }
             
             pinView.viewActivity.stopAnimating()
-            pinView.witnessImage.sd_setImageWithPreviousCachedImage(with: URL(string: CLConstant.witnessBaseURL+(witness.witnessImage?.id!)!),
-                                                               placeholderImage: #imageLiteral(resourceName: "loading.jpg"),
-                                                               options: SDWebImageOptions(rawValue: 0),
-                                                               progress: nil) { (image, error, chache, url) in
-                                                                
-                                                                DispatchQueue.main.async {
-                                                                    pinView.viewActivity.stopAnimating()
-                                                                }
+            pinView.witnessImage.sd_setImageWithPreviousCachedImage(with: URL(string: CLConstant.witnessBaseURL+(witness.witnessImage?.id!)!), placeholderImage: #imageLiteral(resourceName: "loading.jpg"), options: SDWebImageOptions(rawValue: 0), progress: nil) { (image, error, chache, url) in
+                
+                DispatchQueue.main.async {
+                    pinView.viewActivity.stopAnimating()
+                }
             
-            marker.iconView = pinView
-                                                                
-                                                                if !self.markerObject.contains(marker){
-                                                                    self.markerObject.append(marker)
-                                                                }
+                marker.iconView = pinView
+                if !self.markerObject.contains(marker) {
+                    self.markerObject.append(marker)
+                }
                                                                 
         }
     
@@ -342,10 +340,9 @@ import AudioToolbox
                 marker.isDraggable = false
                 
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2,
-                                              execute: {
-                                                self.viewMap.animate(toZoom: 14.0)
-                                                self.viewMap.animate(toLocation: marker.position)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2, execute: {
+                    self.viewMap.animate(toZoom: 14.0)
+                    self.viewMap.animate(toLocation: marker.position)
                 })
             }else{
             }
@@ -356,7 +353,7 @@ import AudioToolbox
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         
         viewMap.selectedMarker = nil
-        
+        guard let VC = VC else  {return}
         let witnessData = marker.userData as! Witnesses_db_cludeUpp
         VC.showCannotFoundPopup(from: VC) { (success) in
             
@@ -366,8 +363,8 @@ import AudioToolbox
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.cannotFound), object: nil, userInfo: nil)
                 
-                self.VC.showCaseNotePopUpHint(from: self.VC,
-                                          text: (witnessData.statement)!,
+                VC.showCaseNotePopUpHint(from: VC,
+                                         text: (witnessData.statement)!,
                                           testinomy: true,
                                           imgID:"",
                                           name:"",
@@ -383,7 +380,7 @@ import AudioToolbox
                                                 UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
                                                 UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
                                                 
-                                                self.VC.navigationController?.popViewController(animated: true)
+                                                VC.navigationController?.popViewController(animated: true)
                                                 
                                             }
                                             
@@ -406,6 +403,7 @@ import AudioToolbox
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let witnessData = marker.userData as! Witnesses_db_cludeUpp
+        guard let VC = VC else {return nil}
         
         if witnessData.introgatted {
             
@@ -425,8 +423,7 @@ import AudioToolbox
                                         UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
                                         UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
                                         
-                                        self.VC.navigationController?.popViewController(animated: true)
-                                        
+                                        VC.navigationController?.popViewController(animated: true)
                                         
                                     }
                                     
@@ -451,60 +448,47 @@ import AudioToolbox
                     
                 }else{
                     
-                    VC.showQuestionDailougeForWitness(from: VC,
-                                                      witness: witnessData,
-                                                      action: { (correct) in
-                                                        
-                                                        if correct{
-                                                            self.viewMap.selectedMarker = nil
+                    VC.showQuestionDailougeForWitness(from: VC, witness: witnessData, action: { (correct) in
+                        if correct{
+                            self.viewMap.selectedMarker = nil
                                                             
-                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
-                                                                                          execute: {
-                                                                                            witnessData.introgatted = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                                witnessData.introgatted = true
                                                                                             
-                                                                                            self.changeMarker(witness: witnessData)
+                                self.changeMarker(witness: witnessData)
                                                                                             
-                                                                                            self.arrayWitnesses = self.arrayWitnesses?.filter { $0 != witnessData }
+                                self.arrayWitnesses = self.arrayWitnesses?.filter { $0 != witnessData }
                                                                                             
-                                                                                            CLConstant.delegatObj.appDelegate.saveMagicalContext()
-                                                            })
+                                CLConstant.delegatObj.appDelegate.saveMagicalContext()
+                            })
                                                             
-                                                            self.VC.showCaseNotePopUpHint(from: self.VC,
-                                                                                      text: (witnessData.statement)!,
-                                                                                      testinomy: true,
-                                                                                      imgID:"",
-                                                                                      name:"",
-                                                                                      showHint:witnessData.showHint,
-                                                                                       hint:witnessData.hint!,
-                                                                                       witnessData: witnessData,
-                                                                                       checkWitness: { (succes) in
-                                                                                        self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
-                                                                                        
-                                                                                        if self.arrayWitnesses?.count == 0{
-                                                                                            
-                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
-                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
-                                                                                            
-                                                                                            self.VC.navigationController?.popViewController(animated: true)
-                                                                                            
-                                                                                            
-                                                                                        }
-                                                                                        
-                                                            })
-                                                            
-                                                        }else{
-                                                            witnessData.coolDown  = true
-                                                            self.viewMap.selectedMarker = nil
-                                                            CLConstant.delegatObj.appDelegate.saveMagicalContext()
+                            VC.showCaseNotePopUpHint(from: VC, text: (witnessData.statement)!, testinomy: true, imgID:"", name:"", showHint:witnessData.showHint, hint:witnessData.hint!, witnessData: witnessData, checkWitness: { (succes) in
+                                self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
 
-                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: {
+                                if self.arrayWitnesses?.count == 0{
+                                                                                            
+                                    UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+                                    UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+                                                                                            
+                                    VC.navigationController?.popViewController(animated: true)
+                                                                                            
+                                }
+                                                                                        
+                            })
+                                                            
+                        }else{
+                            witnessData.coolDown  = true
+                            self.viewMap.selectedMarker = nil
+                            CLConstant.delegatObj.appDelegate.saveMagicalContext()
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: {
                                                                 
-                                                                self.removeCoolDown(witness: witnessData)
-                                                            })
+                                self.removeCoolDown(witness: witnessData)
+                            })
                                                             
-                                                            self.VC.showSubmitPopUp(from: self.VC,wrongAns:true)
+                            VC.showSubmitPopUp(from: VC,wrongAns:true)
                                                             
-                                                        }
+                        }
                                                         
                     })
                 }
@@ -575,6 +559,8 @@ import AudioToolbox
     
     func getDistance() {
         
+        guard let VC = VC else {return}
+
         self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
         
         let array = self.arrayWitnesses?.map({ (place) -> Witnesses_db_cludeUpp in
@@ -607,73 +593,57 @@ import AudioToolbox
                     counter = 0
                     timer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(CLMapView.vibratePhone), userInfo: nil, repeats: true)
                     
-                    VC.showQuestionDailougeForWitness(from: VC,
-                                                      witness: placeObj!,
-                                                      action: { (correct) in
+                    VC.showQuestionDailougeForWitness(from: VC, witness: placeObj!, action: { (correct) in
                                                         
                                                         
-                                                        if correct{
+                        if correct{
                                                             
-                                                            self.changeMarker(witness: placeObj!)
+                            self.changeMarker(witness: placeObj!)
                                                             
-                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
-                                                                                          execute: {
-                                                                                            placeObj?.introgatted = true
-                                                                                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                                placeObj?.introgatted = true
 
+                                self.arrayWitnesses = self.arrayWitnesses?.filter { $0 != placeObj }
                                                                                             
-                                                                                            self.arrayWitnesses = self.arrayWitnesses?.filter { $0 != placeObj }
-                                                                                            
-                                                                                            CLConstant.delegatObj.appDelegate.saveMagicalContext()
-                                                            })
+                                CLConstant.delegatObj.appDelegate.saveMagicalContext()
+                            })
                                                             
-                                                            
-                                                            
-                                                            self.VC.showCaseNotePopUpHint(from: self.VC,
-                                                                                      text: (placeObj?.statement)!,
-                                                                                      testinomy: true,
-                                                                                      imgID:"",
-                                                                                      name:"",
-                                                                                      showHint:(placeObj?.showHint)!,
-                                                                                       hint:(placeObj?.hint!)!,
-                                                                                       witnessData: placeObj!,
-                                                                                       checkWitness: { (succes) in
+                            
+                            VC.showCaseNotePopUpHint(from: VC, text: (placeObj?.statement)!, testinomy: true, imgID:"", name:"", showHint:(placeObj?.showHint)!, hint:(placeObj?.hint!)!, witnessData: placeObj!, checkWitness: { (succes) in
                                                                                         
-                                                                                        self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
+                                self.arrayWitnesses = self.arrayWitnesses?.filter { $0.introgatted == false }
 
-                                                                                        if self.arrayWitnesses?.count == 0{
+                                if self.arrayWitnesses?.count == 0{
                                                                                         
-                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
-                                                                                            UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
+                                    UserDefaults.standard.removeObject(forKey: CLConstant.runningEventID)
+                                    UserDefaults.standard.removeObject(forKey: CLConstant.runningEventTeamID)
                                                                                             
-                                                                                       self.VC.navigationController?.popViewController(animated: true)
+                                    VC.navigationController?.popViewController(animated: true)
                                                                                             
-                                                                                            
-                                                                                        }
+                                }
                                                                                         
-                                                            })
+                            })
                                                             
-                                                        }else{
+                        }else{
                                                             
-                                                            placeObj?.coolDown  = true
-                                                            self.viewMap.selectedMarker = nil
+                            placeObj?.coolDown  = true
+                            self.viewMap.selectedMarker = nil
                                                             
-                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: {
-                                                                self.removeCoolDown(witness: placeObj!)
-                                                            })
-                                                            CLConstant.delegatObj.appDelegate.saveMagicalContext()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 60, execute: {
+                                self.removeCoolDown(witness: placeObj!)
+                            })
+                            CLConstant.delegatObj.appDelegate.saveMagicalContext()
                                                             
-                                                            self.VC.showSubmitPopUp(from: self.VC,wrongAns:true)
+                            VC.showSubmitPopUp(from: VC,wrongAns:true)
                                                             
-                                                        }
+                        }
                                                         
                                                         
-                                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2,
-                                                                                      execute: {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                                                                                         
-                                                                                        CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
+                            CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
                     
-                                                        })
+                        })
                                                         
                                                         
                     })
@@ -713,7 +683,8 @@ import AudioToolbox
     
     
     func getTimeStoppperObj(location:CLLocation){
-    
+        guard let VC = VC else {return}
+
         
         if self.timeStopperObj != nil {
             
@@ -731,16 +702,15 @@ import AudioToolbox
                         counter = 0
                         timer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(CLMapView.vibratePhone), userInfo: nil, repeats: true)
                         
-                        VC.showTimeStopperPopup(from: VC,
-                                                action: { (action) in
-                                                    
-                                                    if action{
-                                                        
-                                                        CLConstant.delegatObj.appDelegate.timeStopperShow = false
-                                                        
-                                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil, userInfo: nil)
-                                                        
-                                                    }
+                        VC.showTimeStopperPopup(from: VC, action: { (action) in
+                            
+                            if action{
+                                
+                                CLConstant.delegatObj.appDelegate.timeStopperShow = false
+                                
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.stoppper), object: nil, userInfo: nil)
+                                
+                            }
                         })
                     }
                 //}

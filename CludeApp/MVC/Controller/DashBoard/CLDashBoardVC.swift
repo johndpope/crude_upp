@@ -13,7 +13,7 @@ class CLDashBoardVC: UIViewController {
 
     @IBOutlet weak var viewContainer: UIView!
     
-    var dashBoardTblVC:CLDashBoardTblVC?
+    weak var dashBoardTblVC:CLDashBoardTblVC?
     var event:EventList?
     var event_local:Event_db_cludeUpp?
     var remainingSuspects = Suspects_db()

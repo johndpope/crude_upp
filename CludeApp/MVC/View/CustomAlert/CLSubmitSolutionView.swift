@@ -10,7 +10,7 @@ import UIKit
 
 class CLSubmitSolutionView: UIView {
 
-    var fromVC:UIViewController?
+    weak var fromVC:UIViewController?
     var dismiss:((_ code:Bool)->Void)?
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblMessage: UILabel!

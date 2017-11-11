@@ -14,7 +14,7 @@ class CLCustomAlert: UIView {
     @IBOutlet weak var lblMessage: UILabel!
     @IBOutlet weak var btnAction: UIButton!
     
-    var fromVC:UIViewController?
+    weak var fromVC:UIViewController?
     var dismiss:((_ code:Bool)->Void)?
 
     

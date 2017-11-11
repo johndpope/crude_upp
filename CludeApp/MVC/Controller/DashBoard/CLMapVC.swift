@@ -29,8 +29,8 @@ class CLMapVC: UIViewController {
         witnessArray = witnessArray.sorted(by: { ($0.name?.characters.count)! > ($1.name?.characters.count)! })
         
         mapIntrogation = (Bundle.main.loadNibNamed("CLMapView",owner : nil,options:nil)?[0] as? UIView) as? CLMapView
-        mapIntrogation?.frame.size.height = viewMapContainer.bounds.height
-        mapIntrogation?.frame.size.width  = viewMapContainer.bounds.width
+        mapIntrogation?.frame.size.height = ScreenSize.height
+        mapIntrogation?.frame.size.width  = ScreenSize.width
         mapIntrogation?.getCurrentLocation(from: self)
         mapIntrogation?.arrayWitnesses = witnessArray
         DispatchQueue.main.async {
