@@ -14,15 +14,12 @@ class CLMainVC: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     
     var mainTblVC:CLMainTblVC?
-    var name: String!
-    var xxxx: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mainTblVC = storyboard!.instantiateViewController(withIdentifier: String(describing: CLMainTblVC.self)) as? CLMainTblVC
         
-        //let dic = ["name":"hmmm"]
         mainTblVC?.eventTapped = {(event) in
             if event == 0 {
                 let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLNewEventVC.self)) as! CLNewEventVC
