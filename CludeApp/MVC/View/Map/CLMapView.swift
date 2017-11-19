@@ -103,18 +103,17 @@ import AudioToolbox
     
     
     func changeMarker(witness:Witnesses_db_cludeUpp){
-    
+        
         for marker_tapped in self.markerObject {
             
             if marker_tapped.position.isEqualLocation(CLLocationCoordinate2D(latitude: Double((witness.witnessLocation?.lat)!), longitude: Double((witness.witnessLocation?.long)!))) {
                 
-                if marker_tapped.iconView != nil{
-                    let pinView:RKPinView = marker_tapped.iconView as! RKPinView
+                if let pinView:RKPinView = marker_tapped.iconView as? RKPinView {
                     pinView.imgBox.image = #imageLiteral(resourceName: "full_box_green.png")
                     pinView.imgCheck.isHidden = false
                     self.viewMap.selectedMarker = nil
-                    
                 }
+                
             }
         }
         
@@ -387,10 +386,11 @@ import AudioToolbox
                 })
                 
                 
-                let pinView:RKPinView = marker.iconView as! RKPinView
-                
-                pinView.imgBox.image = #imageLiteral(resourceName: "full_box_green.png")
-                pinView.imgCheck.isHidden = false
+                if let pinView:RKPinView = marker.iconView as? RKPinView {
+                    
+                    pinView.imgBox.image = #imageLiteral(resourceName: "full_box_green.png")
+                    pinView.imgCheck.isHidden = false
+                }
                 
                // self.customizeMap(witnesses: self.arrayWitnesses!)
                 
