@@ -144,8 +144,8 @@ extension CLEventResumeVC:UITableViewDataSource, UITableViewDelegate{
         }else{
             
             let aViewController = CLConstant.storyBoard.dashBoard.instantiateViewController(withIdentifier: String(describing: CLDashBoardVC.self)) as! CLDashBoardVC
-            
-            aViewController.event_local = events[indexPath.row]
+            let event = events[indexPath.row]
+            aViewController.event_local = event
             
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(aViewController, animated: true)

@@ -107,7 +107,6 @@ class CLDashBoardVC: UIViewController {
         CLConstant.firstHome = true
         
         
-        dashBoardTblVC = storyboard!.instantiateViewController(withIdentifier: String(describing: CLDashBoardTblVC.self)) as? CLDashBoardTblVC
         
         UserDefaults.standard.set(self.event_local?.id, forKey: CLConstant.runningEventID)
         UserDefaults.standard.synchronize()
@@ -115,47 +114,54 @@ class CLDashBoardVC: UIViewController {
         UserDefaults.standard.set(self.event_local?.teamID, forKey: CLConstant.runningEventTeamID)
         UserDefaults.standard.synchronize()
         
+        dashBoardTblVC = storyboard!.instantiateViewController(withIdentifier: String(describing: CLDashBoardTblVC.self)) as? CLDashBoardTblVC
+
         dashBoardTblVC?.btnTapped = {(index) in
-            if index == 0 {
-                
-                self.showStartGamePopup(isShowPopup: !self.event_local!.isStarted )
-                
-            }else if index == 4{
             
-                let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLEvidenceVC.self)) as! CLEvidenceVC
-                
-                aViewController.arrayEvidence = (self.event_local?.evidences?.allObjects as! [Evidences_db]).sorted(by: { ($0.name?.characters.count)! > ($1.name?.characters.count)! })
-                
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(aViewController, animated: true)
-                }
-            }else if index == 1{
-                let aViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CLSuspectsVC.self)) as! CLSuspectsVC
-                
-                aViewController.arraysuspects =  (self.event_local?.suspects?.allObjects as! [Suspects_db]).sorted(by: { ($0.name?.characters.count)! > ($1.name?.characters.count)! })
-                
-               // aViewController.arraysuspects = self.event_local?.suspects?.allObjects as? [Suspects_db]
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(aViewController, animated: true)
-                }
-            }else if index == 3{
-            
-                let url = URL(string:"https://youtu.be/OuOaU9G0W70")!
-                if UIApplication.shared.canOpenURL(url)  {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }else if index == 5{
-            
-               
-                
-                self.showCaseNotePopUp(from: self,text :(self.event_local?.caseNotes)!, testinomy:false,imgID:"",name:"",showHint:true,hint:"",checkWitness: { (succes) in
+            weak var weakSelf = self
+            if let strongSelf = weakSelf {
+                if index == 0 {
+                    
+                    strongSelf.showStartGamePopup(isShowPopup: !strongSelf.event_local!.isStarted )
+                    
+                }else if index == 4{
+                    
+                    let aViewController = strongSelf.storyboard?.instantiateViewController(withIdentifier: String(describing: CLEvidenceVC.self)) as! CLEvidenceVC
+                    
+                    aViewController.arrayEvidence = (strongSelf.event_local?.evidences?.allObjects as! [Evidences_db]).sorted(by: { ($0.name?.characters.count)! > ($1.name?.characters.count)! })
+                    
+                    DispatchQueue.main.async {
+                        strongSelf.navigationController?.pushViewController(aViewController, animated: true)
+                    }
+                }else if index == 1{
+                    let aViewController = strongSelf.storyboard?.instantiateViewController(withIdentifier: String(describing: CLSuspectsVC.self)) as! CLSuspectsVC
+                    
+                    aViewController.arraysuspects =  (strongSelf.event_local?.suspects?.allObjects as! [Suspects_db]).sorted(by: { ($0.name?.characters.count)! > ($1.name?.characters.count)! })
+                    
+                    // aViewController.arraysuspects = self.event_local?.suspects?.allObjects as? [Suspects_db]
+                    DispatchQueue.main.async {
+                        strongSelf.navigationController?.pushViewController(aViewController, animated: true)
+                    }
+                }else if index == 3{
+                    
+                    let url = URL(string:"https://youtu.be/OuOaU9G0W70")!
+                    if UIApplication.shared.canOpenURL(url)  {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }else if index == 5{
                     
                     
-                })
-                
-            }else if index == 2{
-                
-                self.submitSolutions()
+                    
+                    strongSelf.showCaseNotePopUp(from: strongSelf,text :(strongSelf.event_local?.caseNotes)!, testinomy:false,imgID:"",name:"",showHint:true,hint:"",checkWitness: { (succes) in
+                        
+                        
+                    })
+                    
+                }else if index == 2{
+                    
+                    strongSelf.submitSolutions()
+                }
+
             }
         }
         
@@ -432,8 +438,15 @@ class CLDashBoardVC: UIViewController {
         
         NotificationCenter.default.removeObserver(self)
         
-        let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
-        CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
+        for vc in self.navigationController!.viewControllers {
+            if vc is CLMainVC {
+               _ = self.navigationController?.popToViewController(vc, animated: true)
+            }
+        }
+        
+        
+//        let aViewController = CLConstant.storyBoard.main.instantiateViewController(withIdentifier: String(describing: CLMainVC.self)) as! CLMainVC
+//        CLConstant.delegatObj.appDelegate.setInitalViewController(viewControler: aViewController)
         
     }
     

@@ -14,8 +14,6 @@ class CLMainVC: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     
     var mainTblVC:CLMainTblVC?
-    var name: String!
-    var xxxx: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +45,7 @@ class CLMainVC: UIViewController {
                 }
             }
             
+            //let hmm = dic["hmmm"]!
 
         }
         
@@ -74,9 +73,4 @@ class CLMainVC: UIViewController {
         
     }
     
-    @IBAction func btnCrash_clicked(_ sender: UIButton) {
-        let dic = ["name":"hmmm"]
-        let hmm = dic["hmmm"]!
-
-    }
 }

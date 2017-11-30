@@ -19,6 +19,7 @@ class CLNewEventVC: UIViewController {
         super.viewDidLoad()
 
         CLApiManager().getEventList { (code, error, response, statusCode) in
+            
             if let error = error {
                 let message = error.code == -1009 ? "The internet connection appears to be offline." : "Something happen wrong."
                 self.showSubmitPopUp(from: self, title: "OOPS!", message: message)
@@ -34,7 +35,7 @@ class CLNewEventVC: UIViewController {
             } else{
                 self.showSubmitPopUp(from: self, title: "OOPS!", message: "Something happen worng!")
             }
-
+            
         }
         
         self.tblNewEvent.dataSource = self

@@ -20,13 +20,13 @@ extension UIViewController{
         
         vocuherPopup.frame = from.view.frame
         
-        vocuherPopup.dismiss = {(codeVoucher) in
+        vocuherPopup.dismiss = {[weak vocuherPopup](codeVoucher) in
         
             UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
                 UIView.animate(withDuration: 0.3) {
                     from.view.layoutIfNeeded()
                 }
-                vocuherPopup.removeFromSuperview()
+                vocuherPopup?.removeFromSuperview()
                 
             }, completion: nil)
             
@@ -50,79 +50,76 @@ extension UIViewController{
 
     func showCaseNotePopUp(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String,showHint:Bool,hint:String,checkWitness:(_ success:Bool)->Void){
         
-        let vocuherPopup = (Bundle.main.loadNibNamed("CLCaseNote",owner : nil,options:nil)?[0] as? UIView) as! CLCaseNote
-        
-        
-        vocuherPopup.frame = from.view.frame
-        
-        vocuherPopup.tvCaseNotes.text = text
-        
-        if testinomy {
+        weak var weakFrom = from
+        if let from = weakFrom {
+            let vocuherPopup = (Bundle.main.loadNibNamed("CLCaseNote",owner : nil,options:nil)?[0] as? UIView) as! CLCaseNote
             
-            vocuherPopup.lblTitle.text = "Testimony"
             
-//            if showHint {
-//                vocuherPopup.tvCaseNotes.text = vocuherPopup.tvCaseNotes.text + "\n" + "Hint: \(hint)"
-//                
-//                
-//            
-//            }
+            vocuherPopup.frame = from.view.frame
             
-        }else{
-            vocuherPopup.btnSeeHint.isHidden = true
-        }
-        
-        
-        if imgID.characters.count == 0 {
+            vocuherPopup.tvCaseNotes.text = text
             
-            vocuherPopup.constraintImgWidht.constant = 0
-            vocuherPopup.constraintLeadingTitle.constant = 0
-            vocuherPopup.constraintGreen.constant = 0
-            
-        }else{
-        
-            vocuherPopup.lblTitle.text = name
-            vocuherPopup.viewActivity.startAnimating()
-            vocuherPopup.imgWitness.sd_setImageWithPreviousCachedImage(with: URL(string: CLConstant.witnessBaseURL+(imgID)),
-                                                               placeholderImage: nil,
-                                                               options: SDWebImageOptions(rawValue: 0),
-                                                               progress: nil) { (image, error, chache, url) in
-                                                                DispatchQueue.main.async {
-                                                                    vocuherPopup.viewActivity.stopAnimating()
-                                                                }
-                                                                
+            if testinomy {
+                
+                vocuherPopup.lblTitle.text = "Testimony"
+                
+            }else{
+                vocuherPopup.btnSeeHint.isHidden = true
             }
             
-        }
-        
-        vocuherPopup.dismiss = {(codeVoucher) in
             
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
+            if imgID.characters.count == 0 {
+                
+                vocuherPopup.constraintImgWidht.constant = 0
+                vocuherPopup.constraintLeadingTitle.constant = 0
+                vocuherPopup.constraintGreen.constant = 0
+                
+            }else{
+                
+                vocuherPopup.lblTitle.text = name
+                vocuherPopup.viewActivity.startAnimating()
+                vocuherPopup.imgWitness.sd_setImageWithPreviousCachedImage(with: URL(string: CLConstant.witnessBaseURL+(imgID)),
+                                                                           placeholderImage: nil,
+                                                                           options: SDWebImageOptions(rawValue: 0),
+                                                                           progress: nil) {[weak vocuherPopup] (image, error, chache, url) in
+                                                                            DispatchQueue.main.async {
+                                                                                vocuherPopup?.viewActivity.stopAnimating()
+                                                                            }
+                                                                            
                 }
                 
-                vocuherPopup.removeFromSuperview()
-                
-                
-                
-                
-            }, completion: nil)
-            
-        }
-        
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(vocuherPopup)
             }
             
-        }) { (success) in}
-        
+            vocuherPopup.dismiss = {[weak vocuherPopup](codeVoucher) in
+                
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    
+                    vocuherPopup?.removeFromSuperview()
+                    
+                    
+                    
+                    
+                    }, completion: nil)
+                
+            }
+            
+            
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(vocuherPopup)
+                }
+                
+            }) { (success) in}
+            
+
+        }
         
     }
     
@@ -133,92 +130,94 @@ extension UIViewController{
     
     func showCaseNotePopUpHint(from:UIViewController, text:String,testinomy:Bool,imgID:String, name:String,showHint:Bool,hint:String,witnessData:Witnesses_db_cludeUpp,checkWitness:@escaping (_ success:Bool)->Void){
         
-        let vocuherPopup = (Bundle.main.loadNibNamed("CLCaseNote",owner : nil,options:nil)?[0] as? UIView) as! CLCaseNote
-        
-        
-        vocuherPopup.frame = from.view.frame
-        
-        vocuherPopup.tvCaseNotes.text = text
-        
-        if testinomy {
-            vocuherPopup.btnSeeHint.isHidden = false
-            vocuherPopup.lblTitle.text = "Testimony"
-            if showHint {
-                vocuherPopup.btnSeeHint.isHidden = true
-                vocuherPopup.tvCaseNotes.text = vocuherPopup.tvCaseNotes.text + "\n\n\n" + "Hint: \(hint)"
-            }
+        weak var weakFrom = from
+        if let from = weakFrom {
+            let vocuherPopup = (Bundle.main.loadNibNamed("CLCaseNote",owner : nil,options:nil)?[0] as? UIView) as! CLCaseNote
             
-            vocuherPopup.showHintTapped = {(tapped) in
             
-                if tapped {
+            vocuherPopup.frame = from.view.frame
+            
+            vocuherPopup.tvCaseNotes.text = text
+            
+            if testinomy {
+                vocuherPopup.btnSeeHint.isHidden = false
+                vocuherPopup.lblTitle.text = "Testimony"
+                if showHint {
+                    vocuherPopup.btnSeeHint.isHidden = true
+                    vocuherPopup.tvCaseNotes.text = vocuherPopup.tvCaseNotes.text + "\n\n\n" + "Hint: \(hint)"
+                }
+                
+                vocuherPopup.showHintTapped = {[weak self, weak vocuherPopup](tapped) in
                     
-                    self.showCannotFoundHintPopup(from: self) { (action) in
-                        if action{
-                            witnessData.showHint = true
-                            vocuherPopup.btnSeeHint.isHidden = true
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.hint), object: nil, userInfo: nil)
-                            vocuherPopup.tvCaseNotes.text = vocuherPopup.tvCaseNotes.text + "\n\n\n" + "Hint: \(hint)"
+                    if tapped {
+                        if let selff = self {
+                            selff.showCannotFoundHintPopup(from: selff) { (action) in
+                                if action{
+                                    witnessData.showHint = true
+                                    vocuherPopup?.btnSeeHint.isHidden = true
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: CLConstant.NotificationObserver.hint), object: nil, userInfo: nil)
+                                    vocuherPopup?.tvCaseNotes.text = (vocuherPopup?.tvCaseNotes.text ?? "") + "\n\n\n" + "Hint: \(hint)"
+                                }
+                                
+                            }
                         }
                         
                     }
+                    
+                }
+                
+                
+            }else{
+                vocuherPopup.btnSeeHint.isHidden = true
+            }
+            
+            if imgID.characters.count == 0 {
+                
+                vocuherPopup.constraintImgWidht.constant = 0
+                vocuherPopup.constraintLeadingTitle.constant = 0
+                vocuherPopup.constraintGreen.constant = 0
+                vocuherPopup.btnSeeHint.isHidden = true
+                
+            }else{
+                
+                vocuherPopup.lblTitle.text = name
+                vocuherPopup.viewActivity.startAnimating()
+                vocuherPopup.imgWitness.sd_setImageWithPreviousCachedImage(with: URL(string: CLConstant.witnessBaseURL+(imgID)), placeholderImage: nil, options: SDWebImageOptions(rawValue: 0), progress: nil) {[weak vocuherPopup] (image, error, chache, url) in
+                    DispatchQueue.main.async {
+                        vocuherPopup?.viewActivity.stopAnimating()
+                    }
+                    
                 }
                 
             }
             
-            
-        }else{
-            vocuherPopup.btnSeeHint.isHidden = true
-        }
-        
-        if imgID.characters.count == 0 {
-            
-            vocuherPopup.constraintImgWidht.constant = 0
-            vocuherPopup.constraintLeadingTitle.constant = 0
-            vocuherPopup.constraintGreen.constant = 0
-            vocuherPopup.btnSeeHint.isHidden = true
-            
-        }else{
-            
-            vocuherPopup.lblTitle.text = name
-            vocuherPopup.viewActivity.startAnimating()
-            vocuherPopup.imgWitness.sd_setImageWithPreviousCachedImage(with: URL(string: CLConstant.witnessBaseURL+(imgID)),
-                                                                       placeholderImage: nil,
-                                                                       options: SDWebImageOptions(rawValue: 0),
-                                                                       progress: nil) { (image, error, chache, url) in
-                                                                        DispatchQueue.main.async {
-                                                                            vocuherPopup.viewActivity.stopAnimating()
-                                                                        }
-                                                                        
-            }
-            
-        }
-        
-        vocuherPopup.dismiss = {(codeVoucher) in
-            
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                vocuherPopup.removeFromSuperview()
+            vocuherPopup.dismiss = {[weak vocuherPopup](codeVoucher) in
                 
-            }, completion: nil)
-            
-            
-           checkWitness(true)
-            
-        }
-        
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(vocuherPopup)
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    vocuherPopup?.removeFromSuperview()
+                    
+                    }, completion: nil)
+                
+                
+                checkWitness(true)
+                
             }
             
-        }) { (success) in}
+            
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(vocuherPopup)
+                }
+                
+            }) { (success) in}
+        }
         
         
     }
@@ -226,6 +225,9 @@ extension UIViewController{
     
     func showCoolDownPopUp(from:UIViewController, wrongAns:Bool){
         
+        weak var weakFrom = from
+        if let from = weakFrom {
+
         let vocuherPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
         
         vocuherPopup.frame = from.view.frame
@@ -236,113 +238,121 @@ extension UIViewController{
             vocuherPopup.lblMessage.text = "Please wait for at least 1 minute before re-trying."
         }
         
-        vocuherPopup.dismiss = {(codeVoucher) in
+        vocuherPopup.dismiss = {[ weak vocuherPopup](codeVoucher) in
             
             if wrongAns {
                 CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
             }
             
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                vocuherPopup.removeFromSuperview()
-                
-            }, completion: nil)
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    vocuherPopup?.removeFromSuperview()
+                    
+                    }, completion: nil)
             
         }
         
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(vocuherPopup)
                 }
-                from.view.addSubview(vocuherPopup)
-            }
+                
+            }) { (success) in}
             
-        }) { (success) in}
-        
+        }
         
     }
     
     
     func showSubmitPopUp(from:UIViewController, wrongAns:Bool){
         
-        let vocuherPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
-        
-        vocuherPopup.frame = from.view.frame
-        
-        if wrongAns {
-            
-            vocuherPopup.lblTitle.text = "Wrong"
-            vocuherPopup.lblMessage.text = "Unfortunately this is not correct.\nYou can try again in one minute"
-        }
-        
-        vocuherPopup.dismiss = {(codeVoucher) in
-            
-            if wrongAns {
-                CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
-            }
-            
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                vocuherPopup.removeFromSuperview()
-                
-            }, completion: nil)
-            
-        }
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(vocuherPopup)
-            }
-            
-        }) { (success) in}
-        
-    }
-        
-        func showSubmitPopUp(from:UIViewController, title:String, message:String){
-            
+        weak var weakFrom = from
+
+        if let from = weakFrom {
             let vocuherPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
             
             vocuherPopup.frame = from.view.frame
             
-            vocuherPopup.lblTitle.text = title
-            vocuherPopup.lblMessage.text = message
+            if wrongAns {
+                
+                vocuherPopup.lblTitle.text = "Wrong"
+                vocuherPopup.lblMessage.text = "Unfortunately this is not correct.\nYou can try again in one minute"
+            }
             
-            
-            vocuherPopup.dismiss = {(codeVoucher) in
+            vocuherPopup.dismiss = {[weak vocuherPopup](codeVoucher) in
+                
+                if wrongAns {
+                    CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
+                }
                 
                 UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
                     UIView.animate(withDuration: 0.3) {
                         from.view.layoutIfNeeded()
                     }
-                    vocuherPopup.removeFromSuperview()
+                    vocuherPopup?.removeFromSuperview()
                     
-                }, completion: nil)
+                    }, completion: nil)
                 
             }
-        
-        
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
             
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(vocuherPopup)
                 }
-                from.view.addSubview(vocuherPopup)
-            }
+                
+            }) { (success) in}
+
+        }
+        
+    }
+        
+    func showSubmitPopUp(from:UIViewController, title:String, message:String){
             
-        }) { (success) in}
+            weak var weakFrom = from
+            if let from = weakFrom {
+                let vocuherPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
+                
+                vocuherPopup.frame = from.view.frame
+                
+                vocuherPopup.lblTitle.text = title
+                vocuherPopup.lblMessage.text = message
+                
+                
+                vocuherPopup.dismiss = {[weak vocuherPopup](codeVoucher) in
+                    
+                    UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                        UIView.animate(withDuration: 0.3) {
+                            from.view.layoutIfNeeded()
+                        }
+                        vocuherPopup?.removeFromSuperview()
+                        
+                        }, completion: nil)
+                    
+                }
+                
+                
+                
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    
+                    DispatchQueue.main.async {
+                        UIView.animate(withDuration: 0.3) {
+                            from.view.layoutIfNeeded()
+                        }
+                        from.view.addSubview(vocuherPopup)
+                    }
+                    
+                }) { (success) in}
+            }
         
         
     }
@@ -353,131 +363,139 @@ extension UIViewController{
     
     func showCannotFoundPopup(from:UIViewController,action: @escaping (_ actionTapped:Bool)->Void){
     
-        
-        CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = true
-        
-        let notFoundPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
-        
-        notFoundPopup.frame = from.view.frame
-        
-        notFoundPopup.lblTitle.text = "Cannot be Found"
-        notFoundPopup.lblMessage.text = "Using this button will give you instant access to the witness testimony. However, it comes with a time-penalty of 15 minutes. Do you still wish to proceed?"
-        notFoundPopup.btnClose.setTitle("I AGREE", for: .normal)
-        
-        
-        notFoundPopup.dismiss = {(codeVoucher) in
+        weak var weakFrom = from
+        if let from = weakFrom {
+            CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = true
             
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                notFoundPopup.removeFromSuperview()
-                CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
-
+            let notFoundPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
+            
+            notFoundPopup.frame = from.view.frame
+            
+            notFoundPopup.lblTitle.text = "Cannot be Found"
+            notFoundPopup.lblMessage.text = "Using this button will give you instant access to the witness testimony. However, it comes with a time-penalty of 15 minutes. Do you still wish to proceed?"
+            notFoundPopup.btnClose.setTitle("I AGREE", for: .normal)
+            
+            
+            notFoundPopup.dismiss = {[weak notFoundPopup](codeVoucher) in
                 
-            }, completion: nil)
-            
-           // return
-            action(codeVoucher)
-            
-        }
-        
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(notFoundPopup)
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    notFoundPopup?.removeFromSuperview()
+                    CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
+                    
+                    
+                    }, completion: nil)
+                
+                // return
+                action(codeVoucher)
+                
             }
             
-        }) { (success) in}
+            
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(notFoundPopup)
+                }
+                
+            }) { (success) in}
+        }
     
     }
     
     func showCannotFoundHintPopup(from:UIViewController,action: @escaping (_ actionTapped:Bool)->Void){
         
+        weak var weakFrom = from
         
-        CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = true
-        
-        let notFoundPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
-        
-        notFoundPopup.frame = from.view.frame
-        
-        notFoundPopup.lblTitle.text = "Hint"
-        notFoundPopup.lblMessage.text = "Using this option will give you a helping hand to solve this specific clue. However, using this option comes with a penalty of 5 minutes. Are you happy to procced?"
-        notFoundPopup.btnClose.setTitle("I AGREE", for: .normal)
-        
-        
-        notFoundPopup.dismiss = {(codeVoucher) in
+        if let from = weakFrom {
+            CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = true
             
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                notFoundPopup.removeFromSuperview()
-                CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
+            let notFoundPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
+            
+            notFoundPopup.frame = from.view.frame
+            
+            notFoundPopup.lblTitle.text = "Hint"
+            notFoundPopup.lblMessage.text = "Using this option will give you a helping hand to solve this specific clue. However, using this option comes with a penalty of 5 minutes. Are you happy to procced?"
+            notFoundPopup.btnClose.setTitle("I AGREE", for: .normal)
+            
+            
+            notFoundPopup.dismiss = {[weak notFoundPopup](codeVoucher) in
                 
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    notFoundPopup?.removeFromSuperview()
+                    CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = false
+                    
+                    
+                    }, completion: nil)
                 
-            }, completion: nil)
-            
-            // return
-            action(codeVoucher)
-            
-        }
-        
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(notFoundPopup)
+                // return
+                action(codeVoucher)
+                
             }
             
-        }) { (success) in}
-        
+            
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(notFoundPopup)
+                }
+                
+            }) { (success) in}
+            
+        }
     }
     
     
     
     func showAlert(from:UIViewController,title:String,message:String,buttonTitle:String, action:@escaping (_ actionTapped:Bool)->Void){
         
-        let vocuherPopup = (Bundle.main.loadNibNamed("CLCustomAlert",owner : nil,options:nil)?[0] as? UIView) as! CLCustomAlert
-        
-        vocuherPopup.fromVC = from
-        vocuherPopup.lblTitle.text = title
-        vocuherPopup.lblMessage.text = message
-        vocuherPopup.btnAction.setTitle(buttonTitle, for: .normal)
-        
-        vocuherPopup.frame = from.view.frame
-        
-        vocuherPopup.dismiss = {(codeVoucher) in
+        weak var weakFrom = from
+        if let from = weakFrom {
+            let vocuherPopup = (Bundle.main.loadNibNamed("CLCustomAlert",owner : nil,options:nil)?[0] as? UIView) as! CLCustomAlert
             
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                vocuherPopup.removeFromSuperview()
+            vocuherPopup.fromVC = from
+            vocuherPopup.lblTitle.text = title
+            vocuherPopup.lblMessage.text = message
+            vocuherPopup.btnAction.setTitle(buttonTitle, for: .normal)
+            
+            vocuherPopup.frame = from.view.frame
+            
+            vocuherPopup.dismiss = {[weak vocuherPopup](codeVoucher) in
                 
-            }, completion: nil)
-            
-            action(codeVoucher)
-        }
-        
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(vocuherPopup)
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    vocuherPopup?.removeFromSuperview()
+                    
+                    }, completion: nil)
+                
+                action(codeVoucher)
             }
             
-        }) { (success) in}
+            
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(vocuherPopup)
+                }
+                
+            }) { (success) in}
+        }
         
     }
     
@@ -509,36 +527,39 @@ extension UIViewController{
     
     func showQuestionDailougeForWitness(from:UIViewController, witness:Witnesses_db_cludeUpp, action:@escaping (_ actionTapped:Bool)->Void){
     
-    
-        let questionView = (Bundle.main.loadNibNamed("CLQuestionView",owner : nil,options:nil)?[0] as? UIView) as! CLQuestionView
+        weak var weakFrom = from
         
-        questionView.frame = from.view.frame
-        questionView.setupOptionTbl(witness: witness)
-        
-        questionView.answerClick = {(correct) in
-        
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                questionView.removeFromSuperview()
+        if let from = weakFrom {
+            let questionView = (Bundle.main.loadNibNamed("CLQuestionView",owner : nil,options:nil)?[0] as? UIView) as! CLQuestionView
+            
+            questionView.frame = from.view.frame
+            questionView.setupOptionTbl(witness: witness)
+            
+            questionView.answerClick = {[weak questionView](correct) in
                 
-            }, completion: nil)
-            
-            action(correct)
-            
-        }
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(questionView)
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    questionView?.removeFromSuperview()
+                    
+                    }, completion: nil)
+                
+                action(correct)
+                
             }
             
-        }) { (success) in}
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(questionView)
+                }
+                
+            }) { (success) in}
+        }
     
     }
     
@@ -548,48 +569,51 @@ extension UIViewController{
     
     func showTimeStopperPopup(from:UIViewController,action: @escaping (_ actionTapped:Bool)->Void){
         
-        
-        CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = true
-        
-        let notFoundPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
-        
-        notFoundPopup.frame = from.view.frame
-        
-        notFoundPopup.lblTitle.text = "Time Stopper Found"
-        notFoundPopup.lblMessage.text = "Wow, you've stumbled upon a hidden time-stopper. This means your time will be stopped for a duration of 5-minutes. Press ok to continue. Wow, you've stumbled upon a hidden time-stopper. This means your timer will be stopped for a duration of 5-minutes. Press ok to continue"
-        
-        notFoundPopup.btnClose.setTitle("OK", for: .normal)
-        
-        
-        notFoundPopup.dismiss = {(tapped) in
+        weak var weakFrom = from
+        if let from = weakFrom {
+            CLConstant.delegatObj.appDelegate.questionAlreadyinWindow = true
             
-            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                notFoundPopup.removeFromSuperview()
-                CLConstant.delegatObj.appDelegate.timeStopperShow = false
+            let notFoundPopup = (Bundle.main.loadNibNamed("CLSubmitSolutionView",owner : nil,options:nil)?[0] as? UIView) as! CLSubmitSolutionView
+            
+            notFoundPopup.frame = from.view.frame
+            
+            notFoundPopup.lblTitle.text = "Time Stopper Found"
+            notFoundPopup.lblMessage.text = "Wow, you've stumbled upon a hidden time-stopper. This means your time will be stopped for a duration of 5-minutes. Press ok to continue. Wow, you've stumbled upon a hidden time-stopper. This means your timer will be stopped for a duration of 5-minutes. Press ok to continue"
+            
+            notFoundPopup.btnClose.setTitle("OK", for: .normal)
+            
+            
+            notFoundPopup.dismiss = {[weak notFoundPopup](tapped) in
                 
+                UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    notFoundPopup?.removeFromSuperview()
+                    CLConstant.delegatObj.appDelegate.timeStopperShow = false
+                    
+                    
+                    }, completion: nil)
                 
-            }, completion: nil)
-            
-            // return
-            action(tapped)
-            
-        }
-        
-        
-        UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3) {
-                    from.view.layoutIfNeeded()
-                }
-                from.view.addSubview(notFoundPopup)
+                // return
+                action(tapped)
+                
             }
             
-        }) { (success) in}
-        
+            
+            UIView.transition(with: from.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.3) {
+                        from.view.layoutIfNeeded()
+                    }
+                    from.view.addSubview(notFoundPopup)
+                }
+                
+            }) { (success) in}
+            
+
+        }
     }
         
 }

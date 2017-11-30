@@ -119,6 +119,7 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        resetCoolDown()
         NSManagedObjectContext.mr_default().mr_saveToPersistentStore(completion: nil)
     }
 
@@ -128,6 +129,8 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         
+        //reset cool down
+        resetCoolDown()
         self.saveMagicalContext()
     }
 
@@ -175,6 +178,29 @@ class CLAppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
+    
+    //MARK:- set cool down
+    var witnessesInCoolDown = [Witnesses_db_cludeUpp]()
+    func setCoolDownFor(seconds: TimeInterval, witness:Witnesses_db_cludeUpp){
+        witness.coolDown  = true
+        CLConstant.delegatObj.appDelegate.saveMagicalContext()
+       
+        witnessesInCoolDown.append(witness)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: {
+            witness.coolDown = false
+            CLConstant.delegatObj.appDelegate.saveMagicalContext()
+        })
+        
+    }
 
+    func resetCoolDown() {
+        witnessesInCoolDown.forEach { w  in
+            w.coolDown = false
+        }
+
+    }
 }
 
